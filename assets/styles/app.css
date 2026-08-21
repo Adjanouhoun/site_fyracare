@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
 
-:root { --plum:#642d40; --plum-2:#8e4f60; --pink:#b8667c; --blush:#e8d2d2; --ivory:#fcf9f6; --paper:#ffffff; --ink:#2b2527; --muted:#746a66; --line:#ded4cd; --sage:#aab8ad; --slate:#34444a; --gold:#c6a873; --soft:#f5eeea; --shadow:0 24px 70px rgba(52,38,42,.09); --space-1:8px; --space-2:16px; --space-3:24px; --space-4:32px; --space-5:48px; --space-6:64px; --space-7:96px; }
+:root { --plum:#95586c; --plum-2:#bd788b; --pink:#c86f8a; --blush:#f1dde2; --ivory:#fcf9f6; --paper:#ffffff; --ink:#2b2527; --muted:#746a66; --line:#ded4cd; --sage:#aab8ad; --slate:#34444a; --gold:#c6a873; --soft:#f8efed; --shadow:0 24px 70px rgba(83,61,67,.09); --space-1:8px; --space-2:16px; --space-3:24px; --space-4:32px; --space-5:48px; --space-6:64px; --space-7:96px; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { margin:0; color:var(--ink); background:var(--ivory); font-family:"DM Sans",sans-serif; line-height:1.6; overflow-x:hidden; }
@@ -585,4 +585,43 @@ body.lightbox-open { overflow:hidden; }
   .site-header.menu-open .menu-toggle i:nth-child(2) { opacity:0; }
   .site-header.menu-open .menu-toggle i:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
   .service-detail-hero { padding-top:90px; }
+}
+
+/* Palette rose minérale — plus lumineuse, fidèle au logo FyraCare */
+.hero-luxe::before {
+  background:linear-gradient(90deg,rgba(62,48,50,.78) 0%,rgba(92,66,73,.58) 43%,rgba(200,111,138,.18) 100%);
+}
+.hero-luxe-overlay {
+  background:linear-gradient(90deg,rgba(66,51,55,.72),rgba(149,88,108,.12));
+}
+.hero-luxe-bottom {
+  background:rgba(73,55,60,.48);
+}
+.services-section {
+  background:linear-gradient(145deg,#966174 0%,#b9788b 58%,#d39baa 100%);
+}
+.services-page-hero {
+  color:var(--ink);
+  background:linear-gradient(135deg,#f1dde2 0%,#f8efed 100%);
+}
+.services-page-intro .kicker {
+  color:var(--plum);
+}
+.services-page-intro h1 em {
+  color:var(--plum);
+}
+.services-page-intro p {
+  color:var(--muted);
+}
+.service-overlay {
+  background:linear-gradient(to top,rgba(73,55,60,.94),rgba(73,55,60,.38) 55%,transparent);
+}
+.service-detail-hero {
+  background:linear-gradient(125deg,#8f596b 0%,#c48797 100%);
+}
+.experience-image>a {
+  background:rgba(149,88,108,.92);
+}
+.footer {
+  background:#55464a;
 }
