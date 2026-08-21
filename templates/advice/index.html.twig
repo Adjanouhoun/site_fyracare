@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'advice_page.meta_title'|trans }}{% endblock %}
+{% block meta_description %}{{ 'advice_page.meta_description'|trans }}{% endblock %}
+{% block body %}
+{% include '_header.html.twig' %}
+<main class="advice-page">
+  <nav class="breadcrumbs"><ol class="shell"><li><a href="{{ path('app_home',{_locale:app.request.locale}) }}">{{ 'seo.home'|trans }}</a></li><li aria-current="page">{{ 'nav.advice'|trans }}</li></ol></nav>
+  <header class="advice-hero"><div class="shell"><span class="kicker"><i></i>{{ 'advice_page.eyebrow'|trans }}</span><h1>{{ 'advice_page.title'|trans }}</h1><p>{{ 'advice_page.intro'|trans }}</p></div></header>
+  <section class="section"><div class="shell advice-grid">
+    {% for article in articles %}
+      {% set fallback = article.category == 'wellbeing' ? 'images/gallery/damp.webp' : (article.category == 'postpartum' ? 'images/gallery/perinee.webp' : 'images/gallery/centre.webp') %}
+      <article class="advice-card"><a class="advice-card-image" href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}"><img src="{{ article.image ? asset('uploads/articles/'~article.image) : asset(fallback) }}" alt="{{ article.title(app.request.locale) }}" loading="lazy" decoding="async"></a><div><span>{{ ('advice_page.categories.'~article.category)|trans }}</span><h2><a href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}">{{ article.title(app.request.locale) }}</a></h2><p>{{ article.excerpt(app.request.locale) }}</p><a class="editorial-link" href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}">{{ 'advice_page.read'|trans }} →</a></div></article>
+    {% else %}<p>{{ 'advice_page.no_articles'|trans }}</p>{% endfor %}
+  </div></section>
+</main>
+{% include '_footer.html.twig' %}
+{% endblock %}

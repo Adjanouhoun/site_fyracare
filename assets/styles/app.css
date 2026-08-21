@@ -470,6 +470,36 @@ body.lightbox-open { overflow:hidden; }
   .services-page-image { min-height:390px; }
 }
 
+.advice-page,.advice-detail,.home-advice { background:var(--paper); }
+.advice-hero,.advice-detail-hero { padding:110px 0 90px; background:linear-gradient(120deg,var(--blush),var(--ivory)); }
+.advice-hero h1,.advice-detail-hero h1 { max-width:900px; margin:24px 0; font-size:clamp(3rem,5vw,4.4rem); }
+.advice-hero p,.advice-detail-hero>div>p { max-width:720px; color:var(--muted); font-size:1.08rem; line-height:1.8; }
+.advice-grid,.home-advice-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; }
+.advice-card { background:var(--ivory); border-bottom:2px solid var(--line); }
+.advice-card-image { display:block; height:290px; overflow:hidden; }
+.advice-card-image img { width:100%; height:100%; object-fit:cover; border-radius:0; transition:transform .55s ease; }
+.advice-card:hover img { transform:scale(1.025); }
+.advice-card>div { padding:28px; }
+.advice-card>div>span { color:var(--pink); font-size:.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.advice-card h2,.advice-card h3 { margin:15px 0 14px; font-family:"Italiana",serif; font-size:1.75rem; font-weight:400; line-height:1.2; }
+.advice-card p { margin:0; color:var(--muted); line-height:1.7; }
+.home-advice { background:var(--soft); }
+.home-advice .services-title-row { margin-bottom:48px; }
+.advice-meta { display:flex; flex-wrap:wrap; gap:20px; margin-top:35px; color:var(--plum); font-size:.75rem; font-weight:600; }
+.advice-cover { height:min(620px,55vw); margin-top:-35px; }
+.advice-cover img { width:100%; height:100%; object-fit:cover; border-radius:0; }
+.advice-article-layout { display:grid; grid-template-columns:minmax(0,760px) 310px; justify-content:center; gap:90px; padding-top:90px; padding-bottom:110px; }
+.advice-body { color:var(--ink); font-size:1.06rem; line-height:1.95; white-space:normal; }
+.advice-article-layout aside { display:grid; align-content:start; gap:24px; }
+.advice-author,.advice-disclaimer { padding:28px; border:1px solid var(--line); }
+.advice-author span { color:var(--pink); font-size:.65rem; font-weight:700; text-transform:uppercase; }
+.advice-author strong { display:block; margin:12px 0; font-family:"Italiana",serif; font-size:1.5rem; font-weight:400; }
+.advice-author p,.advice-disclaimer p { color:var(--muted); line-height:1.65; }
+.advice-author a { color:var(--plum); font-size:.75rem; font-weight:700; }
+.advice-disclaimer { background:var(--blush); }
+@media (max-width:900px) { .advice-grid,.home-advice-grid { grid-template-columns:1fr 1fr; } .advice-article-layout { grid-template-columns:1fr; gap:45px; } }
+@media (max-width:700px) { .advice-hero,.advice-detail-hero { padding:75px 0 65px; } .advice-hero h1,.advice-detail-hero h1 { font-size:2.65rem; } .advice-grid,.home-advice-grid { grid-template-columns:1fr; } .advice-card-image { height:255px; } .advice-cover { width:100%; height:330px; margin-top:0; } .advice-article-layout { padding-top:55px; padding-bottom:70px; } }
+
 /* FyraCare design system — clinical, warm and consistent */
 .mobile-booking-cta { display:none; }
 .service-card { border-radius:2px; box-shadow:none; }

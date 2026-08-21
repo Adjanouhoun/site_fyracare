@@ -11,8 +11,13 @@ final class ServiceImageResizer
 
     public function resize(?string $filename, int $maximum = 1600): void
     {
+        $this->resizeIn('services', $filename, $maximum);
+    }
+
+    public function resizeIn(string $directory, ?string $filename, int $maximum = 1600): void
+    {
         if (!$filename) return;
-        $path = $this->projectDir.'/public/uploads/services/'.$filename;
+        $path = $this->projectDir.'/public/uploads/'.trim($directory, '/').'/'.$filename;
         if (!is_file($path)) return;
         $info = @getimagesize($path);
         if (!$info || max($info[0], $info[1]) <= $maximum) return;

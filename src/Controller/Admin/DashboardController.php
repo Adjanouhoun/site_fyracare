@@ -29,6 +29,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations', 'fa fa-heart');
+        yield MenuItem::linkTo(AdviceArticleCrudController::class, 'Conseils', 'fa fa-newspaper');
         yield MenuItem::linkTo(AppointmentCrudController::class, 'Rendez-vous', 'fa fa-calendar-check');
         yield MenuItem::linkTo(AvailabilityCrudController::class, 'Disponibilités', 'fa fa-clock');
         yield MenuItem::linkTo(ContactMessageCrudController::class, 'Messages', 'fa fa-envelope');

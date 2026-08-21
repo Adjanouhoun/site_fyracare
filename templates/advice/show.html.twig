@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ article.seoTitle(app.request.locale) }}{% endblock %}
+{% block meta_description %}{{ article.seoDescription(app.request.locale) }}{% endblock %}
+{% block structured_data %}<script type="application/ld+json">{{ {'@context':'https://schema.org','@type':'BlogPosting','headline':article.title(app.request.locale),'description':article.seoDescription(app.request.locale),'datePublished':article.publishedAt|date('c'),'dateModified':article.updatedAt|date('c'),'author':{'@type':'Person','name':article.author,'url':absolute_url(path('app_expertise',{_locale:app.request.locale}))},'publisher':{'@type':'Organization','name':'FyraCare','logo':{'@type':'ImageObject','url':absolute_url(asset('images/logo-fyracare.png'))}},'mainEntityOfPage':absolute_url(path('app_advice_show',{_locale:app.request.locale,slug:article.slug}))}|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE'))|raw }}</script>{% endblock %}
+{% block body %}
+{% include '_header.html.twig' %}
+{% set fallback = article.category == 'wellbeing' ? 'images/gallery/damp.webp' : (article.category == 'postpartum' ? 'images/gallery/perinee.webp' : 'images/gallery/centre.webp') %}
+<main class="advice-detail">
+  <nav class="breadcrumbs"><ol class="shell"><li><a href="{{ path('app_home',{_locale:app.request.locale}) }}">{{ 'seo.home'|trans }}</a></li><li><a href="{{ path('app_advice',{_locale:app.request.locale}) }}">{{ 'nav.advice'|trans }}</a></li><li aria-current="page">{{ article.title(app.request.locale) }}</li></ol></nav>
+  <header class="advice-detail-hero"><div class="shell"><span class="kicker"><i></i>{{ ('advice_page.categories.'~article.category)|trans }}</span><h1>{{ article.title(app.request.locale) }}</h1><p>{{ article.excerpt(app.request.locale) }}</p><div class="advice-meta"><span>{{ article.author }}</span><time datetime="{{ article.updatedAt|date('Y-m-d') }}">{{ 'advice_page.updated'|trans }} {{ article.updatedAt|date('d.m.Y') }}</time></div></div></header>
+  <figure class="shell advice-cover"><img src="{{ article.image ? asset('uploads/articles/'~article.image) : asset(fallback) }}" alt="{{ article.title(app.request.locale) }}"></figure>
+  <div class="shell advice-article-layout"><article class="advice-body">{{ article.content(app.request.locale)|nl2br }}</article><aside><div class="advice-author"><span>{{ 'advice_page.author_label'|trans }}</span><strong>{{ article.author }}</strong><p>{{ 'advice_page.author_text'|trans }}</p><a href="{{ path('app_expertise',{_locale:app.request.locale}) }}">{{ 'nav.expertise'|trans }} →</a></div><div class="advice-disclaimer"><strong>{{ 'advice_page.disclaimer'|trans }}</strong><p>{{ 'advice_page.disclaimer_text'|trans }}</p></div></aside></div>
+  <section class="editorial-cta"><div class="shell"><span class="kicker"><i></i>FyraCare</span><h2>{{ 'advice_page.cta_title'|trans }}</h2><p>{{ 'advice_page.cta_text'|trans }}</p><a class="button button-dark" href="{{ path('app_home',{_locale:app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans }} →</a></div></section>
+</main>
+{% include '_footer.html.twig' %}
+{% endblock %}

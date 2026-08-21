@@ -6,6 +6,8 @@
  <url><loc>{{ absolute_url(path('app_expertise',{_locale:locale})) }}</loc></url>
  <url><loc>{{ absolute_url(path('app_services',{_locale:locale})) }}</loc></url>
  <url><loc>{{ absolute_url(path('app_contact',{_locale:locale})) }}</loc></url>
+ <url><loc>{{ absolute_url(path('app_advice',{_locale:locale})) }}</loc></url>
  {% for service in services %}<url><loc>{{ absolute_url(path('app_service_show',{_locale:locale,code:service.code})) }}</loc></url>{% endfor %}
+ {% for article in articles %}<url><loc>{{ absolute_url(path('app_advice_show',{_locale:locale,slug:article.slug})) }}</loc><lastmod>{{ article.updatedAt|date('Y-m-d') }}</lastmod></url>{% endfor %}
 {% endfor %}
 </urlset>

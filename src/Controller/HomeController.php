@@ -9,6 +9,7 @@ use App\Form\AppointmentType;
 use App\Form\ContactMessageType;
 use App\Form\TestimonialType;
 use App\Repository\ServiceRepository;
+use App\Repository\AdviceArticleRepository;
 use App\Repository\TestimonialRepository;
 use App\Service\AdminNotificationMailer;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,7 +21,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/{_locale}', name: 'app_home', requirements: ['_locale' => 'fr|en|ar'], defaults: ['_locale' => 'fr'])]
-    public function index(Request $request, ServiceRepository $services, TestimonialRepository $testimonials): Response
+    public function index(Request $request, ServiceRepository $services, TestimonialRepository $testimonials, AdviceArticleRepository $articles): Response
     {
         $locale = $request->getLocale();
         $form = $this->createForm(TestimonialType::class, new Testimonial(), [
@@ -37,7 +38,7 @@ final class HomeController extends AbstractController
             }
         }
         $appointmentForm = $this->createForm(AppointmentType::class, $appointment, ['locale' => $locale, 'action' => $this->generateUrl('app_appointment_submit', ['_locale' => $locale])]);
-        return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive(), 'testimonials' => $testimonials->findApproved(), 'testimonial_form' => $form, 'appointment_form' => $appointmentForm]);
+        return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive(), 'featured_articles' => $articles->findFeatured(), 'testimonials' => $testimonials->findApproved(), 'testimonial_form' => $form, 'appointment_form' => $appointmentForm]);
     }
 
     #[Route('/{_locale}/rendez-vous', name: 'app_appointment_submit', requirements: ['_locale' => 'fr|en|ar'], methods: ['POST'])]
@@ -92,9 +93,9 @@ final class HomeController extends AbstractController
     public function legal(): Response { return $this->render('legal/legal.html.twig'); }
 
     #[Route('/sitemap.xml', name: 'app_sitemap', defaults: ['_format' => 'xml'])]
-    public function sitemap(ServiceRepository $services): Response
+    public function sitemap(ServiceRepository $services, AdviceArticleRepository $articles): Response
     {
-        return $this->render('seo/sitemap.xml.twig', ['services' => $services->findActive()], new Response('', 200, ['Content-Type' => 'application/xml']));
+        return $this->render('seo/sitemap.xml.twig', ['services' => $services->findActive(), 'articles' => $articles->findPublished()], new Response('', 200, ['Content-Type' => 'application/xml']));
     }
 
     #[Route('/robots.txt', name: 'app_robots')]
@@ -122,6 +123,23 @@ final class HomeController extends AbstractController
     public function services(ServiceRepository $services): Response
     {
         return $this->render('services/index.html.twig', ['services' => $services->findActive()]);
+    }
+
+    #[Route('/{_locale}/conseils', name: 'app_advice', requirements: ['_locale' => 'fr|en|ar'])]
+    public function advice(AdviceArticleRepository $articles): Response
+    {
+        return $this->render('advice/index.html.twig', ['articles' => $articles->findPublished()]);
+    }
+
+    #[Route('/{_locale}/conseils/{slug}', name: 'app_advice_show', requirements: ['_locale' => 'fr|en|ar', 'slug' => '[a-z0-9-]+'])]
+    public function adviceShow(string $slug, AdviceArticleRepository $articles): Response
+    {
+        $article = $articles->findPublishedBySlug($slug);
+        if (!$article) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('advice/show.html.twig', ['article' => $article]);
     }
 
     #[Route('/{_locale}/prestations/{code}', name: 'app_service_show', requirements: ['_locale' => 'fr|en|ar', 'code' => '[a-z0-9_]+'])]
