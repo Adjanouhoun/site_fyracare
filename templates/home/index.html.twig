@@ -1,20 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <header class="site-header">
-        <nav class="nav shell" aria-label="{{ 'nav.main'|trans }}">
-            <a class="brand" href="{{ path('app_home', {_locale: app.request.locale}) }}">
-                <img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span>
-            </a>
-            <div class="nav-links">
-                <a href="#vision">{{ 'nav.about'|trans }}</a><a href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'nav.services'|trans }}</a><a href="#aminata">{{ 'nav.expertise'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a>
-            </div>
-            <div class="languages" aria-label="{{ 'nav.languages'|trans }}">
-                {% for locale, label in {fr: 'FR', en: 'EN', ar: 'AR'} %}<a href="{{ path('app_home', {_locale: locale}) }}" class="{{ app.request.locale == locale ? 'active' }}" lang="{{ locale }}">{{ label }}</a>{% endfor %}
-            </div>
-            <a class="nav-cta" href="#contact">{{ 'actions.appointment'|trans }} <span aria-hidden="true">↗</span></a>
-        </nav>
-    </header>
+    {% include '_header.html.twig' %}
 
     <main>
         <section class="hero-luxe" id="vision" style="--hero-photo: url('{{ asset('images/gallery/centre.jpg') }}')">
@@ -57,7 +44,14 @@
         <section class="founder-section section" id="aminata">
             <div class="shell founder-layout">
                 <div class="founder-visual"><div class="founder-photo"><img src="{{ asset('images/aminatadiarra.png') }}" alt="{{ 'founder.image_alt'|trans }}"></div><div class="founder-stamp"><strong>15+</strong><span>{{ 'founder.years'|trans }}</span></div><span class="founder-outline" aria-hidden="true">FYRACARE</span></div>
-                <div class="founder-copy"><div class="section-index">03 — {{ 'founder.eyebrow'|trans }}</div><span class="kicker"><i></i>{{ 'founder.role'|trans }}</span><h2>{{ 'founder.title_rich'|trans|raw }}</h2><p>{{ 'founder.text_long'|trans }}</p><div class="credentials"><div><strong>{{ 'founder.credential_one'|trans }}</strong><small>{{ 'founder.credential_one_text'|trans }}</small></div><div><strong>{{ 'founder.credential_two'|trans }}</strong><small>{{ 'founder.credential_two_text'|trans }}</small></div></div><a class="button button-dark" href="#contact">{{ 'founder.link'|trans }} <span>↗</span></a></div>
+                <div class="founder-copy"><div class="section-index">03 — {{ 'founder.eyebrow'|trans }}</div><span class="kicker"><i></i>{{ 'founder.role'|trans }}</span><h2>{{ 'founder.title_rich'|trans|raw }}</h2><p>{{ 'founder.text_long'|trans }}</p><div class="credentials"><div><strong>{{ 'founder.credential_one'|trans }}</strong><small>{{ 'founder.credential_one_text'|trans }}</small></div><div><strong>{{ 'founder.credential_two'|trans }}</strong><small>{{ 'founder.credential_two_text'|trans }}</small></div></div><a class="button button-dark" href="#parcours-aminata">{{ 'founder.link'|trans }} <span>↓</span></a></div>
+            </div>
+        </section>
+
+        <section class="founder-journey section" id="parcours-aminata">
+            <div class="shell founder-journey-layout">
+                <div><div class="section-index">03.1 — {{ 'founder.journey_eyebrow'|trans }}</div><h2>{{ 'founder.journey_title'|trans }}</h2></div>
+                <div class="founder-journey-story"><p>{{ 'founder.journey_text'|trans }}</p><div class="journey-points"><article><span>01</span><strong>{{ 'founder.journey_one'|trans }}</strong><p>{{ 'founder.journey_one_text'|trans }}</p></article><article><span>02</span><strong>{{ 'founder.journey_two'|trans }}</strong><p>{{ 'founder.journey_two_text'|trans }}</p></article><article><span>03</span><strong>{{ 'founder.journey_three'|trans }}</strong><p>{{ 'founder.journey_three_text'|trans }}</p></article></div></div>
             </div>
         </section>
 

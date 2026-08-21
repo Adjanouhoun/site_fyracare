@@ -4,14 +4,7 @@
 {% block meta_description %}{{ 'services_page.meta_description'|trans }}{% endblock %}
 
 {% block body %}
-    <header class="site-header services-header">
-        <nav class="nav shell" aria-label="{{ 'nav.main'|trans }}">
-            <a class="brand" href="{{ path('app_home', {_locale: app.request.locale}) }}"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a>
-            <div class="nav-links"><a href="{{ path('app_home', {_locale: app.request.locale}) }}">{{ 'services_page.back_home'|trans }}</a><a href="#catalogue">{{ 'nav.services'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a></div>
-            <div class="languages" aria-label="{{ 'nav.languages'|trans }}">{% for locale, label in {fr:'FR',en:'EN',ar:'AR'} %}<a href="{{ path('app_services', {_locale: locale}) }}" class="{{ app.request.locale == locale ? 'active' }}" lang="{{ locale }}">{{ label }}</a>{% endfor %}</div>
-            <a class="nav-cta" href="#contact">{{ 'actions.appointment'|trans }} <span>↗</span></a>
-        </nav>
-    </header>
+    {% include '_header.html.twig' %}
 
     <main>
         <section class="services-page-hero">
