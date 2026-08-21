@@ -25,6 +25,15 @@ class ServiceAdminTest extends WebTestCase
         $em->flush();
 
         $client->loginUser($admin);
+        $client->request('GET', '/admin');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('h1', 'Tableau de bord');
+        self::assertSelectorTextContains('body', 'Nouvelles demandes');
+
+        $client->request('GET', '/admin/testimonial');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('h1', 'Modération des avis');
+
         $client->request('GET', '/admin/service');
 
         self::assertResponseIsSuccessful();

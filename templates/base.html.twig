@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="{% block meta_description %}{{ 'meta.description'|trans }}{% endblock %}">
         <meta name="theme-color" content="#f6eee8">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="FyraCare">
+        <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
+        <meta property="og:description" content="{{ block('meta_description') }}">
+        <meta property="og:image" content="{{ absolute_url(asset('images/gallery/centre.jpg')) }}">
+        <link rel="canonical" href="{{ absolute_url(app.request.pathInfo) }}">
         <title>{% block title %}{{ 'meta.title'|trans }}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><circle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%23A96857%22/><path d=%22M20 18h26v7H28v8h15v7H28v14h-8z%22 fill=%22white%22/></svg>">
         {% block stylesheets %}

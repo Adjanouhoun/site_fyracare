@@ -1,7 +1,7 @@
 {% set current_route = app.request.attributes.get('_route') %}
 {% set language_params = {_locale: app.request.locale} %}
 {% if current_route == 'app_service_show' %}{% set language_params = language_params|merge({code: service.code}) %}{% endif %}
-<header class="site-header{{ current_route in ['app_services', 'app_service_show'] ? ' services-header' : '' }}">
+<header class="site-header{{ current_route != 'app_home' ? ' services-header' : '' }}">
     <nav class="nav shell" aria-label="{{ 'nav.main'|trans }}">
         <a class="brand" href="{{ path('app_home', {_locale: app.request.locale}) }}">
             <img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span>
@@ -10,13 +10,13 @@
             <a href="{{ path('app_home', {_locale: app.request.locale}) }}#vision">{{ 'nav.about'|trans }}</a>
             <a href="{{ path('app_services', {_locale: app.request.locale}) }}" class="{{ current_route in ['app_services', 'app_service_show'] ? 'active' }}">{{ 'nav.services'|trans }}</a>
             <a href="{{ path('app_home', {_locale: app.request.locale}) }}#aminata">{{ 'nav.expertise'|trans }}</a>
-            <a href="{{ path('app_home', {_locale: app.request.locale}) }}#contact">{{ 'nav.contact'|trans }}</a>
+            <a href="{{ path('app_contact', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_contact' ? 'active' }}">{{ 'nav.contact'|trans }}</a>
         </div>
         <div class="languages" aria-label="{{ 'nav.languages'|trans }}">
             {% for locale, label in {fr: 'FR', en: 'EN', ar: 'AR'} %}
                 <a href="{{ path(current_route, language_params|merge({_locale: locale})) }}" class="{{ app.request.locale == locale ? 'active' }}" lang="{{ locale }}">{{ label }}</a>
             {% endfor %}
         </div>
-        <a class="nav-cta" href="{{ path('app_home', {_locale: app.request.locale}) }}#contact">{{ 'actions.appointment'|trans }} <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans }} <span aria-hidden="true">↗</span></a>
     </nav>
 </header>

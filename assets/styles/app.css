@@ -385,6 +385,10 @@ body.lightbox-open { overflow:hidden; }
   .detail-copy { position:static; }
   .services-page-image { min-height:520px; }
 }
+
+.form-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.inner-page{padding-top:98px;background:#fbf8f4;min-height:70vh}.page-hero{padding:100px 0 72px;background:#eee3d9}.page-hero h1{font:clamp(3rem,7vw,6.5rem)/.95 var(--font-display);max-width:900px;margin:18px 0}.page-hero p{max-width:700px;font-size:1.1rem;line-height:1.8}.contact-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:8vw}.contact-details h2,.contact-form-panel h2,.legal-copy h2{font:2rem/1.1 var(--font-display);margin:0 0 32px}.contact-details address{font-style:normal;display:grid;gap:30px;margin-bottom:40px}.contact-details address div{display:grid;gap:6px;border-bottom:1px solid #d8cbc0;padding-bottom:22px}.contact-details small{color:#796d65;text-transform:uppercase;letter-spacing:.12em}.contact-details a,.contact-details strong{color:#28231f;font-weight:500;text-decoration:none}.contact-form-panel{background:#fff;padding:48px;box-shadow:0 18px 55px rgba(57,42,32,.08)}.contact-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact-fields .field-wide{grid-column:1/-1}.contact-fields label,.booking-step>div>label,.booking-step>label{display:grid;gap:8px;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}.contact-fields input,.contact-fields textarea,.booking-step select,.booking-step input,.booking-step textarea{width:100%;border:0;border-bottom:1px solid #cbbdb2;background:transparent;padding:13px 2px;font:inherit;border-radius:0}.legal-copy{max-width:850px;font-size:1.05rem;line-height:1.85}.legal-copy h2{margin-top:44px;margin-bottom:14px}.booking-step>div{margin-bottom:20px}
+@media(max-width:800px){.contact-layout{grid-template-columns:1fr}.contact-form-panel{padding:28px 20px}.contact-fields{grid-template-columns:1fr}.inner-page{padding-top:76px}.page-hero{padding:70px 0 50px}}
 @media (max-width:700px) {
   .shell { width:min(100% - 28px,1280px); }
   .section { padding:90px 0; }
