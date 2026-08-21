@@ -515,3 +515,32 @@ body.lightbox-open { overflow:hidden; }
   .footer-main { grid-template-columns:1fr 1fr; }
   .footer-identity { grid-column:1/-1; }
 }
+
+/* Sticky navigation and calmer editorial scale */
+.site-header { position:fixed; inset:0 0 auto; padding:14px 0; }
+.site-header .nav { background:rgba(76,45,54,.9); box-shadow:0 12px 38px rgba(35,26,29,.14); }
+.services-header .nav { background:rgba(76,45,54,.94); }
+.hero-luxe-copy h1 { font-size:clamp(3.7rem,6.2vw,6.8rem); }
+.manifesto-copy h2 { font-size:clamp(2.7rem,4.6vw,4.9rem); }
+.services-title-row h2 { font-size:clamp(3rem,5.1vw,5.8rem); }
+.founder-copy h2 { font-size:clamp(2.8rem,4.3vw,4.9rem); }
+.founder-journey h2 { font-size:clamp(2.5rem,4vw,4.5rem); }
+.experience-copy h2 { font-size:clamp(2.8rem,4.3vw,4.9rem); }
+.gallery-heading h2 { font-size:clamp(2.7rem,4.3vw,4.7rem); }
+.testimonials-layout h2 { font-size:clamp(2.7rem,4.2vw,4.6rem); }
+.testimonial-submit h3 { font-size:clamp(2rem,3vw,3.2rem); }
+.booking-intro h2 { font-size:clamp(2.7rem,4.2vw,4.6rem); }
+.appointment h2 { font-size:clamp(2.7rem,4.2vw,4.8rem); }
+.services-page-intro h1 { font-size:clamp(3.4rem,5.8vw,6rem); }
+.service-detail-heading h1 { font-size:clamp(3.1rem,5.4vw,5.8rem); }
+.services-catalog-section .service-catalog-heading h2 { font-size:clamp(2.5rem,4vw,4.3rem); }
+.page-hero h1 { font-size:clamp(2.8rem,5.3vw,5.2rem); }
+
+@media (max-width:700px) {
+  .site-header { padding:10px 0; }
+  .hero-luxe-copy h1 { font-size:3.15rem; }
+  .manifesto-copy h2,.services-title-row h2,.founder-copy h2,.gallery-heading h2,.experience-copy h2,.testimonials-layout h2,.booking-intro h2,.appointment h2 { font-size:2.75rem; }
+  .founder-journey h2,.testimonial-submit h3,.services-catalog-section .service-catalog-heading h2 { font-size:2.45rem; }
+  .services-page-intro h1,.service-detail-heading h1 { font-size:3rem; }
+  .page-hero h1 { font-size:2.8rem; }
+}
