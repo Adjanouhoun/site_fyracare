@@ -4,10 +4,10 @@ meta:
 nav:
   main: 'Navigation principale'
   about: 'À propos'
-  services: 'Nos soins'
+  services: 'Prestations'
   contact: 'Contact'
   languages: 'Choisir la langue'
-  expertise: 'Aminata & son expertise'
+  expertise: 'Notre expertise'
 actions:
   appointment: 'Prendre rendez-vous'
   discover: 'Découvrir nos soins'
