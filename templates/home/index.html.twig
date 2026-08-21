@@ -17,24 +17,23 @@
     </header>
 
     <main>
-        <section class="hero" id="vision">
-            <span class="hero-orbit orbit-one" aria-hidden="true"></span><span class="hero-orbit orbit-two" aria-hidden="true"></span>
-            <div class="hero-layout shell">
-                <div class="hero-copy">
-                    <span class="kicker"><i></i>{{ 'hero.eyebrow'|trans }}</span>
+        <section class="hero-luxe" id="vision" style="--hero-photo: url('{{ asset('images/gallery/centre.jpg') }}')">
+            <div class="hero-luxe-overlay"></div>
+            <div class="shell hero-luxe-content">
+                <div class="hero-luxe-copy">
+                    <span class="hero-pill">✦ {{ 'hero.eyebrow'|trans }}</span>
                     <h1>{{ 'hero.title_rich'|trans|raw }}</h1>
                     <p>{{ 'hero.description'|trans }}</p>
-                    <div class="hero-actions"><a class="button" href="#contact">{{ 'actions.appointment'|trans }} <span>↗</span></a><a class="text-action" href="#services"><span class="play">↓</span>{{ 'actions.discover'|trans }}</a></div>
-                    <div class="hero-signature"><span class="signature-monogram">AD</span><p><strong>Aminata Boulkheir Diarra</strong><small>{{ 'hero.quote_author_short'|trans }}</small></p></div>
+                    <div class="hero-actions"><a class="button button-light" href="#contact">{{ 'actions.appointment'|trans }} <span>↗</span></a><a class="hero-link" href="#services">{{ 'actions.discover'|trans }} <span>→</span></a></div>
                 </div>
-                <div class="hero-art" aria-label="{{ 'hero.visual_label'|trans }}">
-                    <div class="hero-photo-main"><img src="{{ asset('images/gallery/centre.jpg') }}" alt="{{ 'hero.image_alt'|trans }}"></div>
-                    <div class="hero-photo-detail"><img src="{{ asset('images/gallery/damp.jpg') }}" alt="{{ 'hero.detail_alt'|trans }}"></div>
-                    <div class="hero-note"><span>“</span><p>{{ 'hero.quote'|trans }}</p></div>
-                    <div class="hero-badge"><strong>360°</strong><small>{{ 'hero.badge'|trans }}</small></div>
-                </div>
+                <aside class="hero-proof" aria-label="{{ 'hero.proof_title'|trans }}">
+                    <span class="proof-label">{{ 'hero.proof_label'|trans }}</span>
+                    <strong>15+</strong>
+                    <p>{{ 'hero.proof_text'|trans }}</p>
+                    <div class="proof-people"><span>AD</span><span>FC</span><i>+</i><small>{{ 'hero.proof_clients'|trans }}</small></div>
+                </aside>
             </div>
-            <div class="hero-strip"><div class="shell strip-content"><span>{{ 'hero.strip'|trans }}</span><div><b>01</b>{{ 'journey.pregnancy'|trans }}</div><i></i><div><b>02</b>{{ 'journey.birth'|trans }}</div><i></i><div><b>03</b>{{ 'journey.postpartum'|trans }}</div></div></div>
+            <div class="hero-luxe-bottom"><div class="shell hero-luxe-metrics"><span>{{ 'hero.strip'|trans }}</span><div><b>01</b>{{ 'journey.pregnancy'|trans }}</div><div><b>02</b>{{ 'journey.birth'|trans }}</div><div><b>03</b>{{ 'journey.postpartum'|trans }}</div><a href="#services" aria-label="{{ 'actions.discover'|trans }}">↓</a></div></div>
         </section>
 
         <section class="manifesto section">
@@ -61,21 +60,28 @@
             </div>
         </section>
 
+        <section class="experience-section section">
+            <div class="shell experience-layout">
+                <div class="experience-image"><img src="{{ asset('images/gallery/espace-soin.jpg') }}" alt="{{ 'experience.image_alt'|trans }}"><a href="#contact"><span>↗</span>{{ 'actions.appointment'|trans }}</a></div>
+                <div class="experience-copy"><div class="section-index">04 — {{ 'experience.index'|trans }}</div><span class="kicker"><i></i>{{ 'experience.eyebrow'|trans }}</span><h2>{{ 'experience.title'|trans }}</h2><p>{{ 'experience.text'|trans }}</p><div class="experience-list"><details open><summary><b>01</b>{{ 'experience.item_one'|trans }}<span>+</span></summary><p>{{ 'experience.item_one_text'|trans }}</p></details><details><summary><b>02</b>{{ 'experience.item_two'|trans }}<span>+</span></summary><p>{{ 'experience.item_two_text'|trans }}</p></details><details><summary><b>03</b>{{ 'experience.item_three'|trans }}<span>+</span></summary><p>{{ 'experience.item_three_text'|trans }}</p></details><details><summary><b>04</b>{{ 'experience.item_four'|trans }}<span>+</span></summary><p>{{ 'experience.item_four_text'|trans }}</p></details></div></div>
+            </div>
+        </section>
+
         <section class="gallery-section section">
-            <div class="shell gallery-heading"><div class="section-index">04 — {{ 'gallery.index'|trans }}</div><h2>{{ 'gallery.title'|trans }}</h2><p>{{ 'gallery.text'|trans }}</p></div>
+            <div class="shell gallery-heading"><div class="section-index">05 — {{ 'gallery.index'|trans }}</div><h2>{{ 'gallery.title'|trans }}</h2><p>{{ 'gallery.text'|trans }}</p></div>
             <div class="gallery-track"><figure class="gallery-tall"><img src="{{ asset('images/gallery/perinee.jpg') }}" alt="{{ 'gallery.alt_one'|trans }}"><figcaption>01 — {{ 'gallery.caption_one'|trans }}</figcaption></figure><figure class="gallery-wide"><img src="{{ asset('images/gallery/espace-soin.jpg') }}" alt="{{ 'gallery.alt_two'|trans }}"><figcaption>02 — {{ 'gallery.caption_two'|trans }}</figcaption></figure><figure class="gallery-tall"><img src="{{ asset('images/gallery/naturel.jpg') }}" alt="{{ 'gallery.alt_three'|trans }}"><figcaption>03 — {{ 'gallery.caption_three'|trans }}</figcaption></figure></div>
         </section>
 
         <section class="testimonials section">
             <div class="shell testimonials-layout">
-                <div><div class="section-index">05 — {{ 'testimonials.index'|trans }}</div><span class="kicker"><i></i>{{ 'testimonials.eyebrow'|trans }}</span><h2>{{ 'testimonials.title'|trans }}</h2></div>
+                <div><div class="section-index">06 — {{ 'testimonials.index'|trans }}</div><span class="kicker"><i></i>{{ 'testimonials.eyebrow'|trans }}</span><h2>{{ 'testimonials.title'|trans }}</h2></div>
                 <blockquote><span>“</span><p>{{ 'testimonials.quote'|trans }}</p><footer><strong>{{ 'testimonials.author'|trans }}</strong><small>{{ 'testimonials.care'|trans }}</small></footer></blockquote>
             </div>
         </section>
 
         <section class="booking-section section" id="contact" data-controller="booking">
             <div class="shell booking-layout">
-                <div class="booking-intro"><div class="section-index">06 — {{ 'booking.index'|trans }}</div><span class="kicker"><i></i>{{ 'booking.eyebrow'|trans }}</span><h2>{{ 'booking.title'|trans }}</h2><p>{{ 'booking.text'|trans }}</p><ul><li>{{ 'booking.reassurance_one'|trans }}</li><li>{{ 'booking.reassurance_two'|trans }}</li><li>{{ 'booking.reassurance_three'|trans }}</li></ul></div>
+                <div class="booking-intro"><div class="section-index">07 — {{ 'booking.index'|trans }}</div><span class="kicker"><i></i>{{ 'booking.eyebrow'|trans }}</span><h2>{{ 'booking.title'|trans }}</h2><p>{{ 'booking.text'|trans }}</p><ul><li>{{ 'booking.reassurance_one'|trans }}</li><li>{{ 'booking.reassurance_two'|trans }}</li><li>{{ 'booking.reassurance_three'|trans }}</li></ul></div>
                 <div class="booking-panel">
                     <div class="booking-progress" aria-label="{{ 'booking.progress'|trans }}"><span class="active" data-booking-target="progress">1</span><i></i><span data-booking-target="progress">2</span><i></i><span data-booking-target="progress">3</span></div>
                     <form action="mailto:contact@fyracare.org" method="post" enctype="text/plain">
