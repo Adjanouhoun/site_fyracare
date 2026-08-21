@@ -5,9 +5,9 @@ use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Tab;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
@@ -22,13 +22,13 @@ class ServiceCrudController extends AbstractCrudController
         yield IntegerField::new('displayOrder', 'Ordre');
         yield BooleanField::new('active', 'Publié');
         yield BooleanField::new('featured', 'Sur l’accueil');
-        yield Tab::add('Français');
+        yield FormField::addTab('Français');
         yield TextField::new('titleFr', 'Titre');
         yield TextareaField::new('descriptionFr', 'Description');
-        yield Tab::add('English');
+        yield FormField::addTab('English');
         yield TextField::new('titleEn', 'Title');
         yield TextareaField::new('descriptionEn', 'Description');
-        yield Tab::add('العربية');
+        yield FormField::addTab('العربية');
         yield TextField::new('titleAr', 'العنوان')->setFormTypeOption('attr', ['dir' => 'rtl']);
         yield TextareaField::new('descriptionAr', 'الوصف')->setFormTypeOption('attr', ['dir' => 'rtl']);
     }
