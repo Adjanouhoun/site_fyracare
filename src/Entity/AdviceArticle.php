@@ -8,7 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AdviceArticleRepository::class)]
-#[ORM\Table(name: 'advice_article', uniqueConstraints: [new ORM\UniqueConstraint(name: 'uniq_advice_slug', columns: ['slug'])], indexes: [new ORM\Index(name: 'idx_advice_publication', columns: ['published', 'published_at'])])]
+#[ORM\Table(name: 'advice_article')]
+#[ORM\UniqueConstraint(name: 'uniq_advice_slug', columns: ['slug'])]
+#[ORM\Index(name: 'idx_advice_publication', columns: ['published', 'published_at'])]
 #[ORM\HasLifecycleCallbacks]
 class AdviceArticle
 {

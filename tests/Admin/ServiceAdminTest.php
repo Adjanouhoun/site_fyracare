@@ -6,6 +6,7 @@ use App\Entity\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ServiceAdminTest extends WebTestCase
 {
@@ -48,6 +49,34 @@ class ServiceAdminTest extends WebTestCase
         self::assertSelectorTextContains('body', 'English');
         self::assertSelectorTextContains('body', 'Image principale');
         self::assertSelectorTextContains('body', 'Image secondaire');
+
+        $client->request('GET', '/admin/advice-article');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('h1', 'Conseils & articles');
+    }
+
+    public function testAdministratorCanLoginWithTheLoginForm(): void
+    {
+        $client = static::createClient();
+        $em = static::getContainer()->get(EntityManagerInterface::class);
+        $tool = new SchemaTool($em);
+        $metadata = $em->getMetadataFactory()->getAllMetadata();
+        $tool->dropSchema($metadata);
+        $tool->createSchema($metadata);
+
+        $admin = (new AdminUser())->setEmail('connexion-test@fyracare.local');
+        $hasher = static::getContainer()->get(UserPasswordHasherInterface::class);
+        $admin->setPassword($hasher->hashPassword($admin, 'MotDePasse-Test-2026'));
+        $em->persist($admin);
+        $em->flush();
+
+        $crawler = $client->request('GET', '/admin/connexion');
+        $client->submit($crawler->selectButton('Se connecter')->form([
+            '_username' => 'connexion-test@fyracare.local',
+            '_password' => 'MotDePasse-Test-2026',
+        ]));
+
+        self::assertResponseRedirects('/admin');
     }
 
     public function testAnonymousVisitorIsRedirectedToLogin(): void
