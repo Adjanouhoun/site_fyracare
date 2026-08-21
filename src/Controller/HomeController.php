@@ -126,9 +126,14 @@ final class HomeController extends AbstractController
     }
 
     #[Route('/{_locale}/conseils', name: 'app_advice', requirements: ['_locale' => 'fr|en|ar'])]
-    public function advice(AdviceArticleRepository $articles): Response
+    public function advice(Request $request, AdviceArticleRepository $articles): Response
     {
-        return $this->render('advice/index.html.twig', ['articles' => $articles->findPublished()]);
+        $categories = ['birth-preparation', 'wellbeing', 'pelvic-health', 'breastfeeding', 'postpartum'];
+        $selectedCategory = $request->query->getString('categorie');
+        if (!in_array($selectedCategory, $categories, true)) {
+            $selectedCategory = '';
+        }
+        return $this->render('advice/index.html.twig', ['articles' => $articles->findPublished($selectedCategory ?: null), 'categories' => $categories, 'selected_category' => $selectedCategory]);
     }
 
     #[Route('/{_locale}/conseils/{slug}', name: 'app_advice_show', requirements: ['_locale' => 'fr|en|ar', 'slug' => '[a-z0-9-]+'])]
@@ -139,7 +144,7 @@ final class HomeController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        return $this->render('advice/show.html.twig', ['article' => $article]);
+        return $this->render('advice/show.html.twig', ['article' => $article, 'related_articles' => $articles->findRelated($article)]);
     }
 
     #[Route('/{_locale}/prestations/{code}', name: 'app_service_show', requirements: ['_locale' => 'fr|en|ar', 'code' => '[a-z0-9_]+'])]
