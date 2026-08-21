@@ -7,7 +7,7 @@
                 <img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span>
             </a>
             <div class="nav-links">
-                <a href="#vision">{{ 'nav.about'|trans }}</a><a href="#services">{{ 'nav.services'|trans }}</a><a href="#aminata">{{ 'nav.expertise'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a>
+                <a href="#vision">{{ 'nav.about'|trans }}</a><a href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'nav.services'|trans }}</a><a href="#aminata">{{ 'nav.expertise'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a>
             </div>
             <div class="languages" aria-label="{{ 'nav.languages'|trans }}">
                 {% for locale, label in {fr: 'FR', en: 'EN', ar: 'AR'} %}<a href="{{ path('app_home', {_locale: locale}) }}" class="{{ app.request.locale == locale ? 'active' }}" lang="{{ locale }}">{{ label }}</a>{% endfor %}
@@ -43,20 +43,14 @@
         <section class="services-section section" id="services">
             <div class="shell">
                 <div class="section-topline"><div class="section-index">02 — {{ 'services.eyebrow'|trans }}</div><p>{{ 'services.intro'|trans }}</p></div>
-                <div class="services-title-row"><h2>{{ 'services.title_rich'|trans|raw }}</h2><a class="round-link" href="#contact" aria-label="{{ 'services.all'|trans }}">↗</a></div>
+                <div class="services-title-row"><h2>{{ 'services.title_rich'|trans|raw }}</h2><a class="round-link" href="{{ path('app_services', {_locale: app.request.locale}) }}" aria-label="{{ 'services.all'|trans }}">↗</a></div>
                 <div class="service-editorial">
                     {% set service_images = {birth: 'images/gallery/centre.jpg', prenatal: 'images/gallery/perinee.jpg', postpartum: 'images/gallery/damp.jpg'} %}
                     {% for item, image in service_images %}
                         <article class="service-panel service-{{ loop.index }}"><img src="{{ asset(image) }}" alt="{{ ('services.' ~ item ~ '.title')|trans }}"><div class="service-overlay"></div><span class="service-count">0{{ loop.index }}</span><div class="service-content"><span>{{ ('services.' ~ item ~ '.label')|trans }}</span><h3>{{ ('services.' ~ item ~ '.title')|trans }}</h3><p>{{ ('services.' ~ item ~ '.text')|trans }}</p></div><a href="#contact" aria-label="{{ ('services.' ~ item ~ '.title')|trans }}">↗</a></article>
                     {% endfor %}
                 </div>
-                <div class="service-catalog-heading"><span>{{ 'services.catalog_eyebrow'|trans }}</span><h3>{{ 'services.catalog_title'|trans }}</h3><p>{{ 'services.catalog_text'|trans }}</p></div>
-                <div class="service-catalog">
-                    {% set all_services = ['pelvic_rehab', 'birth_support', 'rebozo', 'damp', 'breastfeeding', 'perineum', 'birth_prep', 'prenatal_massage'] %}
-                    {% for item in all_services %}
-                        <article class="service-card"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0] }}</div><h3>{{ ('services.catalog.' ~ item ~ '.title')|trans }}</h3><p>{{ ('services.catalog.' ~ item ~ '.text')|trans }}</p><a href="#contact">{{ 'services.book'|trans }} <span>↗</span></a></article>
-                    {% endfor %}
-                </div>
+                <div class="services-more"><p>{{ 'services.home_note'|trans }}</p><a class="button button-light" href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'services.all'|trans }} <span>↗</span></a></div>
             </div>
         </section>
 
@@ -104,5 +98,5 @@
         <section class="appointment"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans }}</span><h2>{{ 'appointment.title'|trans }}</h2></div><p>{{ 'appointment.text'|trans }}</p><a class="appointment-link" href="mailto:contact@fyracare.org"><span>{{ 'actions.appointment'|trans }}</span><b>↗</b></a></div></section>
     </main>
 
-    <footer class="footer"><div class="shell footer-main"><a class="brand footer-brand" href="#"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a><p>{{ 'footer.note'|trans }}</p><div class="footer-links"><a href="#services">{{ 'nav.services'|trans }}</a><a href="#aminata">{{ 'nav.expertise'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a></div></div><div class="shell footer-bottom"><span>© {{ 'now'|date('Y') }} FyraCare</span><span>Nouakchott · Mauritanie</span></div></footer>
+    <footer class="footer"><div class="shell footer-main"><a class="brand footer-brand" href="#"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a><p>{{ 'footer.note'|trans }}</p><div class="footer-links"><a href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'nav.services'|trans }}</a><a href="#aminata">{{ 'nav.expertise'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a></div></div><div class="shell footer-bottom"><span>© {{ 'now'|date('Y') }} FyraCare</span><span>Nouakchott · Mauritanie</span></div></footer>
 {% endblock %}

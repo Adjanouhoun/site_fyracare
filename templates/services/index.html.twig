@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'services_page.meta_title'|trans }}{% endblock %}
+{% block meta_description %}{{ 'services_page.meta_description'|trans }}{% endblock %}
+
+{% block body %}
+    <header class="site-header services-header">
+        <nav class="nav shell" aria-label="{{ 'nav.main'|trans }}">
+            <a class="brand" href="{{ path('app_home', {_locale: app.request.locale}) }}"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a>
+            <div class="nav-links"><a href="{{ path('app_home', {_locale: app.request.locale}) }}">{{ 'services_page.back_home'|trans }}</a><a href="#catalogue">{{ 'nav.services'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a></div>
+            <div class="languages" aria-label="{{ 'nav.languages'|trans }}">{% for locale, label in {fr:'FR',en:'EN',ar:'AR'} %}<a href="{{ path('app_services', {_locale: locale}) }}" class="{{ app.request.locale == locale ? 'active' }}" lang="{{ locale }}">{{ label }}</a>{% endfor %}</div>
+            <a class="nav-cta" href="#contact">{{ 'actions.appointment'|trans }} <span>↗</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-page-hero">
+            <div class="shell services-page-intro"><span class="hero-pill">✦ {{ 'services_page.eyebrow'|trans }}</span><h1>{{ 'services_page.title_rich'|trans|raw }}</h1><p>{{ 'services_page.intro'|trans }}</p></div>
+            <div class="services-page-image"><img src="{{ asset('images/gallery/perinee.jpg') }}" alt="{{ 'services_page.image_alt'|trans }}"></div>
+        </section>
+
+        <section class="services-catalog-section section" id="catalogue">
+            <div class="shell">
+                <div class="service-catalog-heading"><span>{{ 'services.catalog_eyebrow'|trans }}</span><h2>{{ 'services.catalog_title'|trans }}</h2><p>{{ 'services.catalog_text'|trans }}</p></div>
+                <div class="service-catalog">
+                    {% set all_services = ['pelvic_rehab','birth_support','rebozo','damp','breastfeeding','perineum','birth_prep','prenatal_massage'] %}
+                    {% for item in all_services %}<article class="service-card"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0] }}</div><h3>{{ ('services.catalog.' ~ item ~ '.title')|trans }}</h3><p>{{ ('services.catalog.' ~ item ~ '.text')|trans }}</p><a href="#contact">{{ 'services.book'|trans }} <span>↗</span></a></article>{% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="appointment" id="contact"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans }}</span><h2>{{ 'appointment.title'|trans }}</h2></div><p>{{ 'appointment.text'|trans }}</p><a class="appointment-link" href="{{ path('app_home', {_locale: app.request.locale}) }}#contact"><span>{{ 'actions.appointment'|trans }}</span><b>↗</b></a></div></section>
+    </main>
+
+    <footer class="footer"><div class="shell footer-main"><a class="brand footer-brand" href="{{ path('app_home', {_locale: app.request.locale}) }}"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a><p>{{ 'footer.note'|trans }}</p><div class="footer-links"><a href="{{ path('app_home', {_locale: app.request.locale}) }}">{{ 'services_page.back_home'|trans }}</a><a href="#catalogue">{{ 'nav.services'|trans }}</a><a href="#contact">{{ 'nav.contact'|trans }}</a></div></div><div class="shell footer-bottom"><span>© {{ 'now'|date('Y') }} FyraCare</span><span>Nouakchott · Mauritanie</span></div></footer>
+{% endblock %}

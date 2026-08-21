@@ -51,6 +51,7 @@ services:
   intro: 'Parce que chaque parcours est unique, nos accompagnements s’adaptent à votre corps, votre histoire et vos besoins.'
   title_rich: 'Des soins qui vous<br><em>ressemblent.</em>'
   all: 'Voir tous les soins'
+  home_note: 'Retrouvez les accompagnements essentiels sur l’accueil et explorez notre catalogue complet pour choisir le soin adapté à votre parcours.'
   catalog_eyebrow: 'Toutes les prestations'
   catalog_title: 'Un accompagnement pour chaque besoin.'
   catalog_text: 'Découvrez l’ensemble des soins FyraCare, de la grossesse à la récupération post-partum.'
@@ -64,6 +65,14 @@ services:
     perineum: { title: 'Préparation du périnée', short: 'Souplesse et prévention', text: 'Des gestes doux et guidés pour préparer la zone périnéale et réduire le risque de déchirure ou d’épisiotomie.' }
     birth_prep: { title: 'Préparation à la naissance', short: 'Séances théoriques et pratiques', text: 'Un programme complet pour comprendre la grossesse, l’accouchement et les premiers jours avec votre bébé.' }
     prenatal_massage: { title: 'Massage prénatal', short: 'Détente pendant la grossesse', text: 'Un massage adapté à la grossesse pour soulager les tensions, stimuler la circulation et apaiser le corps et l’esprit.' }
+services_page:
+  meta_title: 'Prestations — FyraCare'
+  meta_description: 'Découvrez les prestations FyraCare pour la grossesse, la naissance, le post-partum et le bien-être féminin.'
+  eyebrow: 'Expertise & bien-être féminin'
+  title_rich: 'Des soins précis,<br><em>une écoute profonde.</em>'
+  intro: 'Chaque prestation répond à un moment particulier de votre parcours. Notre équipe vous aide à choisir l’accompagnement le plus juste pour vous.'
+  image_alt: 'Accompagnement professionnel proposé par FyraCare'
+  back_home: 'Accueil'
   birth:
     label: 'Naissance'
     title: 'Préparation à la naissance'

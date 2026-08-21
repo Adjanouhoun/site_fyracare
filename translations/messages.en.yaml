@@ -51,6 +51,7 @@ services:
   intro: 'Every journey is unique. Our services adapt to your body, your story and your needs.'
   title_rich: 'Care that feels<br><em>like you.</em>'
   all: 'Explore all care'
+  home_note: 'Discover essential care on the homepage, then explore our complete catalogue to choose the service that suits your journey.'
   catalog_eyebrow: 'All services'
   catalog_title: 'Dedicated care for every need.'
   catalog_text: 'Explore every FyraCare service, from pregnancy through postpartum recovery.'
@@ -64,6 +65,14 @@ services:
     perineum: { title: 'Perineal preparation', short: 'Flexibility and prevention', text: 'Gentle guided techniques to prepare the perineum and help reduce the risk of tearing or episiotomy.' }
     birth_prep: { title: 'Birth preparation', short: 'Theory and practical sessions', text: 'A complete programme to understand pregnancy, childbirth and the first days with your baby.' }
     prenatal_massage: { title: 'Prenatal massage', short: 'Relaxation during pregnancy', text: 'Pregnancy-safe massage to ease tension, stimulate circulation and soothe body and mind.' }
+services_page:
+  meta_title: 'Services — FyraCare'
+  meta_description: 'Explore FyraCare services for pregnancy, birth, postpartum recovery and feminine wellbeing.'
+  eyebrow: 'Expertise & feminine wellbeing'
+  title_rich: 'Precise care,<br><em>deeply attentive.</em>'
+  intro: 'Each service supports a specific moment in your journey. Our team helps you choose the care that is truly right for you.'
+  image_alt: 'Professional care provided by FyraCare'
+  back_home: 'Home'
   birth:
     label: 'Birth'
     title: 'Birth preparation'

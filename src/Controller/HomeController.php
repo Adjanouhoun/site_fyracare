@@ -13,4 +13,10 @@ final class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    #[Route('/{_locale}/prestations', name: 'app_services', requirements: ['_locale' => 'fr|en|ar'])]
+    public function services(): Response
+    {
+        return $this->render('services/index.html.twig');
+    }
 }
