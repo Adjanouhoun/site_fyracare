@@ -28,7 +28,15 @@ final class HomeController extends AbstractController
             'action' => $this->generateUrl('app_testimonial_submit', ['_locale' => $locale]),
             'method' => 'POST',
         ]);
-        $appointmentForm = $this->createForm(AppointmentType::class, new Appointment(), ['locale' => $locale, 'action' => $this->generateUrl('app_appointment_submit', ['_locale' => $locale])]);
+        $appointment = new Appointment();
+        $serviceCode = $request->query->getString('service');
+        if ($serviceCode !== '') {
+            $selectedService = $services->findOneBy(['code' => $serviceCode, 'active' => true]);
+            if ($selectedService) {
+                $appointment->setService($selectedService);
+            }
+        }
+        $appointmentForm = $this->createForm(AppointmentType::class, $appointment, ['locale' => $locale, 'action' => $this->generateUrl('app_appointment_submit', ['_locale' => $locale])]);
         return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive(), 'testimonials' => $testimonials->findApproved(), 'testimonial_form' => $form, 'appointment_form' => $appointmentForm]);
     }
 
