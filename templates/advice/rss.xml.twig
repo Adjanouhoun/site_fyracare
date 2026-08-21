@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ 'advice_page.rss_title'|trans }}</title>
+    <link>{{ absolute_url(path('app_advice',{_locale:app.request.locale})) }}</link>
+    <description>{{ 'advice_page.meta_description'|trans }}</description>
+    <language>{{ app.request.locale }}</language>
+    {% for article in articles %}
+    <item>
+      <title>{{ article.title(app.request.locale) }}</title>
+      <link>{{ absolute_url(path('app_advice_show',{_locale:app.request.locale,slug:article.slug})) }}</link>
+      <guid isPermaLink="true">{{ absolute_url(path('app_advice_show',{_locale:app.request.locale,slug:article.slug})) }}</guid>
+      <description>{{ article.excerpt(app.request.locale) }}</description>
+      <author>site@fyracare.org ({{ article.author }})</author>
+      <category>{{ ('advice_page.categories.'~article.category)|trans }}</category>
+      <pubDate>{{ article.publishedAt|date('r') }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

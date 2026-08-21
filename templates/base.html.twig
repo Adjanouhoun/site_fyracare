@@ -9,17 +9,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="{% block meta_description %}{{ 'meta.description'|trans }}{% endblock %}">
         <meta name="theme-color" content="#f6eee8">
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="{% block og_type %}website{% endblock %}">
         <meta property="og:site_name" content="FyraCare">
         <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
         <meta property="og:description" content="{{ block('meta_description') }}">
-        <meta property="og:image" content="{{ absolute_url(asset('images/gallery/centre.webp')) }}">
+        <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('images/gallery/centre.webp')) }}{% endblock %}">
         <meta property="og:url" content="{{ canonical_url }}">
         <meta property="og:locale" content="{{ app.request.locale == 'ar' ? 'ar_MR' : (app.request.locale == 'en' ? 'en_MR' : 'fr_MR') }}">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{ block('title') }}">
         <meta name="twitter:description" content="{{ block('meta_description') }}">
-        <meta name="twitter:image" content="{{ absolute_url(asset('images/gallery/centre.webp')) }}">
+        <meta name="twitter:image" content="{{ block('og_image') }}">
+        {% block social_meta %}{% endblock %}
         <link rel="canonical" href="{{ canonical_url }}">
         {% if is_localized %}
             {% for locale in ['fr', 'en', 'ar'] %}<link rel="alternate" hreflang="{{ locale }}" href="{{ absolute_url(path(current_route, current_params|merge({_locale: locale}))) }}">{% endfor %}

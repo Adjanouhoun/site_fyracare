@@ -142,6 +142,12 @@ final class HomeController extends AbstractController
         return $this->render('advice/index.html.twig', ['articles' => $articles->searchPublished($selectedCategory ?: null, $search, $perPage, ($page - 1) * $perPage), 'categories' => $categories, 'selected_category' => $selectedCategory, 'search' => $search, 'current_page' => $page, 'total_pages' => $pages, 'total_articles' => $total]);
     }
 
+    #[Route('/{_locale}/conseils/rss.xml', name: 'app_advice_rss', requirements: ['_locale' => 'fr|en|ar'], defaults: ['_format' => 'xml'])]
+    public function adviceRss(AdviceArticleRepository $articles): Response
+    {
+        return $this->render('advice/rss.xml.twig', ['articles' => $articles->findPublished()], new Response('', 200, ['Content-Type' => 'application/rss+xml; charset=UTF-8']));
+    }
+
     #[Route('/{_locale}/conseils/{slug}', name: 'app_advice_show', requirements: ['_locale' => 'fr|en|ar', 'slug' => '[a-z0-9-]+'])]
     public function adviceShow(string $slug, AdviceArticleRepository $articles): Response
     {
