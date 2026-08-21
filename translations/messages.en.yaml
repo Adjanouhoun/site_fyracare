@@ -52,6 +52,7 @@ services:
   title_rich: 'Care that feels<br><em>like you.</em>'
   all: 'Explore all care'
   home_note: 'Discover essential care on the homepage, then explore our complete catalogue to choose the service that suits your journey.'
+  featured_label: 'Signature care'
   catalog_eyebrow: 'All services'
   catalog_title: 'Dedicated care for every need.'
   catalog_text: 'Explore every FyraCare service, from pregnancy through postpartum recovery.'

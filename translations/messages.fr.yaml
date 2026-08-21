@@ -52,6 +52,7 @@ services:
   title_rich: 'Des soins qui vous<br><em>ressemblent.</em>'
   all: 'Voir tous les soins'
   home_note: 'Retrouvez les accompagnements essentiels sur l’accueil et explorez notre catalogue complet pour choisir le soin adapté à votre parcours.'
+  featured_label: 'Accompagnement signature'
   catalog_eyebrow: 'Toutes les prestations'
   catalog_title: 'Un accompagnement pour chaque besoin.'
   catalog_text: 'Découvrez l’ensemble des soins FyraCare, de la grossesse à la récupération post-partum.'

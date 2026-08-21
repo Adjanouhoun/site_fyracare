@@ -23,8 +23,7 @@
             <div class="shell">
                 <div class="service-catalog-heading"><span>{{ 'services.catalog_eyebrow'|trans }}</span><h2>{{ 'services.catalog_title'|trans }}</h2><p>{{ 'services.catalog_text'|trans }}</p></div>
                 <div class="service-catalog">
-                    {% set all_services = ['pelvic_rehab','birth_support','rebozo','damp','breastfeeding','perineum','birth_prep','prenatal_massage'] %}
-                    {% for item in all_services %}<article class="service-card"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0] }}</div><h3>{{ ('services.catalog.' ~ item ~ '.title')|trans }}</h3><p>{{ ('services.catalog.' ~ item ~ '.text')|trans }}</p><a href="#contact">{{ 'services.book'|trans }} <span>↗</span></a></article>{% endfor %}
+                    {% for service in services %}<article class="service-card" id="{{ service.code }}"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0 % 8] }}</div><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale) }}</p><a href="#contact">{{ 'services.book'|trans }} <span>↗</span></a></article>{% endfor %}
                 </div>
             </div>
         </section>

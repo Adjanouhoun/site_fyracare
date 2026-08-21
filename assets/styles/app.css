@@ -127,6 +127,18 @@ h1,h2,h3 { margin:0; font-family:"Fraunces",serif; line-height:.98; font-weight:
 .services-catalog-section .service-catalog-heading p { color:var(--muted); }
 .services-catalog-section .service-card { background:var(--paper); border-color:var(--line); box-shadow:0 18px 55px rgba(106,41,70,.06); }
 
+.login-page { min-height:100vh; display:grid; place-items:center; padding:40px 20px; background:linear-gradient(135deg,#fff9f7,#f8e8ee); }
+.login-card { width:min(460px,100%); padding:48px; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow); }
+.login-card>img { width:72px; height:72px; object-fit:contain; margin-bottom:25px; }
+.login-card>span { color:var(--pink); font-size:.68rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+.login-card h1 { margin:12px 0 32px; font-size:3.5rem; }
+.login-card label { display:block; margin-top:17px; color:var(--muted); font-size:.75rem; font-weight:600; }
+.login-card input { width:100%; margin-top:8px; padding:15px; background:white; border:1px solid var(--line); font:inherit; outline:none; }
+.login-card input:focus { border-color:var(--pink); }
+.login-card button { display:flex; justify-content:space-between; width:100%; margin-top:26px; padding:16px 20px; color:white; background:var(--plum); border:0; font-weight:700; cursor:pointer; }
+.login-card>a { display:inline-block; margin-top:23px; color:var(--muted); font-size:.75rem; }
+.login-error { margin:0 0 20px; padding:12px; color:#8d253f; background:#fbe8ed; font-size:.78rem; }
+
 .founder-section { background:#f8e8ee; }
 .founder-layout { display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:110px; }
 .founder-visual { position:relative; min-height:650px; }
