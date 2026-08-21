@@ -10,7 +10,6 @@ use App\Repository\ServiceRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,8 +27,7 @@ final class AppointmentType extends AbstractType
             ->add('fullName', TextType::class, ['label' => 'booking.name'])
             ->add('phone', TelType::class, ['label' => 'booking.phone'])
             ->add('email', EmailType::class, ['required' => false, 'label' => 'booking.email'])
-            ->add('note', TextareaType::class, ['required' => false, 'label' => 'booking.note'])
-            ->add('website', TextType::class, ['mapped' => false, 'required' => false, 'attr' => ['tabindex' => '-1', 'autocomplete' => 'off'], 'row_attr' => ['class' => 'form-honeypot']]);
+            ->add('note', TextareaType::class, ['required' => false, 'label' => 'booking.note']);
     }
     public function configureOptions(OptionsResolver $resolver): void { $resolver->setDefaults(['data_class' => Appointment::class, 'locale' => 'fr', 'translation_domain' => 'messages']); $resolver->setAllowedValues('locale', ['fr','en','ar']); }
 }

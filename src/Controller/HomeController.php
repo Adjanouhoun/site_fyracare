@@ -38,8 +38,7 @@ final class HomeController extends AbstractController
         $appointment = new Appointment();
         $form = $this->createForm(AppointmentType::class, $appointment, ['locale' => $_locale]);
         $form->handleRequest($request);
-        $honeypot = (string) $form->get('website')->getData();
-        if ($form->isSubmitted() && $form->isValid() && $honeypot === '') {
+        if ($form->isSubmitted() && $form->isValid()) {
             $slot = $appointment->getAvailability();
             if ($slot && $slot->isActive() && $slot->getStartsAt() > new \DateTimeImmutable()) {
                 $slot->setActive(false);
