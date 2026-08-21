@@ -133,7 +133,13 @@ final class HomeController extends AbstractController
         if (!in_array($selectedCategory, $categories, true)) {
             $selectedCategory = '';
         }
-        return $this->render('advice/index.html.twig', ['articles' => $articles->findPublished($selectedCategory ?: null), 'categories' => $categories, 'selected_category' => $selectedCategory]);
+        $search = trim(mb_substr($request->query->getString('q'), 0, 80));
+        $page = max(1, $request->query->getInt('page', 1));
+        $perPage = 6;
+        $total = $articles->countPublished($selectedCategory ?: null, $search);
+        $pages = max(1, (int) ceil($total / $perPage));
+        $page = min($page, $pages);
+        return $this->render('advice/index.html.twig', ['articles' => $articles->searchPublished($selectedCategory ?: null, $search, $perPage, ($page - 1) * $perPage), 'categories' => $categories, 'selected_category' => $selectedCategory, 'search' => $search, 'current_page' => $page, 'total_pages' => $pages, 'total_articles' => $total]);
     }
 
     #[Route('/{_locale}/conseils/{slug}', name: 'app_advice_show', requirements: ['_locale' => 'fr|en|ar', 'slug' => '[a-z0-9-]+'])]
