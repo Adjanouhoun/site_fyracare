@@ -58,6 +58,7 @@ services:
   catalog_title: 'Dedicated care for every need.'
   catalog_text: 'Explore every FyraCare service, from pregnancy through postpartum recovery.'
   book: 'Choose this care'
+  read_more: 'Learn more'
   catalog:
     pelvic_rehab: { title: 'Pelvic floor and abdominal rehabilitation', short: 'Recovery and pelvic health', text: 'Progressive postpartum support to restore comfort, strength and confidence in your body.' }
     birth_support: { title: 'Birth support', short: 'Support on the day of birth', text: 'Professional and reassuring support through labour and birth, putting your preparation into practice.' }
@@ -87,6 +88,10 @@ services_page:
     label: 'After birth'
     title: 'Postpartum support'
     text: 'Breastfeeding, pelvic-floor rehabilitation and traditional care to support your recovery.'
+service_detail:
+  back: 'All services'
+  eyebrow: 'FyraCare service'
+  about: 'About this care'
 founder:
   eyebrow: 'Your midwife'
   title: 'Expertise grounded in listening.'

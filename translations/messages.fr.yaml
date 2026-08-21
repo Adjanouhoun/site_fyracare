@@ -58,6 +58,7 @@ services:
   catalog_title: 'Un accompagnement pour chaque besoin.'
   catalog_text: 'Découvrez l’ensemble des soins FyraCare, de la grossesse à la récupération post-partum.'
   book: 'Choisir ce soin'
+  read_more: 'En savoir plus'
   catalog:
     pelvic_rehab: { title: 'Rééducation périnéale et abdominale', short: 'Récupération et santé pelvienne', text: 'Vous avez accouché enfin, et nous avons parlé plusieurs fois durant nos cours de préparation à la naissance, sur l’importance de ce périnée, qui assure non seulement le rôle de reproduction, mais aussi un rôle dans la sexualité et la confiance en soi. La rééducation périnéale aura comme principal but de redonner du tonus à ces muscles du périnée, pour qu’ils continuent d’assurer au mieux leur rôle de soutien et de continence. D’autres symptômes peuvent également être traités : comme les tensions, les douleurs, l’incontinence urinaire, la sensation de pesanteur pelvienne. On devrait entamer la rééducation périnéale et ensuite faire une rééducation abdominale et jamais l’inverse. La rééducation périnéale et abdominale peut se faire après une césarienne aussi. Les cours commencent 6 à 8 semaines après l’accouchement.' }
     birth_support: { title: 'Accompagnement à la Naissance', short: 'Présence le jour de la naissance', text: 'Je vous accompagne le jour de votre accouchement afin de vous aider à mettre au monde votre bout de choux. Si vous avez déjà suivi les cours de préparation à la naissance, je serai présente pour les appliquer. Je vous aide à surmonter la douleur, à gérer le stress et à mettre en œuvre toutes les postures qui vont vous aider à accoucher dans les meilleures conditions.' }
@@ -87,6 +88,10 @@ services_page:
     label: 'Après la naissance'
     title: 'Soutien post-partum'
     text: 'Allaitement, rééducation périnéale et soins traditionnels pour accompagner votre récupération.'
+service_detail:
+  back: 'Toutes les prestations'
+  eyebrow: 'Prestation FyraCare'
+  about: 'À propos de ce soin'
 founder:
   eyebrow: 'Votre sage-femme'
   title: 'Une expertise portée par l’écoute.'
