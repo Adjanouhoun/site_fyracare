@@ -10,6 +10,7 @@ use App\Form\ContactMessageType;
 use App\Form\TestimonialType;
 use App\Repository\ServiceRepository;
 use App\Repository\TestimonialRepository;
+use App\Service\AdminNotificationMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +33,7 @@ final class HomeController extends AbstractController
     }
 
     #[Route('/{_locale}/rendez-vous', name: 'app_appointment_submit', requirements: ['_locale' => 'fr|en|ar'], methods: ['POST'])]
-    public function submitAppointment(string $_locale, Request $request, EntityManagerInterface $entityManager): Response
+    public function submitAppointment(string $_locale, Request $request, EntityManagerInterface $entityManager, AdminNotificationMailer $notificationMailer): Response
     {
         $appointment = new Appointment();
         $form = $this->createForm(AppointmentType::class, $appointment, ['locale' => $_locale]);
@@ -45,6 +46,7 @@ final class HomeController extends AbstractController
                 $appointment->setStatus(Appointment::STATUS_PENDING);
                 $entityManager->persist($appointment);
                 $entityManager->flush();
+                $notificationMailer->newAppointment($appointment);
                 $this->addFlash('appointment_success', 'booking.success');
             } else {
                 $this->addFlash('appointment_error', 'booking.slot_unavailable');
@@ -86,7 +88,7 @@ final class HomeController extends AbstractController
     public function robots(): Response { return new Response("User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: /sitemap.xml\n", 200, ['Content-Type' => 'text/plain']); }
 
     #[Route('/{_locale}/avis', name: 'app_testimonial_submit', requirements: ['_locale' => 'fr|en|ar'], methods: ['POST'])]
-    public function submitTestimonial(string $_locale, Request $request, EntityManagerInterface $entityManager): Response
+    public function submitTestimonial(string $_locale, Request $request, EntityManagerInterface $entityManager, AdminNotificationMailer $notificationMailer): Response
     {
         $testimonial = new Testimonial();
         $form = $this->createForm(TestimonialType::class, $testimonial, ['locale' => $_locale]);
@@ -95,6 +97,7 @@ final class HomeController extends AbstractController
             $testimonial->setStatus(Testimonial::STATUS_PENDING);
             $entityManager->persist($testimonial);
             $entityManager->flush();
+            $notificationMailer->newTestimonial($testimonial);
             $this->addFlash('testimonial_success', 'testimonials.success');
         } else {
             $this->addFlash('testimonial_error', 'testimonials.error');

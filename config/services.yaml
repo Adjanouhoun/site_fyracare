@@ -19,5 +19,9 @@ services:
     App\:
         resource: '../src/'
 
+    App\Service\AdminNotificationMailer:
+        arguments:
+            $notificationEmail: '%env(APP_NOTIFICATION_EMAIL)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
