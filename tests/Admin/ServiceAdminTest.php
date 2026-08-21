@@ -19,7 +19,7 @@ class ServiceAdminTest extends WebTestCase
         $tool->createSchema($metadata);
 
         $admin = (new AdminUser())->setEmail('admin-test@fyracare.local')->setPassword('unused-in-functional-test');
-        $service = (new Service())->setCode('massage_test')->setTitleFr('Massage test')->setTitleEn('Test massage')->setTitleAr('تدليك تجريبي')->setDescriptionFr('Description française')->setDescriptionEn('English description')->setDescriptionAr('وصف عربي')->setDisplayOrder(1)->setActive(true)->setFeatured(true);
+        $service = (new Service())->setCode('massage_test')->setTitleFr('Massage test')->setTitleEn('Test massage')->setTitleAr('تدليك تجريبي')->setDescriptionFr('Description française')->setDescriptionEn('English description')->setDescriptionAr('وصف عربي')->setDisplayOrder(1)->setPrice('1500')->setActive(true)->setFeatured(true);
         $em->persist($admin);
         $em->persist($service);
         $em->flush();

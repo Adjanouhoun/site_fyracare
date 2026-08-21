@@ -21,6 +21,7 @@ class Service
     #[ORM\Column(type: Types::TEXT), Assert\NotBlank] private string $descriptionEn = '';
     #[ORM\Column(type: Types::TEXT), Assert\NotBlank] private string $descriptionAr = '';
     #[ORM\Column, Assert\PositiveOrZero] private int $displayOrder = 0;
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true), Assert\PositiveOrZero] private ?string $price = null;
     #[ORM\Column] private bool $active = true;
     #[ORM\Column] private bool $featured = false;
 
@@ -41,6 +42,8 @@ class Service
     public function setDescriptionAr(string $value): self { $this->descriptionAr = $value; return $this; }
     public function getDisplayOrder(): int { return $this->displayOrder; }
     public function setDisplayOrder(int $value): self { $this->displayOrder = $value; return $this; }
+    public function getPrice(): ?string { return $this->price; }
+    public function setPrice(?string $value): self { $this->price = $value; return $this; }
     public function isActive(): bool { return $this->active; }
     public function setActive(bool $value): self { $this->active = $value; return $this; }
     public function isFeatured(): bool { return $this->featured; }

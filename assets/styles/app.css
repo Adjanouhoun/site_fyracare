@@ -107,7 +107,10 @@ h1,h2,h3 { margin:0; font-family:"Fraunces",serif; line-height:.98; font-weight:
 .service-card-number { color:#ad94b1; font-size:.65rem; font-weight:700; letter-spacing:.12em; }
 .service-card-icon { display:grid; place-items:center; width:50px; height:50px; margin:30px 0 24px; color:var(--pink); background:var(--blush); border-radius:50%; font-size:1.25rem; }
 .service-card h3 { min-height:58px; font-size:1.45rem; line-height:1.1; letter-spacing:-.02em; }
-.service-card p { margin:16px 0 52px; color:var(--muted); font-size:.77rem; }
+.service-card p { margin:16px 0 20px; color:var(--muted); font-size:.77rem; }
+.service-price { margin:0 0 52px; color:var(--plum); font-size:.72rem; }
+.service-price strong { font:600 1.45rem Fraunces,serif; }
+.service-price span { color:var(--muted); font-weight:600; }
 .service-card a { position:absolute; inset:auto 26px 25px; display:flex; justify-content:space-between; padding-top:15px; color:var(--plum); border-top:1px solid var(--line); font-size:.72rem; font-weight:700; }
 .services-more { display:flex; align-items:center; justify-content:space-between; gap:40px; margin-top:42px; padding-top:32px; border-top:1px solid rgba(255,255,255,.2); }
 .services-more p { max-width:600px; margin:0; color:#eadcea; font-size:.9rem; }

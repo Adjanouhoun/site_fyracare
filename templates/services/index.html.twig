@@ -23,7 +23,7 @@
             <div class="shell">
                 <div class="service-catalog-heading"><span>{{ 'services.catalog_eyebrow'|trans }}</span><h2>{{ 'services.catalog_title'|trans }}</h2><p>{{ 'services.catalog_text'|trans }}</p></div>
                 <div class="service-catalog">
-                    {% for service in services %}<article class="service-card" id="{{ service.code }}"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0 % 8] }}</div><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale) }}</p><a href="#contact">{{ 'services.book'|trans }} <span>↗</span></a></article>{% endfor %}
+                    {% for service in services %}<article class="service-card" id="{{ service.code }}"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0 % 8] }}</div><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale) }}</p><div class="service-price">{% if service.price %}<strong>{{ service.price|number_format(0, ',', ' ') }}</strong> <span>MRU</span>{% else %}<span>{{ 'services.price_on_request'|trans }}</span>{% endif %}</div><a href="#contact">{{ 'services.book'|trans }} <span>↗</span></a></article>{% endfor %}
                 </div>
             </div>
         </section>
