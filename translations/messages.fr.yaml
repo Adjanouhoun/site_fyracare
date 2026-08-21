@@ -1,6 +1,10 @@
 meta:
   title: 'FyraCare — Accompagnement maternel en Mauritanie'
   description: 'FyraCare accompagne les femmes avant, pendant et après la naissance avec expertise, douceur et respect.'
+seo:
+  home: 'Accueil'
+  breadcrumb: 'Fil d’Ariane'
+  service_title_suffix: 'à Nouakchott — FyraCare'
 nav:
   main: 'Navigation principale'
   announcement: 'Accompagnement maternel à Nouakchott · Sur rendez-vous'

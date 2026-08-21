@@ -677,6 +677,13 @@ body.lightbox-open { overflow:hidden; }
 }
 
 .editorial-link { display:inline-flex; align-items:center; gap:18px; margin-top:28px; padding-bottom:7px; color:var(--plum); border-bottom:1px solid currentColor; font-size:.78rem; font-weight:700; }
+.breadcrumbs { color:var(--muted); background:var(--ivory); border-bottom:1px solid var(--line); }
+.breadcrumbs ol { display:flex; align-items:center; gap:10px; min-height:46px; margin:0; padding:0; list-style:none; font-size:.68rem; }
+.breadcrumbs li { display:flex; align-items:center; gap:10px; }
+.breadcrumbs li+li::before { content:"/"; color:var(--pink); }
+.breadcrumbs a { transition:color .2s; }
+.breadcrumbs a:hover { color:var(--plum); }
+.breadcrumbs [aria-current="page"] { color:var(--ink); font-weight:600; }
 .welcome-letter { background:var(--paper); text-align:center; }
 .welcome-letter-inner { max-width:1050px; }
 .welcome-letter .kicker { justify-content:center; }

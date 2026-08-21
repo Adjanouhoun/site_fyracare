@@ -5,11 +5,16 @@
 
 {% block body %}
     {% include '_header.html.twig' %}
+    {% set breadcrumb_items = [
+        {label: 'services_page.back_home'|trans, url: path('app_home', {_locale: app.request.locale})},
+        {label: 'nav.services'|trans}
+    ] %}
+    {% include '_breadcrumbs.html.twig' %}
 
     <main>
         <section class="services-page-hero">
             <div class="shell services-page-intro"><span class="hero-pill">✦ {{ 'services_page.eyebrow'|trans }}</span><h1>{{ 'services_page.title_rich'|trans|raw }}</h1><p>{{ 'services_page.intro'|trans }}</p></div>
-            <div class="services-page-image"><img src="{{ asset('images/gallery/perinee.jpg') }}" alt="{{ 'services_page.image_alt'|trans }}"></div>
+            <div class="services-page-image"><img src="{{ asset('images/gallery/perinee.webp') }}" alt="{{ 'services_page.image_alt'|trans }}" width="1600" height="900" fetchpriority="high" decoding="async"></div>
         </section>
 
         <section class="services-catalog-section section" id="catalogue" data-controller="service-filter">

@@ -3,6 +3,8 @@
 {% block meta_description %}{{ 'contact.meta_description'|trans }}{% endblock %}
 {% block body %}
 {% include '_header.html.twig' %}
+{% set breadcrumb_items = [{label: 'seo.home'|trans, url: path('app_home', {_locale: app.request.locale})}, {label: 'nav.contact'|trans}] %}
+{% include '_breadcrumbs.html.twig' %}
 <main class="inner-page contact-page">
  <section class="page-hero"><div class="shell"><span class="kicker"><i></i>{{ 'contact.eyebrow'|trans }}</span><h1>{{ 'contact.title'|trans }}</h1><p>{{ 'contact.intro'|trans }}</p></div></section>
  <section class="section"><div class="shell contact-layout">

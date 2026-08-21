@@ -5,11 +5,13 @@
 
 {% block body %}
     {% include '_header.html.twig' %}
+    {% set breadcrumb_items = [{label: 'seo.home'|trans, url: path('app_home', {_locale: app.request.locale})}, {label: 'nav.expertise'|trans}] %}
+    {% include '_breadcrumbs.html.twig' %}
     <main class="editorial-page">
         <section class="editorial-hero expertise-hero">
             <div class="shell editorial-hero-grid">
                 <div class="editorial-hero-copy"><span class="kicker"><i></i>{{ 'expertise_page.eyebrow'|trans }}</span><h1>{{ 'expertise_page.title'|trans }}</h1><p>{{ 'expertise_page.intro'|trans }}</p></div>
-                <figure><img src="{{ asset('images/aminatadiarra.png') }}" alt="{{ 'founder.image_alt'|trans }}"></figure>
+                <figure><img src="{{ asset('images/aminatadiarra.webp') }}" alt="{{ 'founder.image_alt'|trans }}" width="850" height="440" fetchpriority="high" decoding="async"></figure>
             </div>
         </section>
         <section class="editorial-story section">

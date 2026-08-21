@@ -1,6 +1,10 @@
 meta:
   title: 'FyraCare — Maternal care in Mauritania'
   description: 'FyraCare supports women before, during and after birth with expertise, kindness and respect.'
+seo:
+  home: 'Home'
+  breadcrumb: 'Breadcrumb'
+  service_title_suffix: 'in Nouakchott — FyraCare'
 nav:
   main: 'Main navigation'
   announcement: 'Maternal care in Nouakchott · By appointment'
