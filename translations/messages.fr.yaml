@@ -3,6 +3,8 @@ meta:
   description: 'FyraCare accompagne les femmes avant, pendant et après la naissance avec expertise, douceur et respect.'
 nav:
   main: 'Navigation principale'
+  announcement: 'Accompagnement maternel à Nouakchott · Sur rendez-vous'
+  open_menu: 'Ouvrir le menu'
   about: 'À propos'
   services: 'Prestations'
   contact: 'Contact'
