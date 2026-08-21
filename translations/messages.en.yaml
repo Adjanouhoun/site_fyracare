@@ -7,6 +7,7 @@ nav:
   services: 'Our care'
   contact: 'Contact'
   languages: 'Choose a language'
+  expertise: 'Our expertise'
 actions:
   appointment: 'Book an appointment'
   discover: 'Explore our care'
@@ -18,6 +19,20 @@ hero:
   image_alt: 'Aminata Diarra at the FyraCare centre'
   quote: 'Every woman deserves to be heard, reassured and supported with kindness.'
   quote_author: 'Aminata Boulkheir Diarra — Midwife'
+  title_rich: 'Motherhood,<br><em>reimagined.</em>'
+  quote_author_short: 'Midwife · Founder'
+  detail_alt: 'Traditional care at FyraCare'
+  badge: 'complete support'
+  strip: 'Your FyraCare journey'
+journey:
+  pregnancy: 'Pregnancy'
+  birth: 'Birth'
+  postpartum: 'Postpartum'
+manifesto:
+  index: 'Our vision'
+  eyebrow: 'A different approach to care'
+  title: 'Caring for every dimension of womanhood.'
+  text: 'FyraCare brings together clinical expertise, attentive listening and wellbeing practices in a space designed around you. Every stage of motherhood becomes a more conscious, peaceful and deeply human experience.'
 trust:
   title: 'FyraCare commitments'
   expertise: 'Dedicated expertise'
@@ -30,13 +45,18 @@ services:
   eyebrow: 'Our support'
   title: 'Care designed around you.'
   intro: 'Every journey is unique. Our services adapt to your body, your story and your needs.'
+  title_rich: 'Care that feels<br><em>like you.</em>'
+  all: 'Explore all care'
   birth:
+    label: 'Birth'
     title: 'Birth preparation'
     text: 'Practical and educational sessions to understand, prepare and approach birth with confidence.'
   prenatal:
+    label: 'Body & serenity'
     title: 'Prenatal wellbeing'
     text: 'Prenatal massage, perineal preparation and personal advice to help you care for yourself.'
   postpartum:
+    label: 'After birth'
     title: 'Postpartum support'
     text: 'Breastfeeding, pelvic-floor rehabilitation and traditional care to support your recovery.'
 founder:
@@ -45,5 +65,27 @@ founder:
   text: 'Aminata Boulkheir Diarra supports women with an approach that is professional, warm and deeply respectful of every personal journey.'
   link: 'Discover her journey'
   image_alt: 'Portrait of Aminata Boulkheir Diarra, founder of FyraCare'
+  role: 'Midwife · Expert · Entrepreneur'
+  title_rich: 'A woman committed<br>to <em>women.</em>'
+  text_long: 'A trained midwife and reproductive-health specialist, Aminata Boulkheir Diarra champions care that is both rigorous and deeply human. Through FyraCare, she created a space where expertise, education and kindness come together.'
+  years: 'years of experience'
+  credential_one: 'Maternal health'
+  credential_one_text: 'Birth preparation, pelvic health and postpartum support.'
+  credential_two: 'Public health'
+  credential_two_text: 'Committed to women’s rights and reproductive health.'
+gallery:
+  index: 'The centre'
+  title: 'One place, many ways to care for you.'
+  text: 'Discover a private space where professional practice and wellbeing traditions meet.'
+  alt_one: 'Pelvic preparation demonstration'
+  alt_two: 'FyraCare treatment space'
+  alt_three: 'Natural wellness treatment'
+  caption_one: 'Preparation & education'
+  caption_two: 'A space of your own'
+  caption_three: 'Natural knowledge'
+appointment:
+  eyebrow: 'Let’s begin together'
+  title: 'Your journey deserves individual attention.'
+  text: 'Speak with our team and choose the support that feels right for you.'
 footer:
   note: 'Maternal care centre — Nouakchott, Mauritania'

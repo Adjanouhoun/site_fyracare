@@ -7,6 +7,7 @@ nav:
   services: 'Nos soins'
   contact: 'Contact'
   languages: 'Choisir la langue'
+  expertise: 'Notre expertise'
 actions:
   appointment: 'Prendre rendez-vous'
   discover: 'Découvrir nos soins'
@@ -18,6 +19,20 @@ hero:
   image_alt: 'Aminata Diarra au centre FyraCare'
   quote: 'Chaque femme mérite d’être écoutée, rassurée et accompagnée avec douceur.'
   quote_author: 'Aminata Boulkheir Diarra — Sage-femme'
+  title_rich: 'La maternité,<br><em>autrement.</em>'
+  quote_author_short: 'Sage-femme · Fondatrice'
+  detail_alt: 'Soin traditionnel proposé par FyraCare'
+  badge: 'accompagnement global'
+  strip: 'Votre parcours FyraCare'
+journey:
+  pregnancy: 'Grossesse'
+  birth: 'Naissance'
+  postpartum: 'Post-partum'
+manifesto:
+  index: 'Notre vision'
+  eyebrow: 'Une autre idée du soin'
+  title: 'Prendre soin de la femme, dans toutes ses dimensions.'
+  text: 'FyraCare réunit expertise médicale, écoute attentive et savoir-faire de bien-être dans un lieu pensé pour vous. Ici, chaque étape de la maternité devient une expérience plus consciente, plus sereine et profondément humaine.'
 trust:
   title: 'Les engagements de FyraCare'
   expertise: 'Expertise dédiée'
@@ -30,13 +45,18 @@ services:
   eyebrow: 'Nos accompagnements'
   title: 'Des soins pensés autour de vous.'
   intro: 'Parce que chaque parcours est unique, nos accompagnements s’adaptent à votre corps, votre histoire et vos besoins.'
+  title_rich: 'Des soins qui vous<br><em>ressemblent.</em>'
+  all: 'Voir tous les soins'
   birth:
+    label: 'Naissance'
     title: 'Préparation à la naissance'
     text: 'Des séances pratiques et théoriques pour comprendre, se préparer et aborder l’accouchement sereinement.'
   prenatal:
+    label: 'Corps & sérénité'
     title: 'Bien-être prénatal'
     text: 'Massage prénatal, préparation du périnée et conseils personnalisés pour prendre soin de vous.'
   postpartum:
+    label: 'Après la naissance'
     title: 'Soutien post-partum'
     text: 'Allaitement, rééducation périnéale et soins traditionnels pour accompagner votre récupération.'
 founder:
@@ -45,5 +65,27 @@ founder:
   text: 'Aminata Boulkheir Diarra accompagne les femmes avec une approche à la fois professionnelle, chaleureuse et profondément respectueuse de chaque parcours.'
   link: 'Découvrir son parcours'
   image_alt: 'Portrait d’Aminata Boulkheir Diarra, fondatrice de FyraCare'
+  role: 'Sage-femme · Experte · Entrepreneure'
+  title_rich: 'Une femme engagée<br>pour <em>les femmes.</em>'
+  text_long: 'Sage-femme de formation et spécialiste de la santé reproductive, Aminata Boulkheir Diarra porte une vision exigeante et profondément humaine du soin. Avec FyraCare, elle crée un espace où expertise, transmission et bienveillance se rencontrent.'
+  years: 'années d’expérience'
+  credential_one: 'Santé maternelle'
+  credential_one_text: 'Préparation à la naissance, périnée et accompagnement post-partum.'
+  credential_two: 'Santé publique'
+  credential_two_text: 'Engagement pour les droits et la santé reproductive des femmes.'
+gallery:
+  index: 'Le centre'
+  title: 'Un lieu, plusieurs façons de prendre soin de vous.'
+  text: 'Découvrez un espace intime où gestes professionnels et traditions de bien-être se répondent.'
+  alt_one: 'Démonstration de préparation du périnée'
+  alt_two: 'Espace de soin FyraCare'
+  alt_three: 'Soin à base de produits naturels'
+  caption_one: 'Préparation & transmission'
+  caption_two: 'Un espace pour soi'
+  caption_three: 'Savoirs naturels'
+appointment:
+  eyebrow: 'Commençons ensemble'
+  title: 'Votre parcours mérite une attention unique.'
+  text: 'Échangez avec notre équipe et choisissez l’accompagnement qui vous correspond.'
 footer:
   note: 'Centre d’accompagnement maternel — Nouakchott, Mauritanie'
