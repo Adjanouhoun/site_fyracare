@@ -24,5 +24,5 @@
         <section class="appointment" id="reservation"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans }}</span><h2>{{ 'appointment.title'|trans }}</h2></div><p>{{ 'appointment.text'|trans }}</p><a class="appointment-link" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation"><span>{{ 'actions.appointment'|trans }}</span><b>↗</b></a></div></section>
     </main>
 
-    <footer class="footer"><div class="shell footer-main"><a class="brand footer-brand" href="{{ path('app_home', {_locale: app.request.locale}) }}"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a><p>{{ 'footer.note'|trans }}</p><div class="footer-links"><a href="{{ path('app_home', {_locale: app.request.locale}) }}">{{ 'services_page.back_home'|trans }}</a><a href="#catalogue">{{ 'nav.services'|trans }}</a><a href="{{ path('app_contact', {_locale: app.request.locale}) }}">{{ 'nav.contact'|trans }}</a></div></div><div class="shell footer-bottom"><span>© {{ 'now'|date('Y') }} FyraCare</span><span>Nouakchott · Mauritanie</span></div></footer>
+    {% include '_footer.html.twig' %}
 {% endblock %}
