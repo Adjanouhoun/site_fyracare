@@ -129,6 +129,13 @@ h1,h2,h3 { margin:0; font-family:"Fraunces",serif; line-height:.98; font-weight:
 .detail-gallery figure { display:grid; place-items:center; aspect-ratio:4/3; margin:0; overflow:hidden; background:var(--blush); }
 .detail-gallery figure:nth-child(2) { margin-top:90px; }
 .detail-gallery img { width:100%; height:100%; object-fit:contain; }
+.detail-gallery-open { position:relative; width:100%; height:100%; padding:0; overflow:hidden; border:0; color:white; background:transparent; cursor:zoom-in; }
+.detail-gallery-open span { position:absolute; right:18px; bottom:18px; display:grid; place-items:center; width:44px; height:44px; background:rgba(81,35,55,.82); border:1px solid rgba(255,255,255,.4); border-radius:50%; font-size:1.3rem; backdrop-filter:blur(8px); }
+.lightbox { width:min(94vw,1400px); height:min(92vh,950px); padding:52px; border:0; background:rgba(30,18,23,.96); }
+.lightbox::backdrop { background:rgba(30,18,23,.82); backdrop-filter:blur(12px); }
+.lightbox img { width:100%; height:100%; object-fit:contain; }
+.lightbox-close { position:absolute; top:12px; right:18px; width:40px; height:40px; border:0; color:white; background:transparent; font-size:2rem; cursor:pointer; }
+body.lightbox-open { overflow:hidden; }
 .services-more { display:flex; align-items:center; justify-content:space-between; gap:40px; margin-top:42px; padding-top:32px; border-top:1px solid rgba(255,255,255,.2); }
 .services-more p { max-width:600px; margin:0; color:#eadcea; font-size:.9rem; }
 
@@ -391,6 +398,7 @@ h1,h2,h3 { margin:0; font-family:"Fraunces",serif; line-height:.98; font-weight:
   .detail-price { margin-top:25px; }
   .detail-gallery { grid-template-columns:1fr; }
   .detail-gallery figure,.detail-gallery figure:nth-child(2) { margin-top:0; }
+  .lightbox { padding:48px 14px 14px; }
   .services-more { align-items:flex-start; flex-direction:column; }
   .founder-visual { min-height:470px; }
   .founder-photo { inset:15px 0 20px; }

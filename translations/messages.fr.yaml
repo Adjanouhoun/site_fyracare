@@ -92,6 +92,8 @@ service_detail:
   back: 'Toutes les prestations'
   eyebrow: 'Prestation FyraCare'
   about: 'À propos de ce soin'
+  enlarge: 'Agrandir l’image'
+  close: 'Fermer l’image'
 founder:
   eyebrow: 'Votre sage-femme'
   title: 'Une expertise portée par l’écoute.'

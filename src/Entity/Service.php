@@ -24,6 +24,8 @@ class Service
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true), Assert\PositiveOrZero] private ?string $price = null;
     #[ORM\Column] private bool $active = true;
     #[ORM\Column] private bool $featured = false;
+    #[ORM\Column(length: 255, nullable: true)] private ?string $imageOne = null;
+    #[ORM\Column(length: 255, nullable: true)] private ?string $imageTwo = null;
 
     public function getId(): ?int { return $this->id; }
     public function getCode(): string { return $this->code; }
@@ -48,6 +50,10 @@ class Service
     public function setActive(bool $value): self { $this->active = $value; return $this; }
     public function isFeatured(): bool { return $this->featured; }
     public function setFeatured(bool $value): self { $this->featured = $value; return $this; }
+    public function getImageOne(): ?string { return $this->imageOne; }
+    public function setImageOne(?string $value): self { $this->imageOne = $value; return $this; }
+    public function getImageTwo(): ?string { return $this->imageTwo; }
+    public function setImageTwo(?string $value): self { $this->imageTwo = $value; return $this; }
     public function getTitle(string $locale): string { return match ($locale) { 'ar' => $this->titleAr, 'en' => $this->titleEn, default => $this->titleFr }; }
     public function getDescription(string $locale): string { return match ($locale) { 'ar' => $this->descriptionAr, 'en' => $this->descriptionEn, default => $this->descriptionFr }; }
     public function __toString(): string { return $this->titleFr; }

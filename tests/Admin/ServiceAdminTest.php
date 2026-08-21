@@ -37,6 +37,8 @@ class ServiceAdminTest extends WebTestCase
         self::assertSelectorTextContains('body', 'Général');
         self::assertSelectorTextContains('body', 'Français');
         self::assertSelectorTextContains('body', 'English');
+        self::assertSelectorTextContains('body', 'Image principale');
+        self::assertSelectorTextContains('body', 'Image secondaire');
     }
 
     public function testAnonymousVisitorIsRedirectedToLogin(): void

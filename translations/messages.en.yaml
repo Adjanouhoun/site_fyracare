@@ -92,6 +92,8 @@ service_detail:
   back: 'All services'
   eyebrow: 'FyraCare service'
   about: 'About this care'
+  enlarge: 'Enlarge image'
+  close: 'Close image'
 founder:
   eyebrow: 'Your midwife'
   title: 'Expertise grounded in listening.'

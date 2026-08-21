@@ -92,6 +92,8 @@ service_detail:
   back: 'كل الخدمات'
   eyebrow: 'خدمة فيرا كير'
   about: 'عن هذه الرعاية'
+  enlarge: 'تكبير الصورة'
+  close: 'إغلاق الصورة'
 founder:
   eyebrow: 'قابلتك'
   title: 'خبرة أساسها حسن الاستماع.'

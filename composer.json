@@ -6,6 +6,7 @@
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
+        "ext-gd": "*",
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "*",
         "symfony/console": "7.4.*",
