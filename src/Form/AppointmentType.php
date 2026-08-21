@@ -22,7 +22,7 @@ final class AppointmentType extends AbstractType
     {
         $locale = $options['locale'];
         $builder
-            ->add('service', EntityType::class, ['class' => Service::class, 'choice_label' => fn(Service $s) => $s->getTitle($locale), 'query_builder' => fn(ServiceRepository $r) => $r->createQueryBuilder('s')->andWhere('s.active = true')->orderBy('s.displayOrder', 'ASC'), 'label' => 'booking.service'])
+            ->add('service', EntityType::class, ['class' => Service::class, 'choice_label' => fn(Service $s) => $s->getTitle($locale).($s->getPrice() !== null ? ' · '.number_format((float) $s->getPrice(), 0, ',', ' ').' MRU' : ''), 'query_builder' => fn(ServiceRepository $r) => $r->createQueryBuilder('s')->andWhere('s.active = true')->orderBy('s.displayOrder', 'ASC'), 'label' => 'booking.service'])
             ->add('availability', EntityType::class, ['class' => Availability::class, 'choice_label' => fn(Availability $a) => $a->getStartsAt()->format('d/m/Y · H:i'), 'query_builder' => fn(AvailabilityRepository $r) => $r->createQueryBuilder('a')->andWhere('a.active = true')->andWhere('a.startsAt > :now')->setParameter('now', new \DateTimeImmutable())->orderBy('a.startsAt', 'ASC'), 'placeholder' => 'booking.choose_slot', 'label' => 'booking.slot'])
             ->add('fullName', TextType::class, ['label' => 'booking.name'])
             ->add('phone', TelType::class, ['label' => 'booking.phone'])

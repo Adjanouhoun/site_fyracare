@@ -59,6 +59,9 @@ services:
   catalog_text: 'Explore every FyraCare service, from pregnancy through postpartum recovery.'
   book: 'Choose this care'
   read_more: 'Learn more'
+  filter_label: 'Search for a service'
+  filter_placeholder: 'Massage, birth, postpartum…'
+  no_results: 'No service matches your search.'
   catalog:
     pelvic_rehab: { title: 'Pelvic floor and abdominal rehabilitation', short: 'Recovery and pelvic health', text: 'Progressive postpartum support to restore comfort, strength and confidence in your body.' }
     birth_support: { title: 'Birth support', short: 'Support on the day of birth', text: 'Professional and reassuring support through labour and birth, putting your preparation into practice.' }
@@ -201,6 +204,11 @@ booking:
   success: 'Your appointment request has been received. The FyraCare team will contact you to confirm it.'
   error: 'The form contains an error. Please check the information entered.'
   slot_unavailable: 'This appointment is no longer available. Please choose another one.'
+  summary_title: 'Your request summary'
+  summary_service: 'Selected care'
+  summary_slot: 'Preferred slot'
+  timezone: 'Times are shown in Nouakchott local time.'
+  confirmation_note: 'Your appointment remains subject to confirmation by the FyraCare team. Your information is handled confidentially.'
 contact:
   meta_title: 'Contact — FyraCare'
   meta_description: 'Contact the FyraCare centre in Nouakchott or send us a message.'
@@ -237,3 +245,5 @@ legal:
   health_text: 'Information published on this website does not replace a medical consultation or personalised advice from a healthcare professional.'
 footer:
   note: 'Maternal care centre — Nouakchott, Mauritania'
+  navigation: 'Discover'
+  information: 'Information'

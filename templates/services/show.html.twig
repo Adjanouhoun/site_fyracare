@@ -6,7 +6,7 @@
 {% block body %}
     {% include '_header.html.twig' %}
     <main>
-        <section class="service-detail-hero"><div class="shell service-detail-heading"><a class="detail-back" href="{{ path('app_services', {_locale: app.request.locale}) }}">← {{ 'service_detail.back'|trans }}</a><span class="hero-pill">✦ {{ 'service_detail.eyebrow'|trans }}</span><h1>{{ service.title(app.request.locale) }}</h1><div class="detail-price">{% if service.price %}<strong>{{ service.price|number_format(0, ',', ' ') }}</strong> <span>MRU</span>{% else %}{{ 'services.price_on_request'|trans }}{% endif %}</div></div></section>
+        <section class="service-detail-hero"><div class="shell service-detail-heading"><a class="detail-back" href="{{ path('app_services', {_locale: app.request.locale}) }}">← {{ 'service_detail.back'|trans }}</a><span class="hero-pill">✦ {{ 'service_detail.eyebrow'|trans }}</span><h1>{{ service.title(app.request.locale) }}</h1><div class="detail-price">{% if service.price %}<strong>{{ service.price|number_format(0, ',', ' ') }}</strong> <span>MRU</span>{% else %}{{ 'services.price_on_request'|trans }}{% endif %}</div><div class="service-trust"><span>✓ {{ 'trust.expertise'|trans }}</span><span>✓ {{ 'trust.care'|trans }}</span><span>✓ {{ 'trust.support'|trans }}</span></div></div></section>
         {% set gallery_images = [
             service.imageOne ? asset('uploads/services/' ~ service.imageOne) : asset('images/services-details/' ~ service_images[0]),
             service.imageTwo ? asset('uploads/services/' ~ service.imageTwo) : asset('images/services-details/' ~ service_images[1])

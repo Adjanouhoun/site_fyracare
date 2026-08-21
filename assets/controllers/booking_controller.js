@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['step', 'progress', 'back', 'next', 'submit'];
+    static targets = ['step', 'progress', 'back', 'next', 'submit', 'serviceSummary', 'slotSummary'];
 
     connect() {
         this.currentStep = 0;
@@ -37,5 +37,15 @@ export default class extends Controller {
         this.backTarget.hidden = this.currentStep === 0;
         this.nextTarget.hidden = this.currentStep === this.stepTargets.length - 1;
         this.submitTarget.hidden = this.currentStep !== this.stepTargets.length - 1;
+        if (this.currentStep === this.stepTargets.length - 1) {
+            this.updateSummary();
+        }
+    }
+
+    updateSummary() {
+        const service = this.element.querySelector('[name="appointment[service]"]');
+        const slot = this.element.querySelector('[name="appointment[availability]"]');
+        if (this.hasServiceSummaryTarget) this.serviceSummaryTarget.textContent = service?.selectedOptions[0]?.textContent?.trim() || '—';
+        if (this.hasSlotSummaryTarget) this.slotSummaryTarget.textContent = slot?.selectedOptions[0]?.textContent?.trim() || '—';
     }
 }
