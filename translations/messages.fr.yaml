@@ -51,6 +51,19 @@ services:
   intro: 'Parce que chaque parcours est unique, nos accompagnements s’adaptent à votre corps, votre histoire et vos besoins.'
   title_rich: 'Des soins qui vous<br><em>ressemblent.</em>'
   all: 'Voir tous les soins'
+  catalog_eyebrow: 'Toutes les prestations'
+  catalog_title: 'Un accompagnement pour chaque besoin.'
+  catalog_text: 'Découvrez l’ensemble des soins FyraCare, de la grossesse à la récupération post-partum.'
+  book: 'Choisir ce soin'
+  catalog:
+    pelvic_rehab: { title: 'Rééducation périnéale et abdominale', short: 'Récupération et santé pelvienne', text: 'Un suivi progressif après l’accouchement pour retrouver confort, tonicité et confiance dans son corps.' }
+    birth_support: { title: 'Accompagnement à la naissance', short: 'Présence le jour de la naissance', text: 'Une présence professionnelle et rassurante pendant le travail et l’accouchement pour appliquer votre préparation.' }
+    rebozo: { title: 'Closing of the Bones — Rebozo', short: 'Soin traditionnel post-partum', text: 'Un rituel ancestral de relaxation et de resserrage du corps, pensé pour recentrer et honorer la jeune maman.' }
+    damp: { title: 'Damp traditionnel', short: 'Remise en forme naturelle', text: 'Des techniques et savoir-faire naturels pour favoriser la récupération, la vascularisation et le bien-être féminin.' }
+    breastfeeding: { title: 'Consultation en allaitement', short: 'Conseils mère et bébé', text: 'Une écoute attentive et des conseils personnalisés pour vivre l’allaitement avec davantage de sérénité.' }
+    perineum: { title: 'Préparation du périnée', short: 'Souplesse et prévention', text: 'Des gestes doux et guidés pour préparer la zone périnéale et réduire le risque de déchirure ou d’épisiotomie.' }
+    birth_prep: { title: 'Préparation à la naissance', short: 'Séances théoriques et pratiques', text: 'Un programme complet pour comprendre la grossesse, l’accouchement et les premiers jours avec votre bébé.' }
+    prenatal_massage: { title: 'Massage prénatal', short: 'Détente pendant la grossesse', text: 'Un massage adapté à la grossesse pour soulager les tensions, stimuler la circulation et apaiser le corps et l’esprit.' }
   birth:
     label: 'Naissance'
     title: 'Préparation à la naissance'

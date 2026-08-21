@@ -51,6 +51,19 @@ services:
   intro: 'Every journey is unique. Our services adapt to your body, your story and your needs.'
   title_rich: 'Care that feels<br><em>like you.</em>'
   all: 'Explore all care'
+  catalog_eyebrow: 'All services'
+  catalog_title: 'Dedicated care for every need.'
+  catalog_text: 'Explore every FyraCare service, from pregnancy through postpartum recovery.'
+  book: 'Choose this care'
+  catalog:
+    pelvic_rehab: { title: 'Pelvic floor and abdominal rehabilitation', short: 'Recovery and pelvic health', text: 'Progressive postpartum support to restore comfort, strength and confidence in your body.' }
+    birth_support: { title: 'Birth support', short: 'Support on the day of birth', text: 'Professional and reassuring support through labour and birth, putting your preparation into practice.' }
+    rebozo: { title: 'Closing of the Bones — Rebozo', short: 'Traditional postpartum care', text: 'An ancestral relaxation and body-closing ritual designed to recentre and honour the new mother.' }
+    damp: { title: 'Traditional Damp care', short: 'Natural body recovery', text: 'Natural techniques and ancestral knowledge supporting recovery, circulation and feminine wellbeing.' }
+    breastfeeding: { title: 'Breastfeeding consultation', short: 'Mother and baby guidance', text: 'Attentive listening and personalised advice to experience breastfeeding with greater peace of mind.' }
+    perineum: { title: 'Perineal preparation', short: 'Flexibility and prevention', text: 'Gentle guided techniques to prepare the perineum and help reduce the risk of tearing or episiotomy.' }
+    birth_prep: { title: 'Birth preparation', short: 'Theory and practical sessions', text: 'A complete programme to understand pregnancy, childbirth and the first days with your baby.' }
+    prenatal_massage: { title: 'Prenatal massage', short: 'Relaxation during pregnancy', text: 'Pregnancy-safe massage to ease tension, stimulate circulation and soothe body and mind.' }
   birth:
     label: 'Birth'
     title: 'Birth preparation'
