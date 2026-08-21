@@ -16,19 +16,19 @@ class SeedServicesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $items = [
-            ['pelvic_rehab','Rééducation périnéale et abdominale','Pelvic floor and abdominal rehabilitation','إعادة تأهيل العجان والبطن'],
-            ['birth_support','Accompagnement à la naissance','Birth support','المرافقة أثناء الولادة'],
-            ['rebozo','Closing of the Bones — Rebozo','Closing of the Bones — Rebozo','طقس إغلاق العظام — ريبوزو'],
-            ['damp','Damp traditionnel','Traditional Damp care','عناية دامب التقليدية'],
-            ['breastfeeding','Consultation en allaitement','Breastfeeding consultation','استشارة الرضاعة الطبيعية'],
-            ['perineum','Préparation du périnée','Perineal preparation','تحضير منطقة العجان'],
-            ['birth_prep','Préparation à la naissance','Birth preparation','التحضير للولادة'],
-            ['prenatal_massage','Massage prénatal','Prenatal massage','تدليك ما قبل الولادة'],
+            ['pelvic_rehab','Rééducation périnéale et abdominale','Pelvic floor and abdominal rehabilitation','عادة تأهيل منطقة العجان والبطن','800'],
+            ['birth_support','Accompagnement à la Naissance','Birth support','الدعم عند الوالدة','2000'],
+            ['rebozo','Closing of the Bones','Closing of the Bones','تضميد العظام','1200'],
+            ['damp','Damp traditional pour les femmes en post nuptials, partum, ou abortum','Traditional Damp care','لطب التقليدي للنساء في مرحلة ما بعد الزواج أو الولادة أو الإجهاض','600'],
+            ['breastfeeding','Consultation en Allaitement','Breastfeeding consultation','استشارة حول الرضاعة الطبيعية','600'],
+            ['perineum','Préparation du Périnée','Perineal preparation','تحضير العجان','600'],
+            ['birth_prep','Préparation à la naissance','Birth preparation','التحضير للوالدة','800'],
+            ['prenatal_massage','Massage Prénatal','Prenatal massage','تدليك ما قبل الولادة','800'],
         ];
-        foreach ($items as $index => [$code,$fr,$en,$ar]) {
-            if ($this->services->findOneBy(['code' => $code])) continue;
+        foreach ($items as $index => [$code,$fr,$en,$ar,$price]) {
             $key = 'services.catalog.'.$code.'.text';
-            $service = (new Service())->setCode($code)->setTitleFr($fr)->setTitleEn($en)->setTitleAr($ar)->setDescriptionFr($this->translator->trans($key, locale: 'fr'))->setDescriptionEn($this->translator->trans($key, locale: 'en'))->setDescriptionAr($this->translator->trans($key, locale: 'ar'))->setDisplayOrder($index + 1)->setActive(true)->setFeatured(in_array($code, ['birth_support','birth_prep','prenatal_massage'], true));
+            $service = $this->services->findOneBy(['code' => $code]) ?? (new Service())->setCode($code);
+            $service->setTitleFr($fr)->setTitleEn($en)->setTitleAr($ar)->setDescriptionFr($this->translator->trans($key, locale: 'fr'))->setDescriptionEn($this->translator->trans($key, locale: 'en'))->setDescriptionAr($this->translator->trans($key, locale: 'ar'))->setPrice($price)->setDisplayOrder($index + 1)->setActive(true)->setFeatured(in_array($code, ['birth_support','birth_prep','prenatal_massage'], true));
             $this->em->persist($service);
         }
         $this->em->flush();
