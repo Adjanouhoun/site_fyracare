@@ -1,0 +1,49 @@
+meta:
+  title: 'FyraCare — Accompagnement maternel en Mauritanie'
+  description: 'FyraCare accompagne les femmes avant, pendant et après la naissance avec expertise, douceur et respect.'
+nav:
+  main: 'Navigation principale'
+  about: 'À propos'
+  services: 'Nos soins'
+  contact: 'Contact'
+  languages: 'Choisir la langue'
+actions:
+  appointment: 'Prendre rendez-vous'
+  discover: 'Découvrir nos soins'
+hero:
+  eyebrow: 'Maternité & bien-être'
+  title: 'À vos côtés, à chaque étape de la maternité.'
+  description: 'Un accompagnement humain et personnalisé pour vivre la grossesse, la naissance et le post-partum avec confiance et sérénité.'
+  visual_label: 'Accompagnement maternel FyraCare'
+  image_alt: 'Aminata Diarra au centre FyraCare'
+  quote: 'Chaque femme mérite d’être écoutée, rassurée et accompagnée avec douceur.'
+  quote_author: 'Aminata Boulkheir Diarra — Sage-femme'
+trust:
+  title: 'Les engagements de FyraCare'
+  expertise: 'Expertise dédiée'
+  expertise_text: 'Une sage-femme expérimentée'
+  care: 'Écoute bienveillante'
+  care_text: 'Un espace intime et rassurant'
+  support: 'Suivi personnalisé'
+  support_text: 'Avant, pendant et après la naissance'
+services:
+  eyebrow: 'Nos accompagnements'
+  title: 'Des soins pensés autour de vous.'
+  intro: 'Parce que chaque parcours est unique, nos accompagnements s’adaptent à votre corps, votre histoire et vos besoins.'
+  birth:
+    title: 'Préparation à la naissance'
+    text: 'Des séances pratiques et théoriques pour comprendre, se préparer et aborder l’accouchement sereinement.'
+  prenatal:
+    title: 'Bien-être prénatal'
+    text: 'Massage prénatal, préparation du périnée et conseils personnalisés pour prendre soin de vous.'
+  postpartum:
+    title: 'Soutien post-partum'
+    text: 'Allaitement, rééducation périnéale et soins traditionnels pour accompagner votre récupération.'
+founder:
+  eyebrow: 'Votre sage-femme'
+  title: 'Une expertise portée par l’écoute.'
+  text: 'Aminata Boulkheir Diarra accompagne les femmes avec une approche à la fois professionnelle, chaleureuse et profondément respectueuse de chaque parcours.'
+  link: 'Découvrir son parcours'
+  image_alt: 'Portrait d’Aminata Boulkheir Diarra, fondatrice de FyraCare'
+footer:
+  note: 'Centre d’accompagnement maternel — Nouakchott, Mauritanie'

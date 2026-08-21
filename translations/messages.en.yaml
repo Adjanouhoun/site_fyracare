@@ -1,0 +1,49 @@
+meta:
+  title: 'FyraCare — Maternal care in Mauritania'
+  description: 'FyraCare supports women before, during and after birth with expertise, kindness and respect.'
+nav:
+  main: 'Main navigation'
+  about: 'About'
+  services: 'Our care'
+  contact: 'Contact'
+  languages: 'Choose a language'
+actions:
+  appointment: 'Book an appointment'
+  discover: 'Explore our care'
+hero:
+  eyebrow: 'Maternity & wellbeing'
+  title: 'By your side, through every stage of motherhood.'
+  description: 'Personal, compassionate support to help you experience pregnancy, birth and postpartum with confidence and peace of mind.'
+  visual_label: 'FyraCare maternal support'
+  image_alt: 'Aminata Diarra at the FyraCare centre'
+  quote: 'Every woman deserves to be heard, reassured and supported with kindness.'
+  quote_author: 'Aminata Boulkheir Diarra — Midwife'
+trust:
+  title: 'FyraCare commitments'
+  expertise: 'Dedicated expertise'
+  expertise_text: 'An experienced midwife'
+  care: 'Compassionate listening'
+  care_text: 'A private and reassuring space'
+  support: 'Personalised support'
+  support_text: 'Before, during and after birth'
+services:
+  eyebrow: 'Our support'
+  title: 'Care designed around you.'
+  intro: 'Every journey is unique. Our services adapt to your body, your story and your needs.'
+  birth:
+    title: 'Birth preparation'
+    text: 'Practical and educational sessions to understand, prepare and approach birth with confidence.'
+  prenatal:
+    title: 'Prenatal wellbeing'
+    text: 'Prenatal massage, perineal preparation and personal advice to help you care for yourself.'
+  postpartum:
+    title: 'Postpartum support'
+    text: 'Breastfeeding, pelvic-floor rehabilitation and traditional care to support your recovery.'
+founder:
+  eyebrow: 'Your midwife'
+  title: 'Expertise grounded in listening.'
+  text: 'Aminata Boulkheir Diarra supports women with an approach that is professional, warm and deeply respectful of every personal journey.'
+  link: 'Discover her journey'
+  image_alt: 'Portrait of Aminata Boulkheir Diarra, founder of FyraCare'
+footer:
+  note: 'Maternal care centre — Nouakchott, Mauritania'

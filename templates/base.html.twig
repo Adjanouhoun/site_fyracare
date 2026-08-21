@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" dir="{{ app.request.locale == 'ar' ? 'rtl' : 'ltr' }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{% block meta_description %}{{ 'meta.description'|trans }}{% endblock %}">
+        <meta name="theme-color" content="#f6eee8">
+        <title>{% block title %}{{ 'meta.title'|trans }}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><circle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%23A96857%22/><path d=%22M20 18h26v7H28v8h15v7H28v14h-8z%22 fill=%22white%22/></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+
+    </head>
+    <body class="locale-{{ app.request.locale }}">
+        {% block body %}{% endblock %}
+    </body>
+</html>
