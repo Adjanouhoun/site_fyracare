@@ -2,17 +2,45 @@
 
 namespace App\Controller;
 
+use App\Entity\Testimonial;
+use App\Form\TestimonialType;
 use App\Repository\ServiceRepository;
+use App\Repository\TestimonialRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
     #[Route('/{_locale}', name: 'app_home', requirements: ['_locale' => 'fr|en|ar'], defaults: ['_locale' => 'fr'])]
-    public function index(ServiceRepository $services): Response
+    public function index(Request $request, ServiceRepository $services, TestimonialRepository $testimonials): Response
     {
-        return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive()]);
+        $locale = $request->getLocale();
+        $form = $this->createForm(TestimonialType::class, new Testimonial(), [
+            'locale' => $locale,
+            'action' => $this->generateUrl('app_testimonial_submit', ['_locale' => $locale]),
+            'method' => 'POST',
+        ]);
+        return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive(), 'testimonials' => $testimonials->findApproved(), 'testimonial_form' => $form]);
+    }
+
+    #[Route('/{_locale}/avis', name: 'app_testimonial_submit', requirements: ['_locale' => 'fr|en|ar'], methods: ['POST'])]
+    public function submitTestimonial(string $_locale, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $testimonial = new Testimonial();
+        $form = $this->createForm(TestimonialType::class, $testimonial, ['locale' => $_locale]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $testimonial->setStatus(Testimonial::STATUS_PENDING);
+            $entityManager->persist($testimonial);
+            $entityManager->flush();
+            $this->addFlash('testimonial_success', 'testimonials.success');
+        } else {
+            $this->addFlash('testimonial_error', 'testimonials.error');
+        }
+        return $this->redirectToRoute('app_home', ['_locale' => $_locale, '_fragment' => 'testimonials'], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{_locale}/prestations', name: 'app_services', requirements: ['_locale' => 'fr|en|ar'])]

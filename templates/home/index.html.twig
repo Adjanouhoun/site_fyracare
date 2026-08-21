@@ -67,10 +67,28 @@
             <div class="gallery-track"><figure class="gallery-tall"><img src="{{ asset('images/gallery/perinee.jpg') }}" alt="{{ 'gallery.alt_one'|trans }}"><figcaption>01 — {{ 'gallery.caption_one'|trans }}</figcaption></figure><figure class="gallery-wide"><img src="{{ asset('images/gallery/espace-soin.jpg') }}" alt="{{ 'gallery.alt_two'|trans }}"><figcaption>02 — {{ 'gallery.caption_two'|trans }}</figcaption></figure><figure class="gallery-tall"><img src="{{ asset('images/gallery/naturel.jpg') }}" alt="{{ 'gallery.alt_three'|trans }}"><figcaption>03 — {{ 'gallery.caption_three'|trans }}</figcaption></figure></div>
         </section>
 
-        <section class="testimonials section">
+        <section class="testimonials section" id="testimonials">
             <div class="shell testimonials-layout">
-                <div><div class="section-index">06 — {{ 'testimonials.index'|trans }}</div><span class="kicker"><i></i>{{ 'testimonials.eyebrow'|trans }}</span><h2>{{ 'testimonials.title'|trans }}</h2></div>
-                <blockquote><span>“</span><p>{{ 'testimonials.quote'|trans }}</p><footer><strong>{{ 'testimonials.author'|trans }}</strong><small>{{ 'testimonials.care'|trans }}</small></footer></blockquote>
+                <div><div class="section-index">06 — {{ 'testimonials.index'|trans }}</div><span class="kicker"><i></i>{{ 'testimonials.eyebrow'|trans }}</span><h2>{{ 'testimonials.title'|trans }}</h2><p class="testimonial-intro">{{ 'testimonials.intro'|trans }}</p></div>
+                <div class="testimonial-slider" data-controller="testimonial-slider">
+                    {% for testimonial in testimonials %}
+                        <blockquote data-testimonial-slider-target="slide" {{ not loop.first ? 'hidden' }}><div class="testimonial-stars" aria-label="{{ testimonial.rating }}/5">{% for star in 1..5 %}{{ star <= testimonial.rating ? '★' : '☆' }}{% endfor %}</div><span>“</span><p>{{ testimonial.content }}</p><footer><strong>{{ testimonial.author }}</strong><small>{{ testimonial.care }}</small></footer></blockquote>
+                    {% else %}
+                        <p class="testimonial-empty">{{ 'testimonials.empty'|trans }}</p>
+                    {% endfor %}
+                    {% if testimonials|length > 1 %}<div class="testimonial-controls"><button type="button" data-action="testimonial-slider#previous" aria-label="{{ 'testimonials.previous'|trans }}">←</button><div>{% for testimonial in testimonials %}<button type="button" class="{{ loop.first ? 'active' }}" data-testimonial-slider-target="dot" data-action="testimonial-slider#go" data-testimonial-slider-index-param="{{ loop.index0 }}" aria-label="{{ loop.index }}"></button>{% endfor %}</div><button type="button" data-action="testimonial-slider#next" aria-label="{{ 'testimonials.next'|trans }}">→</button></div>{% endif %}
+                </div>
+            </div>
+            <div class="shell testimonial-submit">
+                <div><span class="kicker"><i></i>{{ 'testimonials.share_eyebrow'|trans }}</span><h3>{{ 'testimonials.share_title'|trans }}</h3><p>{{ 'testimonials.moderation_note'|trans }}</p></div>
+                <div class="testimonial-form-panel">
+                    {% for message in app.flashes('testimonial_success') %}<p class="form-notice success">{{ message|trans }}</p>{% endfor %}
+                    {% for message in app.flashes('testimonial_error') %}<p class="form-notice error">{{ message|trans }}</p>{% endfor %}
+                    {{ form_start(testimonial_form) }}
+                    <div class="testimonial-fields">{{ form_row(testimonial_form.author) }}{{ form_row(testimonial_form.care) }}{{ form_row(testimonial_form.rating) }}{{ form_row(testimonial_form.content) }}</div>
+                    <button class="booking-next" type="submit">{{ 'testimonials.submit'|trans }} <span>→</span></button>
+                    {{ form_end(testimonial_form) }}
+                </div>
             </div>
         </section>
 

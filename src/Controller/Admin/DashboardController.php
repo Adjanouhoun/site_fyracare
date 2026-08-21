@@ -16,6 +16,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations', 'fa fa-heart');
+        yield MenuItem::linkTo(TestimonialCrudController::class, 'Avis clients', 'fa fa-star');
         yield MenuItem::linkToRoute('Voir le site', 'fa fa-arrow-up-right-from-square', 'app_home', ['_locale' => 'fr']);
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
     }
