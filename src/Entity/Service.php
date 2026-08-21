@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ServiceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
 #[ORM\Table(name: 'care_service')]
@@ -12,14 +13,14 @@ class Service
 {
     #[ORM\Id, ORM\GeneratedValue, ORM\Column]
     private ?int $id = null;
-    #[ORM\Column(length: 80, unique: true)] private string $code = '';
-    #[ORM\Column(length: 180)] private string $titleFr = '';
-    #[ORM\Column(length: 180)] private string $titleEn = '';
-    #[ORM\Column(length: 180)] private string $titleAr = '';
-    #[ORM\Column(type: Types::TEXT)] private string $descriptionFr = '';
-    #[ORM\Column(type: Types::TEXT)] private string $descriptionEn = '';
-    #[ORM\Column(type: Types::TEXT)] private string $descriptionAr = '';
-    #[ORM\Column] private int $displayOrder = 0;
+    #[ORM\Column(length: 80, unique: true), Assert\NotBlank, Assert\Regex(pattern: '/^[a-z0-9_]+$/', message: 'Utilisez uniquement des lettres minuscules, chiffres et underscores.')] private string $code = '';
+    #[ORM\Column(length: 180), Assert\NotBlank, Assert\Length(max: 180)] private string $titleFr = '';
+    #[ORM\Column(length: 180), Assert\NotBlank, Assert\Length(max: 180)] private string $titleEn = '';
+    #[ORM\Column(length: 180), Assert\NotBlank, Assert\Length(max: 180)] private string $titleAr = '';
+    #[ORM\Column(type: Types::TEXT), Assert\NotBlank] private string $descriptionFr = '';
+    #[ORM\Column(type: Types::TEXT), Assert\NotBlank] private string $descriptionEn = '';
+    #[ORM\Column(type: Types::TEXT), Assert\NotBlank] private string $descriptionAr = '';
+    #[ORM\Column, Assert\PositiveOrZero] private int $displayOrder = 0;
     #[ORM\Column] private bool $active = true;
     #[ORM\Column] private bool $featured = false;
 
