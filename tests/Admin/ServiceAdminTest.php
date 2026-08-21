@@ -30,6 +30,13 @@ class ServiceAdminTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Catalogue des prestations');
         self::assertSelectorTextContains('body', 'Massage test');
+
+        $client->request('GET', '/admin/service/new');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('h1', 'Ajouter une prestation');
+        self::assertSelectorTextContains('body', 'Général');
+        self::assertSelectorTextContains('body', 'Français');
+        self::assertSelectorTextContains('body', 'English');
     }
 
     public function testAnonymousVisitorIsRedirectedToLogin(): void

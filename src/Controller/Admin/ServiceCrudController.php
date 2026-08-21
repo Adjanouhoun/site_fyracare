@@ -17,6 +17,7 @@ class ServiceCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud { return $crud->setEntityLabelInSingular('Prestation')->setEntityLabelInPlural('Prestations')->setPageTitle(Crud::PAGE_INDEX, 'Catalogue des prestations')->setPageTitle(Crud::PAGE_NEW, 'Ajouter une prestation')->setPageTitle(Crud::PAGE_EDIT, 'Modifier la prestation')->setDefaultSort(['displayOrder' => 'ASC']); }
     public function configureFields(string $pageName): iterable
     {
+        yield FormField::addTab('Général');
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('code', 'Identifiant')->setHelp('Unique, sans espace. Ex. massage_prenatal');
         yield IntegerField::new('displayOrder', 'Ordre');
