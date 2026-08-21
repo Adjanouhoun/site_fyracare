@@ -26,6 +26,8 @@ advice_page:
   featured_text: 'Useful content to move forward with confidence, from pregnancy to postpartum.'
   all: 'View all advice'
   read: 'Read the article'
+  latest: 'Featured'
+  author_role: 'Midwife · Founder of FyraCare'
   updated: 'Updated on'
   author_label: 'Written by'
   author_text: 'Midwife and founder of FyraCare, specialised in supporting women before, during and after birth.'

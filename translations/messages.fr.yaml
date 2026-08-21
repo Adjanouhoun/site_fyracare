@@ -26,6 +26,8 @@ advice_page:
   featured_text: 'Des contenus utiles pour avancer avec plus de sérénité, de la grossesse au post-partum.'
   all: 'Voir tous les conseils'
   read: 'Lire le conseil'
+  latest: 'À la une'
+  author_role: 'Sage-femme · Fondatrice de FyraCare'
   updated: 'Mis à jour le'
   author_label: 'Écrit par'
   author_text: 'Sage-femme et fondatrice de FyraCare, spécialisée dans l’accompagnement de la femme avant, pendant et après la naissance.'

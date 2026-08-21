@@ -26,6 +26,8 @@ advice_page:
   featured_text: 'محتوى مفيد لمرافقتك بثقة من الحمل إلى ما بعد الولادة.'
   all: 'عرض كل النصائح'
   read: 'قراءة المقال'
+  latest: 'في الواجهة'
+  author_role: 'قابلة · مؤسسة FyraCare'
   updated: 'تم التحديث في'
   author_label: 'بقلم'
   author_text: 'قابلة ومؤسسة FyraCare، متخصصة في مرافقة المرأة قبل الولادة وأثناءها وبعدها.'
