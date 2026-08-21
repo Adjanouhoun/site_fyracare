@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller\Admin;
 
-use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -16,7 +15,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
-        yield MenuItem::linkToCrud('Prestations', 'fa fa-heart', Service::class);
+        yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations', 'fa fa-heart');
         yield MenuItem::linkToRoute('Voir le site', 'fa fa-arrow-up-right-from-square', 'app_home', ['_locale' => 'fr']);
         yield MenuItem::linkToLogout('Déconnexion', 'fa fa-sign-out');
     }
