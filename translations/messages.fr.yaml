@@ -35,11 +35,12 @@ journey:
   birth: 'Naissance'
   postpartum: 'Post-partum'
 manifesto:
-  index: 'Notre vision'
-  eyebrow: 'Une autre idée du soin'
-  title: 'Prendre soin de la femme, dans toutes ses dimensions.'
-  text: 'FyraCare réunit expertise médicale, écoute attentive et savoir-faire de bien-être dans un lieu pensé pour vous. Ici, chaque étape de la maternité devient une expérience plus consciente, plus sereine et profondément humaine.'
-  link: 'Découvrir le centre'
+  index: 'Un mot pour vous'
+  eyebrow: 'Bienvenue'
+  title: 'Chère future maman'
+  text: 'Nous sommes impatients de vous accueillir et nous pouvons seulement imaginer dans quel état d’excitation vous devez être en attendant l’arrivée de votre bébé ! Nous vous souhaitons plein de bonnes choses pour le reste de votre grossesse et pour l’accouchement !'
+  author: 'Aminata Boulkheir Diarra'
+  signature: 'FyraCare'
 trust:
   title: 'Les engagements de FyraCare'
   expertise: 'Expertise dédiée'

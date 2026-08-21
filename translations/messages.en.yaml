@@ -35,11 +35,12 @@ journey:
   birth: 'Birth'
   postpartum: 'Postpartum'
 manifesto:
-  index: 'Our vision'
-  eyebrow: 'A different approach to care'
-  title: 'Caring for every dimension of womanhood.'
-  text: 'FyraCare brings together clinical expertise, attentive listening and wellbeing practices in a space designed around you. Every stage of motherhood becomes a more conscious, peaceful and deeply human experience.'
-  link: 'Discover the centre'
+  index: 'A note for you'
+  eyebrow: 'Welcome'
+  title: 'Dear mother-to-be'
+  text: 'We cannot wait to welcome you, and we can only imagine how excited you must feel as you await your baby’s arrival! We wish you all the very best for the rest of your pregnancy and for the birth.'
+  author: 'Aminata Boulkheir Diarra'
+  signature: 'FyraCare'
 trust:
   title: 'FyraCare commitments'
   expertise: 'Dedicated expertise'

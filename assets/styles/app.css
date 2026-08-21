@@ -677,6 +677,18 @@ body.lightbox-open { overflow:hidden; }
 }
 
 .editorial-link { display:inline-flex; align-items:center; gap:18px; margin-top:28px; padding-bottom:7px; color:var(--plum); border-bottom:1px solid currentColor; font-size:.78rem; font-weight:700; }
+.welcome-letter { background:var(--paper); text-align:center; }
+.welcome-letter-inner { max-width:1050px; }
+.welcome-letter .kicker { justify-content:center; }
+.welcome-letter .kicker i:last-child { display:block; }
+.welcome-letter h2 { margin:25px 0 48px; font-size:clamp(2.7rem,4vw,3.2rem); }
+.welcome-letter blockquote { position:relative; margin:0; padding:55px clamp(35px,7vw,90px); background:var(--ivory); border:1px solid var(--line); box-shadow:0 18px 55px rgba(83,61,67,.07); }
+.welcome-letter blockquote::after { content:""; position:absolute; left:50%; bottom:-17px; width:32px; height:32px; background:var(--ivory); border-right:1px solid var(--line); border-bottom:1px solid var(--line); transform:translateX(-50%) rotate(45deg); }
+.welcome-letter blockquote>span { position:absolute; top:0; left:0; display:grid; place-items:center; width:76px; height:76px; color:white; background:var(--pink); font-family:"Italiana",serif; font-size:4rem; line-height:1; }
+.welcome-letter blockquote p { max-width:810px; margin:0 auto; color:var(--muted); font-family:"Italiana",serif; font-size:clamp(1.55rem,2.3vw,2rem); line-height:1.5; }
+.welcome-letter footer { display:grid; gap:3px; justify-items:center; margin-top:50px; }
+.welcome-letter footer strong { font-size:.9rem; letter-spacing:.04em; text-transform:uppercase; }
+.welcome-letter footer small { color:var(--plum); font-family:"Italiana",serif; font-size:1.25rem; }
 .editorial-page { background:var(--ivory); }
 .editorial-hero { padding:72px 0 0; background:linear-gradient(135deg,var(--blush),var(--soft)); }
 .editorial-hero-grid { display:grid; grid-template-columns:.92fr 1.08fr; align-items:center; gap:clamp(55px,8vw,120px); min-height:680px; }
@@ -715,6 +727,10 @@ body.lightbox-open { overflow:hidden; }
 }
 
 @media (max-width:700px) {
+  .welcome-letter h2 { margin-bottom:35px; font-size:2.25rem; }
+  .welcome-letter blockquote { padding:70px 24px 38px; }
+  .welcome-letter blockquote>span { width:58px; height:58px; font-size:3rem; }
+  .welcome-letter blockquote p { font-size:1.45rem; }
   .editorial-hero { padding-top:0; }
   .editorial-hero-copy h1 { font-size:2.75rem; }
   .editorial-hero figure { min-height:390px; }

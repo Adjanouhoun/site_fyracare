@@ -23,8 +23,13 @@
             <div class="hero-luxe-bottom"><div class="shell hero-luxe-metrics"><span>{{ 'hero.strip'|trans }}</span><div><b>01</b>{{ 'journey.pregnancy'|trans }}</div><div><b>02</b>{{ 'journey.birth'|trans }}</div><div><b>03</b>{{ 'journey.postpartum'|trans }}</div><a href="#services" aria-label="{{ 'actions.discover'|trans }}">↓</a></div></div>
         </section>
 
-        <section class="manifesto section">
-            <div class="shell manifesto-grid"><div class="section-index">01 — {{ 'manifesto.index'|trans }}</div><div class="manifesto-copy"><span class="kicker"><i></i>{{ 'manifesto.eyebrow'|trans }}</span><h2>{{ 'manifesto.title'|trans }}</h2><p>{{ 'manifesto.text'|trans }}</p><a class="editorial-link" href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'manifesto.link'|trans }} <span>→</span></a></div><div class="manifesto-mark" aria-hidden="true">F<span>✦</span></div></div>
+        <section class="manifesto welcome-letter section">
+            <div class="shell welcome-letter-inner">
+                <span class="kicker"><i></i>{{ 'manifesto.index'|trans }}<i></i></span>
+                <h2>{{ 'manifesto.title'|trans }}</h2>
+                <blockquote><span aria-hidden="true">“</span><p>{{ 'manifesto.text'|trans }}</p></blockquote>
+                <footer><strong>{{ 'manifesto.author'|trans }}</strong><small>{{ 'manifesto.signature'|trans }}</small></footer>
+            </div>
         </section>
 
         <section class="services-section section" id="services">
