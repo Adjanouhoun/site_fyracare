@@ -24,7 +24,7 @@
         </section>
 
         <section class="manifesto section">
-            <div class="shell manifesto-grid"><div class="section-index">01 — {{ 'manifesto.index'|trans }}</div><div class="manifesto-copy"><span class="kicker"><i></i>{{ 'manifesto.eyebrow'|trans }}</span><h2>{{ 'manifesto.title'|trans }}</h2><p>{{ 'manifesto.text'|trans }}</p></div><div class="manifesto-mark" aria-hidden="true">F<span>✦</span></div></div>
+            <div class="shell manifesto-grid"><div class="section-index">01 — {{ 'manifesto.index'|trans }}</div><div class="manifesto-copy"><span class="kicker"><i></i>{{ 'manifesto.eyebrow'|trans }}</span><h2>{{ 'manifesto.title'|trans }}</h2><p>{{ 'manifesto.text'|trans }}</p><a class="editorial-link" href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'manifesto.link'|trans }} <span>→</span></a></div><div class="manifesto-mark" aria-hidden="true">F<span>✦</span></div></div>
         </section>
 
         <section class="services-section section" id="services">
@@ -44,14 +44,7 @@
         <section class="founder-section section" id="aminata">
             <div class="shell founder-layout">
                 <div class="founder-visual"><div class="founder-photo"><img src="{{ asset('images/aminatadiarra.png') }}" alt="{{ 'founder.image_alt'|trans }}"></div><div class="founder-stamp"><strong>15+</strong><span>{{ 'founder.years'|trans }}</span></div><span class="founder-outline" aria-hidden="true">FYRACARE</span></div>
-                <div class="founder-copy"><div class="section-index">03 — {{ 'founder.eyebrow'|trans }}</div><span class="kicker"><i></i>{{ 'founder.role'|trans }}</span><h2>{{ 'founder.title_rich'|trans|raw }}</h2><p>{{ 'founder.text_long'|trans }}</p><div class="credentials"><div><strong>{{ 'founder.credential_one'|trans }}</strong><small>{{ 'founder.credential_one_text'|trans }}</small></div><div><strong>{{ 'founder.credential_two'|trans }}</strong><small>{{ 'founder.credential_two_text'|trans }}</small></div></div><a class="button button-dark" href="#parcours-aminata">{{ 'founder.link'|trans }} <span>↓</span></a></div>
-            </div>
-        </section>
-
-        <section class="founder-journey section" id="parcours-aminata">
-            <div class="shell founder-journey-layout">
-                <div><div class="section-index">03.1 — {{ 'founder.journey_eyebrow'|trans }}</div><h2>{{ 'founder.journey_title'|trans }}</h2></div>
-                <div class="founder-journey-story"><p>{{ 'founder.journey_text'|trans }}</p><div class="journey-points"><article><span>01</span><strong>{{ 'founder.journey_one'|trans }}</strong><p>{{ 'founder.journey_one_text'|trans }}</p></article><article><span>02</span><strong>{{ 'founder.journey_two'|trans }}</strong><p>{{ 'founder.journey_two_text'|trans }}</p></article><article><span>03</span><strong>{{ 'founder.journey_three'|trans }}</strong><p>{{ 'founder.journey_three_text'|trans }}</p></article></div></div>
+                <div class="founder-copy"><div class="section-index">03 — {{ 'founder.eyebrow'|trans }}</div><span class="kicker"><i></i>{{ 'founder.role'|trans }}</span><h2>{{ 'founder.title_rich'|trans|raw }}</h2><p>{{ 'founder.text_long'|trans }}</p><div class="credentials"><div><strong>{{ 'founder.credential_one'|trans }}</strong><small>{{ 'founder.credential_one_text'|trans }}</small></div><div><strong>{{ 'founder.credential_two'|trans }}</strong><small>{{ 'founder.credential_two_text'|trans }}</small></div></div><a class="button button-dark" href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'founder.link'|trans }} <span>→</span></a></div>
             </div>
         </section>
 

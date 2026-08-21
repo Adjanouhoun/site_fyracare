@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'expertise_page.meta_title'|trans }}{% endblock %}
+{% block meta_description %}{{ 'expertise_page.meta_description'|trans }}{% endblock %}
+
+{% block body %}
+    {% include '_header.html.twig' %}
+    <main class="editorial-page">
+        <section class="editorial-hero expertise-hero">
+            <div class="shell editorial-hero-grid">
+                <div class="editorial-hero-copy"><span class="kicker"><i></i>{{ 'expertise_page.eyebrow'|trans }}</span><h1>{{ 'expertise_page.title'|trans }}</h1><p>{{ 'expertise_page.intro'|trans }}</p></div>
+                <figure><img src="{{ asset('images/aminatadiarra.png') }}" alt="{{ 'founder.image_alt'|trans }}"></figure>
+            </div>
+        </section>
+        <section class="editorial-story section">
+            <div class="shell editorial-story-grid">
+                <aside><span>01</span><strong>{{ 'expertise_page.aside'|trans }}</strong></aside>
+                <article><p class="editorial-lead">{{ 'expertise_page.paragraph_one'|trans }}</p><p>{{ 'expertise_page.paragraph_two'|trans }}</p><p>{{ 'expertise_page.paragraph_three'|trans }}</p></article>
+            </div>
+        </section>
+        <section class="expertise-credentials section"><div class="shell"><div class="section-index">02 — {{ 'expertise_page.skills_eyebrow'|trans }}</div><h2>{{ 'expertise_page.skills_title'|trans }}</h2><div class="editorial-highlights editorial-highlights-four"><div><span>01</span><strong>{{ 'expertise_page.skill_one'|trans }}</strong></div><div><span>02</span><strong>{{ 'expertise_page.skill_two'|trans }}</strong></div><div><span>03</span><strong>{{ 'expertise_page.skill_three'|trans }}</strong></div><div><span>04</span><strong>{{ 'expertise_page.skill_four'|trans }}</strong></div></div></div></section>
+        <section class="editorial-cta"><div class="shell"><span class="kicker"><i></i>{{ 'expertise_page.cta_eyebrow'|trans }}</span><h2>{{ 'expertise_page.cta_title'|trans }}</h2><a class="button button-dark" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans }} <span>→</span></a></div></section>
+    </main>
+    {% include '_footer.html.twig' %}
+{% endblock %}

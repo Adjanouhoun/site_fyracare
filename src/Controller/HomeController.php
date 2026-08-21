@@ -79,6 +79,12 @@ final class HomeController extends AbstractController
         return $this->render('contact/index.html.twig', ['contact_form' => $form]);
     }
 
+    #[Route('/{_locale}/a-propos', name: 'app_about', requirements: ['_locale' => 'fr|en|ar'])]
+    public function about(): Response { return $this->render('about/index.html.twig'); }
+
+    #[Route('/{_locale}/notre-expertise', name: 'app_expertise', requirements: ['_locale' => 'fr|en|ar'])]
+    public function expertise(): Response { return $this->render('expertise/index.html.twig'); }
+
     #[Route('/{_locale}/confidentialite', name: 'app_privacy', requirements: ['_locale' => 'fr|en|ar'])]
     public function privacy(): Response { return $this->render('legal/privacy.html.twig'); }
 
