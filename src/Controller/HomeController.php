@@ -30,14 +30,14 @@ final class HomeController extends AbstractController
         }
 
         $images = [
-            'pelvic_rehab' => ['service-4.jpg', 'slide-7.jpg'],
-            'birth_support' => ['service-1.jpg', 'slide-8.jpg'],
-            'rebozo' => ['service-5.jpg', 'slide-2.jpg'],
-            'damp' => ['slide-4.jpg', 'slide-5.jpg'],
-            'breastfeeding' => ['service-6.jpg', 'slide-1.jpeg'],
-            'perineum' => ['slide-7.jpg', 'slider-8.jpg'],
-            'birth_prep' => ['slide-1.jpeg', 'slide-8.jpg'],
-            'prenatal_massage' => ['slider-4.jpg', 'slide-3.jpg'],
+            'pelvic_rehab' => ['226f02c6dd646446b.jpeg', 'slide-7.jpg'],
+            'birth_support' => ['6af3a48ac02540dd3.jpg', 'slide-8.jpg'],
+            'rebozo' => ['7db14932e1b17b330.jpg', 'slide-2.jpg'],
+            'damp' => ['af46a99ab159ddcab.jpeg', 'slide-5.jpg'],
+            'breastfeeding' => ['a3fe5f762701bbc19.jpg', 'slide-1.jpeg'],
+            'perineum' => ['b3c15f1f1697818cf.jpg', 'slider-8.jpg'],
+            'birth_prep' => ['e9f8633479f26b147.jpeg', 'slide-8.jpg'],
+            'prenatal_massage' => ['acb422db38301d0ed.jpg', 'slide-3.jpg'],
         ];
 
         return $this->render('services/show.html.twig', ['service' => $service, 'service_images' => $images[$code] ?? []]);
