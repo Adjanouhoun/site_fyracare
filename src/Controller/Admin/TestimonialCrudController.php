@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Testimonial;
 use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminRoute;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -39,12 +40,14 @@ final class TestimonialCrudController extends \EasyCorp\Bundle\EasyAdminBundle\C
         $reject = Action::new('reject', 'Refuser', 'fa fa-xmark')->linkToCrudAction('reject')->displayIf(fn(Testimonial $t) => $t->getStatus() !== Testimonial::STATUS_REJECTED)->addCssClass('btn btn-danger');
         return $actions->add(Crud::PAGE_INDEX, $approve)->add(Crud::PAGE_INDEX, $reject);
     }
+    #[AdminRoute(path: '/{entityId}/approve', name: 'approve')]
     public function approve(AdminContext $context, EntityManagerInterface $em): Response
     {
         $testimonial = $context->getEntity()->getInstance();
         if ($testimonial instanceof Testimonial) { $testimonial->setStatus(Testimonial::STATUS_APPROVED); $em->flush(); }
         return $this->redirect($context->getReferrer() ?: $this->generateUrl('admin_testimonial_index'));
     }
+    #[AdminRoute(path: '/{entityId}/reject', name: 'reject')]
     public function reject(AdminContext $context, EntityManagerInterface $em): Response
     {
         $testimonial = $context->getEntity()->getInstance();
