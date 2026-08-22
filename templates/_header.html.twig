@@ -10,7 +10,7 @@
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="{{ 'nav.open_menu'|trans }}" data-nav-menu-target="toggle" data-action="nav-menu#toggle"><span aria-hidden="true"><i></i><i></i><i></i></span></button>
         <div class="nav-links" id="site-navigation" data-nav-menu-target="panel">
-            <a href="{{ path('app_home', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_home' ? 'active' }}">{{ 'nav.home'|trans }}</a>
+            <a href="{{ path('app_home', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_home' ? 'active' }}">{{ 'seo.home'|trans }}</a>
             <a href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'nav.about'|trans }}</a>
             <a href="{{ path('app_services', {_locale: app.request.locale}) }}" class="{{ current_route in ['app_services', 'app_service_show'] ? 'active' }}">{{ 'nav.services'|trans }}</a>
             <a href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'nav.expertise'|trans }}</a>
