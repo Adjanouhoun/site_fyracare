@@ -16,6 +16,14 @@ nav:
   languages: 'Choisir la langue'
   expertise: 'Notre expertise'
   advice: 'Conseils'
+  gallery: 'Galerie'
+gallery_page:
+  meta_title: 'Galerie photo et vidéo — FyraCare'
+  meta_description: 'Découvrez en images le centre FyraCare, ses espaces, ses soins et ses accompagnements.'
+  eyebrow: 'Dans l’univers FyraCare'
+  title: 'Notre galerie photo & vidéo'
+  intro: 'Découvrez le centre, nos gestes de soin et les moments qui racontent l’expérience FyraCare.'
+  empty: 'La galerie sera bientôt enrichie de nouvelles images.'
 advice_page:
   meta_title: 'Conseils grossesse et bien-être — FyraCare'
   meta_description: 'Conseils FyraCare sur la grossesse, la naissance, l’allaitement, le périnée et le post-partum.'

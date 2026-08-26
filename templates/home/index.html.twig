@@ -4,95 +4,96 @@
     {% include '_header.html.twig' %}
 
     <main>
-        <section class="hero-luxe" id="vision" style="--hero-photo: url('{{ asset('images/gallery/centre.webp') }}')">
+        <section class="hero-luxe" id="vision" style="--hero-photo: url('{{ cms_image('home.hero_image', asset('images/gallery/centre.webp')) }}')">
             <div class="hero-luxe-overlay"></div>
             <div class="shell hero-luxe-content">
                 <div class="hero-luxe-copy">
-                    <span class="hero-pill">✦ {{ 'hero.eyebrow'|trans }}</span>
-                    <h1>{{ 'hero.title_rich'|trans|raw }}</h1>
-                    <p>{{ 'hero.description'|trans }}</p>
-                    <div class="hero-actions"><a class="button button-light" href="#reservation">{{ 'actions.appointment'|trans }} <span>↗</span></a><a class="hero-link" href="#services">{{ 'actions.discover'|trans }} <span>→</span></a></div>
+                    <span class="hero-pill">✦ {{ 'hero.eyebrow'|trans|cms('hero.eyebrow') }}</span>
+                    <h1>{{ 'hero.title_rich'|trans|cms('hero.title_rich')|raw }}</h1>
+                    <p>{{ 'hero.description'|trans|cms('hero.description') }}</p>
+                    <div class="hero-actions"><a class="button button-light" href="#reservation">{{ 'actions.appointment'|trans|cms('actions.appointment') }} <span>↗</span></a><a class="hero-link" href="#services">{{ 'actions.discover'|trans|cms('actions.discover') }} <span>→</span></a></div>
                 </div>
-                <aside class="hero-proof" aria-label="{{ 'hero.proof_title'|trans }}">
-                    <span class="proof-label">{{ 'hero.proof_label'|trans }}</span>
+                <aside class="hero-proof" aria-label="{{ 'hero.proof_title'|trans|cms('hero.proof_title') }}">
+                    <span class="proof-label">{{ 'hero.proof_label'|trans|cms('hero.proof_label') }}</span>
                     <strong>15+</strong>
-                    <p>{{ 'hero.proof_text'|trans }}</p>
-                    <div class="proof-people"><span>AD</span><span>FC</span><i>+</i><small>{{ 'hero.proof_clients'|trans }}</small></div>
+                    <p>{{ 'hero.proof_text'|trans|cms('hero.proof_text') }}</p>
+                    <div class="proof-people"><span>AD</span><span>FC</span><i>+</i><small>{{ 'hero.proof_clients'|trans|cms('hero.proof_clients') }}</small></div>
                 </aside>
             </div>
-            <div class="hero-luxe-bottom"><div class="shell hero-luxe-metrics"><span>{{ 'hero.strip'|trans }}</span><div><b>01</b>{{ 'journey.pregnancy'|trans }}</div><div><b>02</b>{{ 'journey.birth'|trans }}</div><div><b>03</b>{{ 'journey.postpartum'|trans }}</div><a href="#services" aria-label="{{ 'actions.discover'|trans }}">↓</a></div></div>
+            <div class="hero-luxe-bottom"><div class="shell hero-luxe-metrics"><span>{{ 'hero.strip'|trans|cms('hero.strip') }}</span><div><b>01</b>{{ 'journey.pregnancy'|trans|cms('journey.pregnancy') }}</div><div><b>02</b>{{ 'journey.birth'|trans|cms('journey.birth') }}</div><div><b>03</b>{{ 'journey.postpartum'|trans|cms('journey.postpartum') }}</div><a href="#services" aria-label="{{ 'actions.discover'|trans|cms('actions.discover') }}">↓</a></div></div>
         </section>
 
         <section class="manifesto welcome-letter section">
             <div class="shell welcome-letter-inner">
-                <span class="kicker"><i></i>{{ 'manifesto.index'|trans }}<i></i></span>
-                <h2>{{ 'manifesto.title'|trans }}</h2>
-                <blockquote><span aria-hidden="true">“</span><p>{{ 'manifesto.text'|trans }}</p></blockquote>
-                <footer><strong>{{ 'manifesto.author'|trans }}</strong><small>{{ 'manifesto.signature'|trans }}</small></footer>
+                <span class="kicker"><i></i>{{ 'manifesto.index'|trans|cms('manifesto.index') }}<i></i></span>
+                <h2>{{ 'manifesto.title'|trans|cms('manifesto.title') }}</h2>
+                <blockquote><span aria-hidden="true">“</span><p>{{ 'manifesto.text'|trans|cms('manifesto.text') }}</p></blockquote>
+                <footer><strong>{{ 'manifesto.author'|trans|cms('manifesto.author') }}</strong><small>{{ 'manifesto.signature'|trans|cms('manifesto.signature') }}</small></footer>
             </div>
         </section>
 
         <section class="services-section section" id="services">
             <div class="shell">
-                <div class="section-topline"><div class="section-index">02 — {{ 'services.eyebrow'|trans }}</div><p>{{ 'services.intro'|trans }}</p></div>
-                <div class="services-title-row"><h2>{{ 'services.title_rich'|trans|raw }}</h2><a class="round-link" href="{{ path('app_services', {_locale: app.request.locale}) }}" aria-label="{{ 'services.all'|trans }}">↗</a></div>
+                <div class="section-topline"><div class="section-index">02 — {{ 'services.eyebrow'|trans|cms('services.eyebrow') }}</div><p>{{ 'services.intro'|trans|cms('services.intro') }}</p></div>
+                <div class="services-title-row"><h2>{{ 'services.title_rich'|trans|cms('services.title_rich')|raw }}</h2><a class="round-link" href="{{ path('app_services', {_locale: app.request.locale}) }}" aria-label="{{ 'services.all'|trans|cms('services.all') }}">↗</a></div>
                 <div class="service-editorial">
                     {% set service_images = ['images/gallery/centre.webp', 'images/gallery/perinee.webp', 'images/gallery/damp.webp'] %}
                     {% for service in featured_services %}
-                        <article class="service-panel service-{{ loop.index }}"><img src="{{ asset(service_images[loop.index0]) }}" alt="{{ service.title(app.request.locale) }} à Nouakchott" loading="lazy" decoding="async"><div class="service-overlay"></div><span class="service-count">0{{ loop.index }}</span><div class="service-content"><span>{{ 'services.featured_label'|trans }}</span><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale) }}</p></div><a href="{{ path('app_services', {_locale: app.request.locale}) }}#{{ service.code }}" aria-label="{{ service.title(app.request.locale) }}">↗</a></article>
+                        <article class="service-panel service-{{ loop.index }}"><img src="{{ asset(service_images[loop.index0]) }}" alt="{{ service.title(app.request.locale) }} à Nouakchott" loading="lazy" decoding="async"><div class="service-overlay"></div><span class="service-count">0{{ loop.index }}</span><div class="service-content"><span>{{ 'services.featured_label'|trans|cms('services.featured_label') }}</span><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale) }}</p></div><a href="{{ path('app_services', {_locale: app.request.locale}) }}#{{ service.code }}" aria-label="{{ service.title(app.request.locale) }}">↗</a></article>
                     {% endfor %}
                 </div>
-                <div class="services-more"><p>{{ 'services.home_note'|trans }}</p><a class="button button-light" href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'services.all'|trans }} <span>↗</span></a></div>
+                <div class="services-more"><p>{{ 'services.home_note'|trans|cms('services.home_note') }}</p><a class="button button-light" href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'services.all'|trans|cms('services.all') }} <span>↗</span></a></div>
             </div>
         </section>
 
         <section class="founder-section section" id="aminata">
             <div class="shell founder-layout">
-                <div class="founder-visual"><div class="founder-photo"><img src="{{ asset('images/aminatadiarra.webp') }}" alt="{{ 'founder.image_alt'|trans }}" width="850" height="440" loading="lazy" decoding="async"></div><div class="founder-stamp"><strong>15+</strong><span>{{ 'founder.years'|trans }}</span></div><span class="founder-outline" aria-hidden="true">FYRACARE</span></div>
-                <div class="founder-copy"><div class="section-index">03 — {{ 'founder.eyebrow'|trans }}</div><span class="kicker"><i></i>{{ 'founder.role'|trans }}</span><h2>{{ 'founder.title_rich'|trans|raw }}</h2><p>{{ 'founder.text_long'|trans }}</p><div class="credentials"><div><strong>{{ 'founder.credential_one'|trans }}</strong><small>{{ 'founder.credential_one_text'|trans }}</small></div><div><strong>{{ 'founder.credential_two'|trans }}</strong><small>{{ 'founder.credential_two_text'|trans }}</small></div></div><a class="button button-dark" href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'founder.link'|trans }} <span>→</span></a></div>
+                <div class="founder-visual"><div class="founder-photo"><img src="{{ cms_image('home.founder_image', asset('images/aminatadiarra.webp')) }}" alt="{{ 'founder.image_alt'|trans|cms('founder.image_alt') }}" width="850" height="440" loading="lazy" decoding="async"></div><div class="founder-stamp"><strong>15+</strong><span>{{ 'founder.years'|trans|cms('founder.years') }}</span></div><span class="founder-outline" aria-hidden="true">FYRACARE</span></div>
+                <div class="founder-copy"><div class="section-index">03 — {{ 'founder.eyebrow'|trans|cms('founder.eyebrow') }}</div><span class="kicker"><i></i>{{ 'founder.role'|trans|cms('founder.role') }}</span><h2>{{ 'founder.title_rich'|trans|cms('founder.title_rich')|raw }}</h2><p>{{ 'founder.text_long'|trans|cms('founder.text_long') }}</p><div class="credentials"><div><strong>{{ 'founder.credential_one'|trans|cms('founder.credential_one') }}</strong><small>{{ 'founder.credential_one_text'|trans|cms('founder.credential_one_text') }}</small></div><div><strong>{{ 'founder.credential_two'|trans|cms('founder.credential_two') }}</strong><small>{{ 'founder.credential_two_text'|trans|cms('founder.credential_two_text') }}</small></div></div><a class="button button-dark" href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'founder.link'|trans|cms('founder.link') }} <span>→</span></a></div>
             </div>
         </section>
 
         <section class="experience-section section">
             <div class="shell experience-layout">
-                <div class="experience-image"><img src="{{ asset('images/gallery/espace-soin.webp') }}" alt="{{ 'experience.image_alt'|trans }}" width="1600" height="900" loading="lazy" decoding="async"><a href="#reservation"><span>↗</span>{{ 'actions.appointment'|trans }}</a></div>
-                <div class="experience-copy"><div class="section-index">04 — {{ 'experience.index'|trans }}</div><span class="kicker"><i></i>{{ 'experience.eyebrow'|trans }}</span><h2>{{ 'experience.title'|trans }}</h2><p>{{ 'experience.text'|trans }}</p><div class="experience-list"><details open><summary><b>01</b>{{ 'experience.item_one'|trans }}<span>+</span></summary><p>{{ 'experience.item_one_text'|trans }}</p></details><details><summary><b>02</b>{{ 'experience.item_two'|trans }}<span>+</span></summary><p>{{ 'experience.item_two_text'|trans }}</p></details><details><summary><b>03</b>{{ 'experience.item_three'|trans }}<span>+</span></summary><p>{{ 'experience.item_three_text'|trans }}</p></details><details><summary><b>04</b>{{ 'experience.item_four'|trans }}<span>+</span></summary><p>{{ 'experience.item_four_text'|trans }}</p></details></div></div>
+                <div class="experience-image"><img src="{{ cms_image('home.experience_image', asset('images/gallery/espace-soin.webp')) }}" alt="{{ 'experience.image_alt'|trans|cms('experience.image_alt') }}" width="1600" height="900" loading="lazy" decoding="async"><a href="#reservation"><span>↗</span>{{ 'actions.appointment'|trans|cms('actions.appointment') }}</a></div>
+                <div class="experience-copy"><div class="section-index">04 — {{ 'experience.index'|trans|cms('experience.index') }}</div><span class="kicker"><i></i>{{ 'experience.eyebrow'|trans|cms('experience.eyebrow') }}</span><h2>{{ 'experience.title'|trans|cms('experience.title') }}</h2><p>{{ 'experience.text'|trans|cms('experience.text') }}</p><div class="experience-list"><details open><summary><b>01</b>{{ 'experience.item_one'|trans|cms('experience.item_one') }}<span>+</span></summary><p>{{ 'experience.item_one_text'|trans|cms('experience.item_one_text') }}</p></details><details><summary><b>02</b>{{ 'experience.item_two'|trans|cms('experience.item_two') }}<span>+</span></summary><p>{{ 'experience.item_two_text'|trans|cms('experience.item_two_text') }}</p></details><details><summary><b>03</b>{{ 'experience.item_three'|trans|cms('experience.item_three') }}<span>+</span></summary><p>{{ 'experience.item_three_text'|trans|cms('experience.item_three_text') }}</p></details><details><summary><b>04</b>{{ 'experience.item_four'|trans|cms('experience.item_four') }}<span>+</span></summary><p>{{ 'experience.item_four_text'|trans|cms('experience.item_four_text') }}</p></details></div></div>
             </div>
         </section>
 
         {% if featured_articles|length %}
         <section class="home-advice section">
-            <div class="shell"><div class="section-topline"><div class="section-index">05 — {{ 'advice_page.featured_eyebrow'|trans }}</div><p>{{ 'advice_page.featured_text'|trans }}</p></div><div class="services-title-row"><h2>{{ 'advice_page.featured_title'|trans }}</h2><a class="round-link" href="{{ path('app_advice',{_locale:app.request.locale}) }}" aria-label="{{ 'advice_page.all'|trans }}">↗</a></div>
-                <div class="home-advice-grid">{% for article in featured_articles %}{% set fallback = article.category == 'wellbeing' ? 'images/gallery/damp.webp' : (article.category == 'postpartum' ? 'images/gallery/perinee.webp' : 'images/gallery/centre.webp') %}<article class="advice-card"><a class="advice-card-image" href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}"><img src="{{ article.image ? asset('uploads/articles/'~article.image) : asset(fallback) }}" alt="{{ article.title(app.request.locale) }}" loading="lazy" decoding="async"></a><div><span>{{ ('advice_page.categories.'~article.category)|trans }}</span><h3><a href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}">{{ article.title(app.request.locale) }}</a></h3><p>{{ article.excerpt(app.request.locale) }}</p><a class="editorial-link" href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}">{{ 'advice_page.read'|trans }} →</a></div></article>{% endfor %}</div>
+            <div class="shell"><div class="section-topline"><div class="section-index">05 — {{ 'advice_page.featured_eyebrow'|trans|cms('advice_page.featured_eyebrow') }}</div><p>{{ 'advice_page.featured_text'|trans|cms('advice_page.featured_text') }}</p></div><div class="services-title-row"><h2>{{ 'advice_page.featured_title'|trans|cms('advice_page.featured_title') }}</h2><a class="round-link" href="{{ path('app_advice',{_locale:app.request.locale}) }}" aria-label="{{ 'advice_page.all'|trans|cms('advice_page.all') }}">↗</a></div>
+                <div class="home-advice-grid">{% for article in featured_articles %}{% set fallback = article.category == 'wellbeing' ? 'images/gallery/damp.webp' : (article.category == 'postpartum' ? 'images/gallery/perinee.webp' : 'images/gallery/centre.webp') %}<article class="advice-card"><a class="advice-card-image" href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}"><img src="{{ article.image ? asset('uploads/articles/'~article.image) : asset(fallback) }}" alt="{{ article.title(app.request.locale) }}" loading="lazy" decoding="async"></a><div><span>{{ ('advice_page.categories.'~article.category)|trans }}</span><h3><a href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}">{{ article.title(app.request.locale) }}</a></h3><p>{{ article.excerpt(app.request.locale) }}</p><a class="editorial-link" href="{{ path('app_advice_show',{_locale:app.request.locale,slug:article.slug}) }}">{{ 'advice_page.read'|trans|cms('advice_page.read') }} →</a></div></article>{% endfor %}</div>
             </div>
         </section>
         {% endif %}
 
         <section class="gallery-section section">
-            <div class="shell gallery-heading"><div class="section-index">05 — {{ 'gallery.index'|trans }}</div><h2>{{ 'gallery.title'|trans }}</h2><p>{{ 'gallery.text'|trans }}</p></div>
-            <div class="gallery-track"><figure class="gallery-tall"><img src="{{ asset('images/gallery/perinee.webp') }}" alt="{{ 'gallery.alt_one'|trans }}" width="1600" height="900" loading="lazy" decoding="async"><figcaption>01 — {{ 'gallery.caption_one'|trans }}</figcaption></figure><figure class="gallery-wide"><img src="{{ asset('images/gallery/espace-soin.webp') }}" alt="{{ 'gallery.alt_two'|trans }}" width="1600" height="900" loading="lazy" decoding="async"><figcaption>02 — {{ 'gallery.caption_two'|trans }}</figcaption></figure><figure class="gallery-tall"><img src="{{ asset('images/gallery/naturel.webp') }}" alt="{{ 'gallery.alt_three'|trans }}" width="1800" height="1200" loading="lazy" decoding="async"><figcaption>03 — {{ 'gallery.caption_three'|trans }}</figcaption></figure></div>
+            <div class="shell gallery-heading"><div class="section-index">05 — {{ 'gallery.index'|trans|cms('gallery.index') }}</div><h2>{{ 'gallery.title'|trans|cms('gallery.title') }}</h2><p>{{ 'gallery.text'|trans|cms('gallery.text') }}</p></div>
+            {% if gallery_items|length %}<div class="gallery-track">{% for item in gallery_items %}<figure class="{{ loop.index is even ? 'gallery-wide' : 'gallery-tall' }}">{% if item.type == 'image' and item.mediaFile %}<img src="{{ asset('uploads/gallery/'~item.mediaFile) }}" alt="{{ item.title(app.request.locale) }}" loading="lazy" decoding="async">{% elseif item.thumbnail %}<img src="{{ asset('uploads/gallery/'~item.thumbnail) }}" alt="{{ item.title(app.request.locale) }}" loading="lazy" decoding="async">{% endif %}<figcaption>{{ '%02d'|format(loop.index) }} — {{ item.title(app.request.locale) }}</figcaption></figure>{% endfor %}</div>{% else %}<div class="gallery-track"><figure class="gallery-tall"><img src="{{ asset('images/gallery/perinee.webp') }}" alt="{{ 'gallery.alt_one'|trans|cms('gallery.alt_one') }}" width="1600" height="900" loading="lazy" decoding="async"><figcaption>01 — {{ 'gallery.caption_one'|trans|cms('gallery.caption_one') }}</figcaption></figure><figure class="gallery-wide"><img src="{{ asset('images/gallery/espace-soin.webp') }}" alt="{{ 'gallery.alt_two'|trans|cms('gallery.alt_two') }}" width="1600" height="900" loading="lazy" decoding="async"><figcaption>02 — {{ 'gallery.caption_two'|trans|cms('gallery.caption_two') }}</figcaption></figure><figure class="gallery-tall"><img src="{{ asset('images/gallery/naturel.webp') }}" alt="{{ 'gallery.alt_three'|trans|cms('gallery.alt_three') }}" width="1800" height="1200" loading="lazy" decoding="async"><figcaption>03 — {{ 'gallery.caption_three'|trans|cms('gallery.caption_three') }}</figcaption></figure></div>{% endif %}
+            <div class="gallery-page-link"><a class="button button-dark" href="{{ path('app_gallery',{_locale:app.request.locale}) }}">{{ 'nav.gallery'|trans|cms('nav.gallery') }} <span>→</span></a></div>
         </section>
 
         <section class="testimonials section" id="testimonials">
             <div class="shell testimonials-layout">
-                <div><div class="section-index">06 — {{ 'testimonials.index'|trans }}</div><span class="kicker"><i></i>{{ 'testimonials.eyebrow'|trans }}</span><h2>{{ 'testimonials.title'|trans }}</h2><p class="testimonial-intro">{{ 'testimonials.intro'|trans }}</p></div>
+                <div><div class="section-index">06 — {{ 'testimonials.index'|trans|cms('testimonials.index') }}</div><span class="kicker"><i></i>{{ 'testimonials.eyebrow'|trans|cms('testimonials.eyebrow') }}</span><h2>{{ 'testimonials.title'|trans|cms('testimonials.title') }}</h2><p class="testimonial-intro">{{ 'testimonials.intro'|trans|cms('testimonials.intro') }}</p></div>
                 <div class="testimonial-slider" data-controller="testimonial-slider">
                     {% for testimonial in testimonials %}
                         <blockquote data-testimonial-slider-target="slide" {{ not loop.first ? 'hidden' }}><div class="testimonial-stars" aria-label="{{ testimonial.rating }}/5">{% for star in 1..5 %}{{ star <= testimonial.rating ? '★' : '☆' }}{% endfor %}</div><span>“</span><p>{{ testimonial.content }}</p><footer><strong>{{ testimonial.author }}</strong><small>{{ testimonial.care }}</small></footer></blockquote>
                     {% else %}
-                        <p class="testimonial-empty">{{ 'testimonials.empty'|trans }}</p>
+                        <p class="testimonial-empty">{{ 'testimonials.empty'|trans|cms('testimonials.empty') }}</p>
                     {% endfor %}
-                    {% if testimonials|length > 1 %}<div class="testimonial-controls"><button type="button" data-action="testimonial-slider#previous" aria-label="{{ 'testimonials.previous'|trans }}">←</button><div>{% for testimonial in testimonials %}<button type="button" class="{{ loop.first ? 'active' }}" data-testimonial-slider-target="dot" data-action="testimonial-slider#go" data-testimonial-slider-index-param="{{ loop.index0 }}" aria-label="{{ loop.index }}"></button>{% endfor %}</div><button type="button" data-action="testimonial-slider#next" aria-label="{{ 'testimonials.next'|trans }}">→</button></div>{% endif %}
+                    {% if testimonials|length > 1 %}<div class="testimonial-controls"><button type="button" data-action="testimonial-slider#previous" aria-label="{{ 'testimonials.previous'|trans|cms('testimonials.previous') }}">←</button><div>{% for testimonial in testimonials %}<button type="button" class="{{ loop.first ? 'active' }}" data-testimonial-slider-target="dot" data-action="testimonial-slider#go" data-testimonial-slider-index-param="{{ loop.index0 }}" aria-label="{{ loop.index }}"></button>{% endfor %}</div><button type="button" data-action="testimonial-slider#next" aria-label="{{ 'testimonials.next'|trans|cms('testimonials.next') }}">→</button></div>{% endif %}
                 </div>
             </div>
             <div class="shell testimonial-submit">
-                <div><span class="kicker"><i></i>{{ 'testimonials.share_eyebrow'|trans }}</span><h3>{{ 'testimonials.share_title'|trans }}</h3><p>{{ 'testimonials.moderation_note'|trans }}</p></div>
+                <div><span class="kicker"><i></i>{{ 'testimonials.share_eyebrow'|trans|cms('testimonials.share_eyebrow') }}</span><h3>{{ 'testimonials.share_title'|trans|cms('testimonials.share_title') }}</h3><p>{{ 'testimonials.moderation_note'|trans|cms('testimonials.moderation_note') }}</p></div>
                 <div class="testimonial-form-panel">
                     {% for message in app.flashes('testimonial_success') %}<p class="form-notice success">{{ message|trans }}</p>{% endfor %}
                     {% for message in app.flashes('testimonial_error') %}<p class="form-notice error">{{ message|trans }}</p>{% endfor %}
                     {{ form_start(testimonial_form) }}
                     <div class="testimonial-fields">{{ form_row(testimonial_form.author) }}{{ form_row(testimonial_form.care) }}{{ form_row(testimonial_form.rating) }}{{ form_row(testimonial_form.content) }}</div>
-                    <button class="booking-next" type="submit">{{ 'testimonials.submit'|trans }} <span>→</span></button>
+                    <button class="booking-next" type="submit">{{ 'testimonials.submit'|trans|cms('testimonials.submit') }} <span>→</span></button>
                     {{ form_end(testimonial_form) }}
                 </div>
             </div>
@@ -100,21 +101,21 @@
 
         <section class="booking-section section" id="reservation" data-controller="booking">
             <div class="shell booking-layout">
-                <div class="booking-intro"><div class="section-index">07 — {{ 'booking.index'|trans }}</div><span class="kicker"><i></i>{{ 'booking.eyebrow'|trans }}</span><h2>{{ 'booking.title'|trans }}</h2><p>{{ 'booking.text'|trans }}</p><ul><li>{{ 'booking.reassurance_one'|trans }}</li><li>{{ 'booking.reassurance_two'|trans }}</li><li>{{ 'booking.reassurance_three'|trans }}</li></ul></div>
+                <div class="booking-intro"><div class="section-index">07 — {{ 'booking.index'|trans|cms('booking.index') }}</div><span class="kicker"><i></i>{{ 'booking.eyebrow'|trans|cms('booking.eyebrow') }}</span><h2>{{ 'booking.title'|trans|cms('booking.title') }}</h2><p>{{ 'booking.text'|trans|cms('booking.text') }}</p><ul><li>{{ 'booking.reassurance_one'|trans|cms('booking.reassurance_one') }}</li><li>{{ 'booking.reassurance_two'|trans|cms('booking.reassurance_two') }}</li><li>{{ 'booking.reassurance_three'|trans|cms('booking.reassurance_three') }}</li></ul></div>
                 <div class="booking-panel">
-                    <div class="booking-progress" aria-label="{{ 'booking.progress'|trans }}"><span class="active" data-booking-target="progress">1</span><i></i><span data-booking-target="progress">2</span><i></i><span data-booking-target="progress">3</span></div>
+                    <div class="booking-progress" aria-label="{{ 'booking.progress'|trans|cms('booking.progress') }}"><span class="active" data-booking-target="progress">1</span><i></i><span data-booking-target="progress">2</span><i></i><span data-booking-target="progress">3</span></div>
                     {% for message in app.flashes('appointment_success') %}<p class="form-notice success">{{ message|trans }}</p>{% endfor %}{% for message in app.flashes('appointment_error') %}<p class="form-notice error">{{ message|trans }}</p>{% endfor %}
                     {{ form_start(appointment_form) }}
-                        <fieldset class="booking-step" data-booking-target="step"><legend><small>01</small>{{ 'booking.step_one'|trans }}</legend>{{ form_row(appointment_form.service) }}</fieldset>
-                        <fieldset class="booking-step" data-booking-target="step" hidden><legend><small>02</small>{{ 'booking.step_two'|trans }}</legend>{{ form_row(appointment_form.availability) }}</fieldset>
-                        <fieldset class="booking-step" data-booking-target="step" hidden><legend><small>03</small>{{ 'booking.step_three'|trans }}</legend><div class="booking-summary" aria-live="polite"><strong>{{ 'booking.summary_title'|trans }}</strong><div><span>{{ 'booking.summary_service'|trans }}</span><b data-booking-target="serviceSummary">—</b></div><div><span>{{ 'booking.summary_slot'|trans }}</span><b data-booking-target="slotSummary">—</b></div><small>{{ 'booking.timezone'|trans }}</small></div><div class="booking-fields">{{ form_row(appointment_form.fullName) }}{{ form_row(appointment_form.phone) }}{{ form_row(appointment_form.email) }}{{ form_row(appointment_form.note) }}</div><p class="booking-privacy">✓ {{ 'booking.confirmation_note'|trans }}</p></fieldset>
-                        <div class="booking-actions"><button type="button" class="booking-back" data-booking-target="back" data-action="booking#previous" hidden>{{ 'booking.back'|trans }}</button><button type="button" class="booking-next" data-booking-target="next" data-action="booking#next">{{ 'booking.next'|trans }} <span>→</span></button><button type="submit" class="booking-next" data-booking-target="submit" hidden>{{ 'booking.confirm'|trans }} <span>✓</span></button></div>
+                        <fieldset class="booking-step" data-booking-target="step"><legend><small>01</small>{{ 'booking.step_one'|trans|cms('booking.step_one') }}</legend>{{ form_row(appointment_form.service) }}</fieldset>
+                        <fieldset class="booking-step" data-booking-target="step" hidden><legend><small>02</small>{{ 'booking.step_two'|trans|cms('booking.step_two') }}</legend>{{ form_row(appointment_form.availability) }}</fieldset>
+                        <fieldset class="booking-step" data-booking-target="step" hidden><legend><small>03</small>{{ 'booking.step_three'|trans|cms('booking.step_three') }}</legend><div class="booking-summary" aria-live="polite"><strong>{{ 'booking.summary_title'|trans|cms('booking.summary_title') }}</strong><div><span>{{ 'booking.summary_service'|trans|cms('booking.summary_service') }}</span><b data-booking-target="serviceSummary">—</b></div><div><span>{{ 'booking.summary_slot'|trans|cms('booking.summary_slot') }}</span><b data-booking-target="slotSummary">—</b></div><small>{{ 'booking.timezone'|trans|cms('booking.timezone') }}</small></div><div class="booking-fields">{{ form_row(appointment_form.fullName) }}{{ form_row(appointment_form.phone) }}{{ form_row(appointment_form.email) }}{{ form_row(appointment_form.note) }}</div><p class="booking-privacy">✓ {{ 'booking.confirmation_note'|trans|cms('booking.confirmation_note') }}</p></fieldset>
+                        <div class="booking-actions"><button type="button" class="booking-back" data-booking-target="back" data-action="booking#previous" hidden>{{ 'booking.back'|trans|cms('booking.back') }}</button><button type="button" class="booking-next" data-booking-target="next" data-action="booking#next">{{ 'booking.next'|trans|cms('booking.next') }} <span>→</span></button><button type="submit" class="booking-next" data-booking-target="submit" hidden>{{ 'booking.confirm'|trans|cms('booking.confirm') }} <span>✓</span></button></div>
                     {{ form_end(appointment_form) }}
                 </div>
             </div>
         </section>
 
-        <section class="appointment"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans }}</span><h2>{{ 'appointment.title'|trans }}</h2></div><p>{{ 'appointment.text'|trans }}</p><a class="appointment-link" href="#reservation"><span>{{ 'actions.appointment'|trans }}</span><b>↗</b></a></div></section>
+        <section class="appointment"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans|cms('appointment.eyebrow') }}</span><h2>{{ 'appointment.title'|trans|cms('appointment.title') }}</h2></div><p>{{ 'appointment.text'|trans|cms('appointment.text') }}</p><a class="appointment-link" href="#reservation"><span>{{ 'actions.appointment'|trans|cms('actions.appointment') }}</span><b>↗</b></a></div></section>
     </main>
 
     {% include '_footer.html.twig' %}

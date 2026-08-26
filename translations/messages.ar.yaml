@@ -16,6 +16,14 @@ nav:
   languages: 'اختيار اللغة'
   expertise: 'خبرتنا'
   advice: 'نصائح'
+  gallery: 'المعرض'
+gallery_page:
+  meta_title: 'معرض الصور والفيديو — FyraCare'
+  meta_description: 'اكتشفي مركز FyraCare ومساحاته وخدماته من خلال الصور والفيديو.'
+  eyebrow: 'داخل عالم FyraCare'
+  title: 'معرض الصور والفيديو'
+  intro: 'اكتشفي المركز ولحظات الرعاية التي تعبّر عن تجربة FyraCare.'
+  empty: 'ستتم إضافة صور وفيديوهات جديدة قريباً.'
 advice_page:
   meta_title: 'نصائح الحمل والعافية — FyraCare'
   meta_description: 'نصائح FyraCare حول الحمل والولادة والرضاعة وصحة قاع الحوض وما بعد الولادة.'

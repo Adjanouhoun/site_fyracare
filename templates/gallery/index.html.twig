@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'gallery_page.meta_title'|trans|cms('gallery_page.meta_title') }}{% endblock %}
+{% block meta_description %}{{ 'gallery_page.meta_description'|trans|cms('gallery_page.meta_description') }}{% endblock %}
+{% block body %}
+{% include '_header.html.twig' %}
+{% set breadcrumb_items = [{label:'seo.home'|trans|cms('seo.home'),url:path('app_home',{_locale:app.request.locale})},{label:'nav.gallery'|trans|cms('nav.gallery')}] %}{% include '_breadcrumbs.html.twig' %}
+<main class="gallery-page">
+  <header class="page-hero"><div class="shell"><span class="kicker"><i></i>{{ 'gallery_page.eyebrow'|trans|cms('gallery_page.eyebrow') }}</span><h1>{{ 'gallery_page.title'|trans|cms('gallery_page.title') }}</h1><p>{{ 'gallery_page.intro'|trans|cms('gallery_page.intro') }}</p></div></header>
+  <section class="section"><div class="shell">
+    {% if gallery_items|length %}<div class="media-gallery" data-controller="lightbox">
+      {% for item in gallery_items %}<article class="media-gallery-item {{ item.type == 'video' ? 'is-video' }}">
+        {% if item.type == 'video' %}
+          {% if item.mediaFile %}<video controls preload="metadata"{% if item.thumbnail %} poster="{{ asset('uploads/gallery/'~item.thumbnail) }}"{% endif %}><source src="{{ asset('uploads/gallery/'~item.mediaFile) }}"></video>
+          {% elseif item.embedUrl %}<iframe src="{{ item.embedUrl }}" title="{{ item.title(app.request.locale) }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>{% endif %}
+        {% elseif item.mediaFile %}<button type="button" class="detail-gallery-open" data-action="lightbox#open" data-lightbox-source-param="{{ asset('uploads/gallery/'~item.mediaFile) }}" aria-label="{{ item.title(app.request.locale) }}"><img src="{{ asset('uploads/gallery/'~item.mediaFile) }}" alt="{{ item.title(app.request.locale) }}" loading="lazy" decoding="async"><span aria-hidden="true">⌕</span></button>{% endif %}
+        <div><span>{{ '%02d'|format(loop.index) }}</span><h2>{{ item.title(app.request.locale) }}</h2>{% if item.caption(app.request.locale) %}<p>{{ item.caption(app.request.locale) }}</p>{% endif %}</div>
+      </article>{% endfor %}
+      <dialog class="lightbox" data-lightbox-target="dialog" data-action="click->lightbox#backdropClose"><button type="button" class="lightbox-close" data-action="lightbox#close" aria-label="Fermer">×</button><img data-lightbox-target="image" alt="FyraCare"></dialog>
+    </div>{% else %}<p class="gallery-empty">{{ 'gallery_page.empty'|trans|cms('gallery_page.empty') }}</p>{% endif %}
+  </div></section>
+</main>
+{% include '_footer.html.twig' %}
+{% endblock %}

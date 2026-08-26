@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 use App\Entity\Appointment;
 use App\Entity\ContactMessage;
 use App\Entity\Testimonial;
+use App\Service\SiteContentSynchronizer;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -14,9 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
-    public function __construct(private EntityManagerInterface $entityManager) {}
+    public function __construct(private EntityManagerInterface $entityManager, private SiteContentSynchronizer $contentSynchronizer) {}
     public function index(): Response
     {
+        $this->contentSynchronizer->synchronize();
         return $this->render('admin/dashboard.html.twig', [
             'pendingAppointments' => $this->entityManager->getRepository(Appointment::class)->count(['status' => Appointment::STATUS_PENDING]),
             'upcomingAppointments' => $this->entityManager->getRepository(Appointment::class)->count(['status' => Appointment::STATUS_CONFIRMED]),
@@ -28,6 +30,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        yield MenuItem::section('Contenu éditorial');
+        yield MenuItem::linkTo(SiteContentCrudController::class, 'Textes & images', 'fa fa-pen-to-square');
+        yield MenuItem::linkTo(GalleryItemCrudController::class, 'Galerie photo / vidéo', 'fa fa-photo-film');
         yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations', 'fa fa-heart');
         yield MenuItem::linkTo(AdviceArticleCrudController::class, 'Conseils', 'fa fa-newspaper');
         yield MenuItem::linkTo(AppointmentCrudController::class, 'Rendez-vous', 'fa fa-calendar-check');

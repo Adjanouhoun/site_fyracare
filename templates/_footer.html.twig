@@ -1,1 +1,30 @@
-<footer class="footer"><div class="shell footer-main"><div class="footer-identity"><a class="brand footer-brand" href="{{ path('app_home', {_locale: app.request.locale}) }}"><img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span></a><p>{{ 'footer.note'|trans }}</p></div><nav class="footer-link-group" aria-label="{{ 'footer.navigation'|trans }}"><strong>{{ 'footer.navigation'|trans }}</strong><a href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'nav.about'|trans }}</a><a href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'nav.services'|trans }}</a><a href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'nav.expertise'|trans }}</a><a href="{{ path('app_advice', {_locale: app.request.locale}) }}">{{ 'nav.advice'|trans }}</a><a href="{{ path('app_contact', {_locale: app.request.locale}) }}">{{ 'nav.contact'|trans }}</a></nav><nav class="footer-link-group" aria-label="{{ 'footer.information'|trans }}"><strong>{{ 'footer.information'|trans }}</strong><a href="{{ path('app_privacy', {_locale: app.request.locale}) }}">{{ 'legal.privacy'|trans }}</a><a href="{{ path('app_legal', {_locale: app.request.locale}) }}">{{ 'legal.notices'|trans }}</a></nav></div><div class="shell footer-bottom"><span>© {{ 'now'|date('Y') }} FyraCare</span><span>Nouakchott · Mauritanie</span></div></footer>
+<footer class="footer">
+	<div class="shell footer-main">
+		<div class="footer-identity">
+			<a class="brand footer-brand" href="{{ path('app_home', {_locale: app.request.locale}) }}"><img class="brand-logo" src="{{ cms_image('global.logo', asset('images/logo-fyracare.png')) }}" alt="FyraCare"><span>
+					<strong>Fyra</strong>Care</span>
+			</a>
+			<p>{{ 'footer.note'|trans|cms('footer.note') }}</p>
+		</div>
+		<nav class="footer-link-group" aria-label="{{ 'footer.navigation'|trans|cms('footer.navigation') }}">
+			<strong>{{ 'footer.navigation'|trans|cms('footer.navigation') }}</strong>
+			<a href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'nav.about'|trans|cms('nav.about') }}</a>
+			<a href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'nav.services'|trans|cms('nav.services') }}</a>
+			<a href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'nav.expertise'|trans|cms('nav.expertise') }}</a>
+			<a href="{{ path('app_advice', {_locale: app.request.locale}) }}">{{ 'nav.advice'|trans|cms('nav.advice') }}</a>
+			<a href="{{ path('app_gallery', {_locale: app.request.locale}) }}">{{ 'nav.gallery'|trans|cms('nav.gallery') }}</a>
+			<a href="{{ path('app_contact', {_locale: app.request.locale}) }}">{{ 'nav.contact'|trans|cms('nav.contact') }}</a>
+		</nav>
+		<nav class="footer-link-group" aria-label="{{ 'footer.information'|trans|cms('footer.information') }}">
+			<strong>{{ 'footer.information'|trans|cms('footer.information') }}</strong>
+			<a href="{{ path('app_privacy', {_locale: app.request.locale}) }}">{{ 'legal.privacy'|trans|cms('legal.privacy') }}</a>
+			<a href="{{ path('app_legal', {_locale: app.request.locale}) }}">{{ 'legal.notices'|trans|cms('legal.notices') }}</a>
+		</nav>
+	</div>
+	<div class="shell footer-bottom">
+		<span>©
+			{{ 'now'|date('Y') }}
+			FyraCare</span>
+		<span>Nouakchott · Mauritanie</span>
+	</div>
+</footer>

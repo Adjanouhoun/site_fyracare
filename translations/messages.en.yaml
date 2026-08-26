@@ -16,6 +16,14 @@ nav:
   languages: 'Choose a language'
   expertise: 'Our expertise'
   advice: 'Advice'
+  gallery: 'Gallery'
+gallery_page:
+  meta_title: 'Photo and video gallery — FyraCare'
+  meta_description: 'Discover the FyraCare centre, spaces, care and support through photos and videos.'
+  eyebrow: 'Inside FyraCare'
+  title: 'Our photo & video gallery'
+  intro: 'Discover our centre, caring gestures and the moments that express the FyraCare experience.'
+  empty: 'New photos and videos will be added soon.'
 advice_page:
   meta_title: 'Pregnancy and wellbeing advice — FyraCare'
   meta_description: 'FyraCare advice on pregnancy, birth, breastfeeding, pelvic health and postpartum recovery.'

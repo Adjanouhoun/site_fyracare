@@ -1,5 +1,5 @@
 {% if breadcrumb_items is defined and breadcrumb_items|length %}
-    <nav class="breadcrumbs" aria-label="{{ 'seo.breadcrumb'|trans }}">
+    <nav class="breadcrumbs" aria-label="{{ 'seo.breadcrumb'|trans|cms('seo.breadcrumb') }}">
         <div class="shell"><ol>
             {% for item in breadcrumb_items %}
                 <li>{% if item.url is defined and item.url %}<a href="{{ item.url }}">{{ item.label }}</a>{% else %}<span aria-current="page">{{ item.label }}</span>{% endif %}</li>

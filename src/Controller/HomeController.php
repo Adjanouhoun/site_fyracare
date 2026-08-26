@@ -11,6 +11,7 @@ use App\Form\TestimonialType;
 use App\Repository\ServiceRepository;
 use App\Repository\AdviceArticleRepository;
 use App\Repository\TestimonialRepository;
+use App\Repository\GalleryItemRepository;
 use App\Service\AdminNotificationMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/{_locale}', name: 'app_home', requirements: ['_locale' => 'fr|en|ar'], defaults: ['_locale' => 'fr'])]
-    public function index(Request $request, ServiceRepository $services, TestimonialRepository $testimonials, AdviceArticleRepository $articles): Response
+    public function index(Request $request, ServiceRepository $services, TestimonialRepository $testimonials, AdviceArticleRepository $articles, GalleryItemRepository $gallery): Response
     {
         $locale = $request->getLocale();
         $form = $this->createForm(TestimonialType::class, new Testimonial(), [
@@ -38,7 +39,7 @@ final class HomeController extends AbstractController
             }
         }
         $appointmentForm = $this->createForm(AppointmentType::class, $appointment, ['locale' => $locale, 'action' => $this->generateUrl('app_appointment_submit', ['_locale' => $locale])]);
-        return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive(), 'featured_articles' => $articles->findFeatured(), 'testimonials' => $testimonials->findApproved(), 'testimonial_form' => $form, 'appointment_form' => $appointmentForm]);
+        return $this->render('home/index.html.twig', ['featured_services' => $services->findFeatured(), 'services' => $services->findActive(), 'featured_articles' => $articles->findFeatured(), 'testimonials' => $testimonials->findApproved(), 'gallery_items' => $gallery->findFeatured(), 'testimonial_form' => $form, 'appointment_form' => $appointmentForm]);
     }
 
     #[Route('/{_locale}/rendez-vous', name: 'app_appointment_submit', requirements: ['_locale' => 'fr|en|ar'], methods: ['POST'])]
@@ -85,6 +86,9 @@ final class HomeController extends AbstractController
 
     #[Route('/{_locale}/notre-expertise', name: 'app_expertise', requirements: ['_locale' => 'fr|en|ar'])]
     public function expertise(): Response { return $this->render('expertise/index.html.twig'); }
+
+    #[Route('/{_locale}/galerie', name: 'app_gallery', requirements: ['_locale' => 'fr|en|ar'])]
+    public function gallery(GalleryItemRepository $gallery): Response { return $this->render('gallery/index.html.twig', ['gallery_items' => $gallery->findPublished()]); }
 
     #[Route('/{_locale}/confidentialite', name: 'app_privacy', requirements: ['_locale' => 'fr|en|ar'])]
     public function privacy(): Response { return $this->render('legal/privacy.html.twig'); }

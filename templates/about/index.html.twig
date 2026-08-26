@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'about_page.meta_title'|trans }}{% endblock %}
-{% block meta_description %}{{ 'about_page.meta_description'|trans }}{% endblock %}
+{% block title %}{{ 'about_page.meta_title'|trans|cms('about_page.meta_title') }}{% endblock %}
+{% block meta_description %}{{ 'about_page.meta_description'|trans|cms('about_page.meta_description') }}{% endblock %}
 
 {% block body %}
     {% include '_header.html.twig' %}
-    {% set breadcrumb_items = [{label: 'seo.home'|trans, url: path('app_home', {_locale: app.request.locale})}, {label: 'nav.about'|trans}] %}
+    {% set breadcrumb_items = [{label: 'seo.home'|trans|cms('seo.home'), url: path('app_home', {_locale: app.request.locale})}, {label: 'nav.about'|trans|cms('nav.about')}] %}
     {% include '_breadcrumbs.html.twig' %}
     <main class="editorial-page">
         <section class="editorial-hero">
             <div class="shell editorial-hero-grid">
-                <div class="editorial-hero-copy"><span class="kicker"><i></i>{{ 'about_page.eyebrow'|trans }}</span><h1>{{ 'about_page.title'|trans }}</h1><p>{{ 'about_page.intro'|trans }}</p></div>
-                <figure><img src="{{ asset('images/gallery/centre.webp') }}" alt="{{ 'about_page.image_alt'|trans }}" width="1600" height="900" fetchpriority="high" decoding="async"></figure>
+                <div class="editorial-hero-copy"><span class="kicker"><i></i>{{ 'about_page.eyebrow'|trans|cms('about_page.eyebrow') }}</span><h1>{{ 'about_page.title'|trans|cms('about_page.title') }}</h1><p>{{ 'about_page.intro'|trans|cms('about_page.intro') }}</p></div>
+                <figure><img src="{{ cms_image('about.hero_image', asset('images/gallery/centre.webp')) }}" alt="{{ 'about_page.image_alt'|trans|cms('about_page.image_alt') }}" width="1600" height="900" fetchpriority="high" decoding="async"></figure>
             </div>
         </section>
         <section class="editorial-story section">
             <div class="shell editorial-story-grid">
-                <aside><span>01</span><strong>{{ 'about_page.aside'|trans }}</strong></aside>
-                <article><p class="editorial-lead">{{ 'about_page.paragraph_one'|trans }}</p><p>{{ 'about_page.paragraph_two'|trans }}</p><div class="editorial-highlights"><div><span>01</span><strong>{{ 'about_page.point_one'|trans }}</strong></div><div><span>02</span><strong>{{ 'about_page.point_two'|trans }}</strong></div><div><span>03</span><strong>{{ 'about_page.point_three'|trans }}</strong></div></div></article>
+                <aside><span>01</span><strong>{{ 'about_page.aside'|trans|cms('about_page.aside') }}</strong></aside>
+                <article><p class="editorial-lead">{{ 'about_page.paragraph_one'|trans|cms('about_page.paragraph_one') }}</p><p>{{ 'about_page.paragraph_two'|trans|cms('about_page.paragraph_two') }}</p><div class="editorial-highlights"><div><span>01</span><strong>{{ 'about_page.point_one'|trans|cms('about_page.point_one') }}</strong></div><div><span>02</span><strong>{{ 'about_page.point_two'|trans|cms('about_page.point_two') }}</strong></div><div><span>03</span><strong>{{ 'about_page.point_three'|trans|cms('about_page.point_three') }}</strong></div></div></article>
             </div>
         </section>
-        <section class="editorial-cta"><div class="shell"><span class="kicker"><i></i>{{ 'about_page.cta_eyebrow'|trans }}</span><h2>{{ 'about_page.cta_title'|trans }}</h2><a class="button button-dark" href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'actions.discover'|trans }} <span>→</span></a></div></section>
+        <section class="editorial-cta"><div class="shell"><span class="kicker"><i></i>{{ 'about_page.cta_eyebrow'|trans|cms('about_page.cta_eyebrow') }}</span><h2>{{ 'about_page.cta_title'|trans|cms('about_page.cta_title') }}</h2><a class="button button-dark" href="{{ path('app_services', {_locale: app.request.locale}) }}">{{ 'actions.discover'|trans|cms('actions.discover') }} <span>→</span></a></div></section>
     </main>
     {% include '_footer.html.twig' %}
 {% endblock %}

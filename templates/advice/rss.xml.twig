@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>{{ 'advice_page.rss_title'|trans }}</title>
+    <title>{{ 'advice_page.rss_title'|trans|cms('advice_page.rss_title') }}</title>
     <link>{{ absolute_url(path('app_advice',{_locale:app.request.locale})) }}</link>
-    <description>{{ 'advice_page.meta_description'|trans }}</description>
+    <description>{{ 'advice_page.meta_description'|trans|cms('advice_page.meta_description') }}</description>
     <language>{{ app.request.locale }}</language>
     {% for article in articles %}
     <item>

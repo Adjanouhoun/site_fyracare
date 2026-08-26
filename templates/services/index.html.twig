@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'services_page.meta_title'|trans }}{% endblock %}
-{% block meta_description %}{{ 'services_page.meta_description'|trans }}{% endblock %}
+{% block title %}{{ 'services_page.meta_title'|trans|cms('services_page.meta_title') }}{% endblock %}
+{% block meta_description %}{{ 'services_page.meta_description'|trans|cms('services_page.meta_description') }}{% endblock %}
 
 {% block body %}
     {% include '_header.html.twig' %}
     {% set breadcrumb_items = [
-        {label: 'services_page.back_home'|trans, url: path('app_home', {_locale: app.request.locale})},
-        {label: 'nav.services'|trans}
+        {label: 'services_page.back_home'|trans|cms('services_page.back_home'), url: path('app_home', {_locale: app.request.locale})},
+        {label: 'nav.services'|trans|cms('nav.services')}
     ] %}
     {% include '_breadcrumbs.html.twig' %}
 
     <main>
         <section class="services-page-hero">
-            <div class="shell services-page-intro"><span class="hero-pill">✦ {{ 'services_page.eyebrow'|trans }}</span><h1>{{ 'services_page.title_rich'|trans|raw }}</h1><p>{{ 'services_page.intro'|trans }}</p></div>
-            <div class="services-page-image"><img src="{{ asset('images/gallery/perinee.webp') }}" alt="{{ 'services_page.image_alt'|trans }}" width="1600" height="900" fetchpriority="high" decoding="async"></div>
+            <div class="shell services-page-intro"><span class="hero-pill">✦ {{ 'services_page.eyebrow'|trans|cms('services_page.eyebrow') }}</span><h1>{{ 'services_page.title_rich'|trans|cms('services_page.title_rich')|raw }}</h1><p>{{ 'services_page.intro'|trans|cms('services_page.intro') }}</p></div>
+            <div class="services-page-image"><img src="{{ cms_image('services.hero_image', asset('images/gallery/perinee.webp')) }}" alt="{{ 'services_page.image_alt'|trans|cms('services_page.image_alt') }}" width="1600" height="900" fetchpriority="high" decoding="async"></div>
         </section>
 
         <section class="services-catalog-section section" id="catalogue" data-controller="service-filter">
             <div class="shell">
-                <div class="service-catalog-heading"><span>{{ 'services.catalog_eyebrow'|trans }}</span><h2>{{ 'services.catalog_title'|trans }}</h2><p>{{ 'services.catalog_text'|trans }}</p></div>
-                <div class="service-filter"><label for="service-search">{{ 'services.filter_label'|trans }}</label><div><span aria-hidden="true">⌕</span><input id="service-search" type="search" placeholder="{{ 'services.filter_placeholder'|trans }}" autocomplete="off" data-service-filter-target="input" data-action="input->service-filter#filter"></div></div>
+                <div class="service-catalog-heading"><span>{{ 'services.catalog_eyebrow'|trans|cms('services.catalog_eyebrow') }}</span><h2>{{ 'services.catalog_title'|trans|cms('services.catalog_title') }}</h2><p>{{ 'services.catalog_text'|trans|cms('services.catalog_text') }}</p></div>
+                <div class="service-filter"><label for="service-search">{{ 'services.filter_label'|trans|cms('services.filter_label') }}</label><div><span aria-hidden="true">⌕</span><input id="service-search" type="search" placeholder="{{ 'services.filter_placeholder'|trans|cms('services.filter_placeholder') }}" autocomplete="off" data-service-filter-target="input" data-action="input->service-filter#filter"></div></div>
                 <div class="service-catalog">
-                    {% for service in services %}<article class="service-card" id="{{ service.code }}" data-service-filter-target="item" data-search-value="{{ (service.title(app.request.locale) ~ ' ' ~ service.description(app.request.locale))|lower }}"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0 % 8] }}</div><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale)|slice(0, 180) }}{% if service.description(app.request.locale)|length > 180 %}…{% endif %}</p><div class="service-price">{% if service.price %}<strong>{{ service.price|number_format(0, ',', ' ') }}</strong> <span>MRU</span>{% else %}<span>{{ 'services.price_on_request'|trans }}</span>{% endif %}</div><div class="service-card-actions"><a href="{{ path('app_service_show', {_locale: app.request.locale, code: service.code}) }}">{{ 'services.read_more'|trans }} <span>→</span></a><a href="{{ path('app_home', {_locale: app.request.locale, service: service.code}) }}#reservation">{{ 'services.book'|trans }} <span>↗</span></a></div></article>{% endfor %}
+                    {% for service in services %}<article class="service-card" id="{{ service.code }}" data-service-filter-target="item" data-search-value="{{ (service.title(app.request.locale) ~ ' ' ~ service.description(app.request.locale))|lower }}"><span class="service-card-number">{{ '%02d'|format(loop.index) }}</span><div class="service-card-icon" aria-hidden="true">{{ ['✦','◌','◇','✺','⌁','○','☾','❋'][loop.index0 % 8] }}</div><h3>{{ service.title(app.request.locale) }}</h3><p>{{ service.description(app.request.locale)|slice(0, 180) }}{% if service.description(app.request.locale)|length > 180 %}…{% endif %}</p><div class="service-price">{% if service.price %}<strong>{{ service.price|number_format(0, ',', ' ') }}</strong> <span>MRU</span>{% else %}<span>{{ 'services.price_on_request'|trans|cms('services.price_on_request') }}</span>{% endif %}</div><div class="service-card-actions"><a href="{{ path('app_service_show', {_locale: app.request.locale, code: service.code}) }}">{{ 'services.read_more'|trans|cms('services.read_more') }} <span>→</span></a><a href="{{ path('app_home', {_locale: app.request.locale, service: service.code}) }}#reservation">{{ 'services.book'|trans|cms('services.book') }} <span>↗</span></a></div></article>{% endfor %}
                 </div>
-                <p class="service-filter-empty" data-service-filter-target="empty" hidden>{{ 'services.no_results'|trans }}</p>
+                <p class="service-filter-empty" data-service-filter-target="empty" hidden>{{ 'services.no_results'|trans|cms('services.no_results') }}</p>
             </div>
         </section>
 
-        <section class="appointment" id="reservation"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans }}</span><h2>{{ 'appointment.title'|trans }}</h2></div><p>{{ 'appointment.text'|trans }}</p><a class="appointment-link" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation"><span>{{ 'actions.appointment'|trans }}</span><b>↗</b></a></div></section>
+        <section class="appointment" id="reservation"><div class="shell appointment-inner"><span class="appointment-flower" aria-hidden="true">✽</span><div><span class="kicker kicker-light"><i></i>{{ 'appointment.eyebrow'|trans|cms('appointment.eyebrow') }}</span><h2>{{ 'appointment.title'|trans|cms('appointment.title') }}</h2></div><p>{{ 'appointment.text'|trans|cms('appointment.text') }}</p><a class="appointment-link" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation"><span>{{ 'actions.appointment'|trans|cms('actions.appointment') }}</span><b>↗</b></a></div></section>
     </main>
 
     {% include '_footer.html.twig' %}

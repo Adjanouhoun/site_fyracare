@@ -2,27 +2,28 @@
 {% set language_params = {_locale: app.request.locale} %}
 {% if current_route == 'app_service_show' %}{% set language_params = language_params|merge({code: service.code}) %}{% endif %}
 {% if current_route == 'app_advice_show' %}{% set language_params = language_params|merge({slug: article.slug}) %}{% endif %}
-<div class="site-announcement">{{ 'nav.announcement'|trans }}</div>
+<div class="site-announcement">{{ 'nav.announcement'|trans|cms('nav.announcement') }}</div>
 <header class="site-header{{ current_route != 'app_home' ? ' services-header' : '' }}" data-controller="nav-menu">
-    <nav class="nav shell" aria-label="{{ 'nav.main'|trans }}">
+    <nav class="nav shell" aria-label="{{ 'nav.main'|trans|cms('nav.main') }}">
         <a class="brand" href="{{ path('app_home', {_locale: app.request.locale}) }}">
-            <img class="brand-logo" src="{{ asset('images/logo-fyracare.png') }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span>
+            <img class="brand-logo" src="{{ cms_image('global.logo', asset('images/logo-fyracare.png')) }}" alt="FyraCare"><span><strong>Fyra</strong>Care</span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="{{ 'nav.open_menu'|trans }}" data-nav-menu-target="toggle" data-action="nav-menu#toggle"><span aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="{{ 'nav.open_menu'|trans|cms('nav.open_menu') }}" data-nav-menu-target="toggle" data-action="nav-menu#toggle"><span aria-hidden="true"><i></i><i></i><i></i></span></button>
         <div class="nav-links" id="site-navigation" data-nav-menu-target="panel">
-            <a href="{{ path('app_home', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_home' ? 'active' }}">{{ 'seo.home'|trans }}</a>
-            <a href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'nav.about'|trans }}</a>
-            <a href="{{ path('app_services', {_locale: app.request.locale}) }}" class="{{ current_route in ['app_services', 'app_service_show'] ? 'active' }}">{{ 'nav.services'|trans }}</a>
-            <a href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'nav.expertise'|trans }}</a>
-            <a href="{{ path('app_advice', {_locale: app.request.locale}) }}" class="{{ current_route in ['app_advice', 'app_advice_show'] ? 'active' }}">{{ 'nav.advice'|trans }}</a>
-            <a href="{{ path('app_contact', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_contact' ? 'active' }}">{{ 'nav.contact'|trans }}</a>
+            <a href="{{ path('app_home', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_home' ? 'active' }}">{{ 'seo.home'|trans|cms('seo.home') }}</a>
+            <a href="{{ path('app_about', {_locale: app.request.locale}) }}">{{ 'nav.about'|trans|cms('nav.about') }}</a>
+            <a href="{{ path('app_services', {_locale: app.request.locale}) }}" class="{{ current_route in ['app_services', 'app_service_show'] ? 'active' }}">{{ 'nav.services'|trans|cms('nav.services') }}</a>
+            <a href="{{ path('app_expertise', {_locale: app.request.locale}) }}">{{ 'nav.expertise'|trans|cms('nav.expertise') }}</a>
+            <a href="{{ path('app_advice', {_locale: app.request.locale}) }}" class="{{ current_route in ['app_advice', 'app_advice_show'] ? 'active' }}">{{ 'nav.advice'|trans|cms('nav.advice') }}</a>
+            <a href="{{ path('app_gallery', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_gallery' ? 'active' }}">{{ 'nav.gallery'|trans|cms('nav.gallery') }}</a>
+            <a href="{{ path('app_contact', {_locale: app.request.locale}) }}" class="{{ current_route == 'app_contact' ? 'active' }}">{{ 'nav.contact'|trans|cms('nav.contact') }}</a>
         </div>
-        <div class="languages" aria-label="{{ 'nav.languages'|trans }}">
+        <div class="languages" aria-label="{{ 'nav.languages'|trans|cms('nav.languages') }}">
             {% for locale, label in {fr: 'FR', en: 'EN', ar: 'AR'} %}
                 <a href="{{ path(current_route, language_params|merge({_locale: locale})) }}" class="{{ app.request.locale == locale ? 'active' }}" lang="{{ locale }}">{{ label }}</a>
             {% endfor %}
         </div>
-        <a class="nav-cta" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans }} <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans|cms('actions.appointment') }} <span aria-hidden="true">↗</span></a>
     </nav>
 </header>
-<a class="mobile-booking-cta" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans }} <span aria-hidden="true">↗</span></a>
+<a class="mobile-booking-cta" href="{{ path('app_home', {_locale: app.request.locale}) }}#reservation">{{ 'actions.appointment'|trans|cms('actions.appointment') }} <span aria-hidden="true">↗</span></a>

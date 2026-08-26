@@ -37,6 +37,7 @@ final class SeoMarkupTest extends WebTestCase
         foreach (['fr', 'en', 'ar'] as $locale) {
             self::assertStringContainsString("/$locale/a-propos", $xml);
             self::assertStringContainsString("/$locale/notre-expertise", $xml);
+            self::assertStringContainsString("/$locale/galerie", $xml);
         }
     }
 }
