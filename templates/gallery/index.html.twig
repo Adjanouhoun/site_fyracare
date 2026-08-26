@@ -40,8 +40,10 @@
         {% set secondary = principal ? group.items|filter(item => item.id != principal.id) : group.items %}
         <section class="gallery-theme {{ cycle(['theme-warm','theme-light'], loop.index0) }}" id="theme-{{ group.category ? group.category.slug : 'autres' }}">
           <header class="gallery-theme-heading"><span>{{ '%02d'|format(loop.index) }}</span><div><h2>{{ group.category ? group.category.title(app.request.locale) : ('gallery_page.other'|trans|cms('gallery_page.other')) }}</h2>{% if group.category and group.category.description(app.request.locale) %}<p>{{ group.category.description(app.request.locale) }}</p>{% endif %}</div><small>{{ group.items|length }} {{ 'gallery_page.media'|trans|cms('gallery_page.media') }}</small></header>
-          {% if principal %}{{ gallery.media(principal, 1, app.request.locale, true) }}{% endif %}
-          {% if secondary|length %}<div class="media-gallery">{% for item in secondary %}{{ gallery.media(item, principal ? loop.index + 1 : loop.index, app.request.locale, false) }}{% endfor %}</div>{% endif %}
+          <div class="gallery-theme-grid">
+            {% if principal %}{{ gallery.media(principal, 1, app.request.locale, true) }}{% endif %}
+            {% for item in secondary %}{{ gallery.media(item, principal ? loop.index + 1 : loop.index, app.request.locale, false) }}{% endfor %}
+          </div>
         </section>
       {% endfor %}
       <dialog class="lightbox" data-lightbox-target="dialog" data-action="click->lightbox#backdropClose"><button type="button" class="lightbox-close" data-action="lightbox#close" aria-label="Fermer">×</button><button type="button" class="lightbox-nav lightbox-previous" data-lightbox-target="previous" data-action="lightbox#previous" aria-label="Image précédente">←</button><figure><img data-lightbox-target="image" alt="FyraCare"><figcaption data-lightbox-target="caption"></figcaption></figure><button type="button" class="lightbox-nav lightbox-next" data-lightbox-target="next" data-action="lightbox#next" aria-label="Image suivante">→</button></dialog>
