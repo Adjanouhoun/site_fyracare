@@ -25,6 +25,10 @@ gallery_page:
   intro: 'Discover our centre, caring gestures and the moments that express the FyraCare experience.'
   empty: 'New photos and videos will be added soon.'
   themes: 'Explore by theme'
+  overview_title: 'Choose a world to discover.'
+  overview_intro: 'Each theme brings together its own FyraCare images, care and moments.'
+  view_theme: 'View theme'
+  all: 'All'
   other: 'Other FyraCare moments'
   media: 'media'
 advice_page:

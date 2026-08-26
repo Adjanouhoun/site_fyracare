@@ -20,12 +20,25 @@
   <header class="page-hero"><div class="shell"><span class="kicker"><i></i>{{ 'gallery_page.eyebrow'|trans|cms('gallery_page.eyebrow') }}</span><h1>{{ 'gallery_page.title'|trans|cms('gallery_page.title') }}</h1><p>{{ 'gallery_page.intro'|trans|cms('gallery_page.intro') }}</p></div></header>
   <section class="section"><div class="shell">
     {% if gallery_groups|length or uncategorized_items|length %}<div data-controller="lightbox">
-      {% if gallery_groups|length %}<nav class="gallery-themes" aria-label="{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}"><span>{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}</span><a href="#gallery-top" class="is-all">Tout</a>{% for group in gallery_groups %}<a href="#theme-{{ group.category.slug }}">{{ group.category.title(app.request.locale) }}</a>{% endfor %}</nav>{% endif %}
+      {% if gallery_groups|length %}
+        <section class="gallery-theme-overview" aria-labelledby="gallery-themes-title">
+          <header><span class="kicker"><i></i>{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}</span><h2 id="gallery-themes-title">{{ 'gallery_page.overview_title'|trans|cms('gallery_page.overview_title') }}</h2><p>{{ 'gallery_page.overview_intro'|trans|cms('gallery_page.overview_intro') }}</p></header>
+          <div class="gallery-theme-cards">
+            {% for group in gallery_groups %}{% set preview = group.items|filter(item => item.featured)|first ?: group.items|first %}
+              <a class="gallery-theme-card" href="#theme-{{ group.category.slug }}">
+                {% if preview and preview.mediaFile %}<img src="{{ asset('uploads/gallery/'~preview.mediaFile) }}" alt="" loading="lazy" decoding="async">{% elseif preview and preview.thumbnail %}<img src="{{ asset('uploads/gallery/'~preview.thumbnail) }}" alt="" loading="lazy" decoding="async">{% endif %}
+                <span class="gallery-theme-card-shade"></span><span class="gallery-theme-card-index">{{ '%02d'|format(loop.index) }}</span><span class="gallery-theme-card-copy"><strong>{{ group.category.title(app.request.locale) }}</strong><small>{{ group.items|length }} {{ 'gallery_page.media'|trans|cms('gallery_page.media') }} · {{ 'gallery_page.view_theme'|trans|cms('gallery_page.view_theme') }} →</small></span>
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+        <nav class="gallery-themes" aria-label="{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}"><span>{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}</span><a href="#gallery-top" class="is-all">{{ 'gallery_page.all'|trans|cms('gallery_page.all') }}</a>{% for group in gallery_groups %}<a href="#theme-{{ group.category.slug }}">{{ group.category.title(app.request.locale) }}</a>{% endfor %}</nav>
+      {% endif %}
       {% set all_groups = gallery_groups %}{% if uncategorized_items|length %}{% set all_groups = all_groups|merge([{category:null,items:uncategorized_items}]) %}{% endif %}
       {% for group in all_groups %}
         {% set principal = group.items|filter(item => item.featured)|first ?: group.items|first %}
         {% set secondary = principal ? group.items|filter(item => item.id != principal.id) : group.items %}
-        <section class="gallery-theme" id="theme-{{ group.category ? group.category.slug : 'autres' }}">
+        <section class="gallery-theme {{ cycle(['theme-warm','theme-light'], loop.index0) }}" id="theme-{{ group.category ? group.category.slug : 'autres' }}">
           <header class="gallery-theme-heading"><span>{{ '%02d'|format(loop.index) }}</span><div><h2>{{ group.category ? group.category.title(app.request.locale) : ('gallery_page.other'|trans|cms('gallery_page.other')) }}</h2>{% if group.category and group.category.description(app.request.locale) %}<p>{{ group.category.description(app.request.locale) }}</p>{% endif %}</div><small>{{ group.items|length }} {{ 'gallery_page.media'|trans|cms('gallery_page.media') }}</small></header>
           {% if principal %}{{ gallery.media(principal, 1, app.request.locale, true) }}{% endif %}
           {% if secondary|length %}<div class="media-gallery">{% for item in secondary %}{{ gallery.media(item, principal ? loop.index + 1 : loop.index, app.request.locale, false) }}{% endfor %}</div>{% endif %}

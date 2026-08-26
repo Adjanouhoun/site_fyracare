@@ -25,6 +25,10 @@ gallery_page:
   intro: 'Découvrez le centre, nos gestes de soin et les moments qui racontent l’expérience FyraCare.'
   empty: 'La galerie sera bientôt enrichie de nouvelles images.'
   themes: 'Explorer par thématique'
+  overview_title: 'Choisissez un univers à découvrir.'
+  overview_intro: 'Chaque thématique rassemble ses propres images, ses gestes et ses moments FyraCare.'
+  view_theme: 'Voir la thématique'
+  all: 'Tout'
   other: 'Autres moments FyraCare'
   media: 'médias'
 advice_page:

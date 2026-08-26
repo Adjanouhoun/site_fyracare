@@ -40,6 +40,8 @@ final class ContentManagementTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('body', 'La vie du centre');
         self::assertSelectorTextContains('.gallery-theme-heading h2', 'La vie au centre');
+        self::assertSelectorExists('.gallery-theme-overview');
+        self::assertSelectorTextContains('.gallery-theme-card-copy strong', 'La vie au centre');
         self::assertSelectorExists('.gallery-theme-cover');
         self::assertSelectorExists('iframe[src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"]');
 
