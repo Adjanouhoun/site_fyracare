@@ -475,6 +475,7 @@ body.lightbox-open { overflow:hidden; }
 .gallery-themes { position:sticky; top:96px; z-index:4; display:flex; flex-wrap:wrap; align-items:center; gap:10px 24px; margin:-18px 0 75px; padding:18px 0; background:rgba(248,245,241,.94); border-block:1px solid var(--line); backdrop-filter:blur(12px); }
 .gallery-themes span { color:var(--muted); font-size:.65rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
 .gallery-themes a { padding:7px 0; border-bottom:1px solid transparent; font-size:.76rem; font-weight:700; }
+.gallery-themes .is-all { color:var(--pink); }
 .gallery-themes a:hover { color:var(--pink); border-color:var(--pink); }
 .gallery-theme { scroll-margin-top:180px; margin-bottom:110px; }
 .gallery-theme-heading { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:22px; align-items:start; margin-bottom:36px; padding-bottom:28px; border-bottom:1px solid var(--line); }
@@ -493,9 +494,25 @@ body.lightbox-open { overflow:hidden; }
 .media-gallery-item>div>span { grid-row:1 / span 2; color:var(--pink); font-size:.68rem; font-weight:700; }
 .media-gallery-item h3 { margin:0; font-size:clamp(1.35rem,2vw,1.8rem); }
 .media-gallery-item p { margin:0; color:var(--muted); line-height:1.65; }
+.gallery-theme-cover { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(260px,.55fr); gap:0 34px; align-items:end; margin-bottom:55px; }
+.gallery-theme-cover>button,.gallery-theme-cover>video,.gallery-theme-cover>iframe { min-height:0; max-height:76vh; background:#e8e1dc; }
+.gallery-theme-cover>button { display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.gallery-theme-cover>button img { width:100%; max-height:76vh; object-fit:contain; }
+.gallery-theme-cover>video,.gallery-theme-cover>iframe { width:100%; aspect-ratio:16/9; object-fit:contain; }
+.gallery-theme-cover>.media-gallery-caption { align-self:stretch; align-content:end; padding:28px 0 0; }
+.lightbox { width:100vw; max-width:none; height:100vh; max-height:none; margin:0; padding:34px 90px 28px; color:white; background:rgba(24,20,19,.96); border:0; }
+.lightbox::backdrop { background:rgba(24,20,19,.96); }
+.lightbox figure { display:grid; grid-template-rows:minmax(0,1fr) auto; width:100%; height:100%; margin:0; }
+.lightbox figure img { align-self:center; justify-self:center; width:auto; max-width:100%; height:auto; max-height:calc(100vh - 115px); object-fit:contain; }
+.lightbox figcaption { min-height:30px; padding-top:14px; color:#eee7e2; text-align:center; font-size:.85rem; }
+.lightbox-close,.lightbox-nav { position:fixed; z-index:2; display:grid; place-items:center; width:48px; height:48px; color:white; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.35); cursor:pointer; }
+.lightbox-close { top:22px; right:24px; font-size:1.8rem; }
+.lightbox-nav { top:50%; transform:translateY(-50%); font-size:1.25rem; }
+.lightbox-previous { left:24px; }.lightbox-next { right:24px; }
+.lightbox-nav:hover,.lightbox-close:hover { background:var(--pink); }
 .gallery-empty { padding:70px; color:var(--muted); background:var(--paper); border:1px solid var(--line); text-align:center; }
 .gallery-page-link { display:flex; justify-content:center; margin-top:38px; }
-@media(max-width:800px){.gallery-themes{position:static;margin-top:0}.gallery-theme-heading{grid-template-columns:auto 1fr}.gallery-theme-heading small{grid-column:2}.media-gallery{columns:1}.media-gallery-item>button,.media-gallery-item>video,.media-gallery-item>iframe{min-height:0}}
+@media(max-width:800px){.gallery-themes{position:static;flex-wrap:nowrap;overflow-x:auto;margin-top:0}.gallery-themes span{display:none}.gallery-themes a{white-space:nowrap}.gallery-theme-heading{grid-template-columns:auto 1fr}.gallery-theme-heading small{grid-column:2}.gallery-theme-cover{display:block}.media-gallery{columns:1}.media-gallery-item>button,.media-gallery-item>video,.media-gallery-item>iframe{min-height:0}.lightbox{padding:75px 14px 25px}.lightbox-nav{top:auto;bottom:24px}.lightbox-previous{left:18px}.lightbox-next{right:18px}.lightbox figcaption{padding-inline:52px}}
 
 .advice-detail,.home-advice { background:var(--paper); }
 .blog-masthead { padding:95px 0 88px; background:var(--blush); text-align:center; }

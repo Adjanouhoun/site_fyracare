@@ -28,11 +28,11 @@ final class GalleryItemCrudController extends AbstractCrudController
         yield FormField::addTab('Média');
         yield IdField::new('id')->hideOnForm();
         yield ChoiceField::new('type','Type')->setChoices(['Photo'=>GalleryItem::TYPE_IMAGE,'Vidéo'=>GalleryItem::TYPE_VIDEO]);
-        yield AssociationField::new('category','Thématique')->setRequired(false)->setHelp('Permet de regrouper les médias sur le site.');
+        yield AssociationField::new('category','Thématique')->setRequired(true)->setHelp('Chaque média est présenté dans une thématique sur la galerie.');
         yield IntegerField::new('displayOrder','Ordre');
         yield BooleanField::new('active','Publié');
-        yield BooleanField::new('featured','Afficher sur l’accueil');
-        yield FileField::new('mediaFile','Fichier photo ou vidéo')->setBasePath('/uploads/gallery')->setUploadDir('public/uploads/gallery')->setUploadedFileNamePattern('[slug]-[timestamp]-[randomhash].[extension]')->setFormTypeOptions(['required'=>false,'attr'=>['accept'=>'image/jpeg,image/png,image/webp,video/mp4,video/webm']])->setHelp('JPEG, PNG, WebP, MP4 ou WebM. Les grandes photos sont redimensionnées automatiquement.');
+        yield BooleanField::new('featured','Média principal de la thématique')->setHelp('Ce média est affiché en grand avant les autres. Un seul média principal est conseillé par thématique.');
+        yield FileField::new('mediaFile','Fichier photo ou vidéo')->setBasePath('/uploads/gallery')->setUploadDir('public/uploads/gallery')->setUploadedFileNamePattern('[slug]-[timestamp]-[randomhash].[extension]')->setFormTypeOptions(['required'=>false,'attr'=>['accept'=>'image/jpeg,image/png,image/webp,video/mp4,video/webm']])->setHelp('JPEG, PNG, WebP, MP4 ou WebM. Le format portrait, paysage ou carré et les proportions d’origine sont conservés. Les grandes photos sont seulement optimisées.');
         yield TextField::new('videoUrl','Lien vidéo')->setHelp('YouTube, Vimeo ou URL directe vers une vidéo.')->hideOnIndex();
         yield ImageField::new('thumbnail','Aperçu vidéo')->setBasePath('/uploads/gallery')->setUploadDir('public/uploads/gallery')->setUploadedFileNamePattern('[slug]-thumb-[timestamp]-[randomhash].[extension]')->setFormTypeOptions(['required'=>false,'attr'=>['accept'=>'image/jpeg,image/png,image/webp']])->setHelp('Image facultative affichée avant la lecture.');
         yield FormField::addTab('Français');

@@ -40,6 +40,7 @@ final class ContentManagementTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('body', 'La vie du centre');
         self::assertSelectorTextContains('.gallery-theme-heading h2', 'La vie au centre');
+        self::assertSelectorExists('.gallery-theme-cover');
         self::assertSelectorExists('iframe[src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"]');
 
         $client->loginUser($admin);
@@ -83,5 +84,6 @@ final class ContentManagementTest extends WebTestCase
         $client->request('GET', '/admin/gallery-item');
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Galerie photo / vidéo');
+        self::assertSelectorTextContains('body', 'Média principal de la thématique');
     }
 }
