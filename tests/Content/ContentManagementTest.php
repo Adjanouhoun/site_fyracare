@@ -41,7 +41,8 @@ final class ContentManagementTest extends WebTestCase
         $client->loginUser($admin);
         $client->request('GET', '/admin/site-content');
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h1', 'Contenus classés par page et section');
+        self::assertSelectorTextContains('h1', 'Modifier les contenus présents sur le site');
+        self::assertSelectorNotExists('a.action-new');
         $client->request('GET', '/admin/site-content?contentPage=about');
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('body', 'Titre À propos');
