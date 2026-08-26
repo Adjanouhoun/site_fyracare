@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\GalleryCategory;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -29,5 +30,15 @@ final class GalleryCategoryCrudController extends AbstractCrudController
         yield TextField::new('titleEn','Title')->hideOnIndex(); yield TextareaField::new('descriptionEn','Introduction')->hideOnIndex();
         yield FormField::addTab('العربية');
         yield TextField::new('titleAr','العنوان')->hideOnIndex()->setFormTypeOption('attr',['dir'=>'rtl']); yield TextareaField::new('descriptionAr','المقدمة')->hideOnIndex()->setFormTypeOption('attr',['dir'=>'rtl']);
+    }
+
+    public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if ($entityInstance instanceof GalleryCategory) {
+            foreach ($entityInstance->getItems() as $item) {
+                $item->setCategory(null);
+            }
+        }
+        parent::deleteEntity($entityManager, $entityInstance);
     }
 }
