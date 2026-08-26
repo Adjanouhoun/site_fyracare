@@ -1,0 +1,23 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block content_title %}{{ section ? page_label ~ ' · ' ~ section_label : page_label }}{% endblock %}
+{% block main %}
+<style>
+.page-editor-intro{max-width:780px;color:#716760;line-height:1.65}.page-editor-back{display:inline-flex;margin-bottom:22px;color:#a45d78;font-weight:700;text-decoration:none}.section-grid{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:18px;margin-top:30px}.section-card{display:flex;min-height:165px;flex-direction:column;padding:25px;color:#302927;background:#fff;border:1px solid #e7ded7;text-decoration:none;transition:.2s}.section-card:hover{border-color:#c9829d;box-shadow:0 14px 35px rgba(45,35,30,.08);transform:translateY(-2px)}.section-card small{color:#a45d78;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.section-card strong{margin:18px 0 8px;font-family:Georgia,serif;font-size:1.45rem}.section-card span{margin-top:auto;color:#81756e}.editor-form{margin-top:25px}.editor-block{margin-bottom:22px;padding:25px;background:#fff;border:1px solid #e7ded7}.editor-block h2{margin:0 0 6px;font-size:1.1rem}.editor-code{color:#988c84;font-size:.75rem}.language-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}.language-grid label{display:block;margin-bottom:7px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.language-grid textarea{width:100%;min-height:125px;padding:13px;border:1px solid #d9cec7;resize:vertical}.editor-image{display:grid;grid-template-columns:180px 1fr;gap:25px;align-items:center;margin-top:18px}.editor-image img{width:180px;height:120px;object-fit:contain;background:#f4efeb}.editor-save{position:sticky;bottom:16px;display:flex;justify-content:flex-end;padding:15px;background:rgba(245,241,237,.94);border-top:1px solid #ded4cd}.editor-save button{padding:14px 27px;color:#fff;background:#34494e;border:0;font-weight:700;cursor:pointer}@media(max-width:900px){.section-grid,.language-grid{grid-template-columns:1fr}.editor-image{grid-template-columns:1fr}}
+</style>
+{% for message in app.flashes('success') %}<div class="alert alert-success">{{ message }}</div>{% endfor %}
+{% if not section %}
+  <p class="page-editor-intro">Choisissez une section de la page. Vous modifierez uniquement les textes et images déjà utilisés par le site ; la structure et la mise en page restent protégées.</p>
+  <div class="section-grid">{% for code,items in groups %}<a class="section-card" href="{{ path('admin_page_editor',{sitePage:site_page,section:code}) }}"><small>{{ '%02d'|format(loop.index) }}</small><strong>{{ section_labels[code] ?? code|replace({'_':' '})|title }}</strong><span>{{ items|length }} élément{{ items|length > 1 ? 's' }} à modifier →</span></a>{% endfor %}</div>
+{% else %}
+  <a class="page-editor-back" href="{{ path('admin_page_editor',{sitePage:site_page}) }}">← Revenir aux sections de {{ page_label }}</a>
+  <p class="page-editor-intro">Les trois langues sont regroupées pour chaque élément. Une image remplacée est automatiquement optimisée.</p>
+  <form class="editor-form" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_token" value="{{ csrf_token('page_section_'~site_page~'_'~section) }}">
+    {% for item in groups[section] %}<article class="editor-block"><h2>{{ item.label }}</h2>
+      {% if item.type == 'image' %}<div class="editor-image">{% if item.image %}<img src="{{ asset('uploads/content/'~item.image) }}" alt="">{% else %}<div>Aucune image personnalisée</div>{% endif %}<div><label for="image-{{ item.id }}">Remplacer cette image</label><input id="image-{{ item.id }}" type="file" name="images[{{ item.id }}]" accept="image/jpeg,image/png,image/webp"><p>JPEG, PNG ou WebP. L’image actuelle reste utilisée si aucun fichier n’est choisi.</p></div></div>
+      {% else %}<div class="language-grid"><div><label for="fr-{{ item.id }}">Français</label><textarea id="fr-{{ item.id }}" name="contents[{{ item.id }}][fr]">{{ item.contentFr }}</textarea></div><div><label for="en-{{ item.id }}">English</label><textarea id="en-{{ item.id }}" name="contents[{{ item.id }}][en]">{{ item.contentEn }}</textarea></div><div dir="rtl"><label for="ar-{{ item.id }}">العربية</label><textarea id="ar-{{ item.id }}" name="contents[{{ item.id }}][ar]">{{ item.contentAr }}</textarea></div></div>{% endif %}
+    </article>{% endfor %}
+    <div class="editor-save"><button type="submit">Enregistrer la section</button></div>
+  </form>
+{% endif %}
+{% endblock %}

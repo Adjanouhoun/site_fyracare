@@ -32,15 +32,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::section('Contenu éditorial');
         yield MenuItem::subMenu('Pages du site', 'fa fa-layer-group')->setSubItems([
-            MenuItem::linkToUrl('Accueil', 'fa fa-house', '/admin/site-content?contentPage=home'),
-            MenuItem::linkToUrl('À propos', 'fa fa-building', '/admin/site-content?contentPage=about'),
-            MenuItem::linkToUrl('Notre expertise', 'fa fa-user-doctor', '/admin/site-content?contentPage=expertise'),
-            MenuItem::linkToUrl('Prestations', 'fa fa-heart-pulse', '/admin/site-content?contentPage=services'),
-            MenuItem::linkToUrl('Conseils', 'fa fa-newspaper', '/admin/site-content?contentPage=advice'),
-            MenuItem::linkToUrl('Galerie', 'fa fa-images', '/admin/site-content?contentPage=gallery'),
-            MenuItem::linkToUrl('Contact', 'fa fa-envelope', '/admin/site-content?contentPage=contact'),
-            MenuItem::linkToUrl('Éléments globaux', 'fa fa-globe', '/admin/site-content?contentPage=global'),
-            MenuItem::linkTo(SiteContentCrudController::class, 'Tous les contenus', 'fa fa-list'),
+            MenuItem::linkToRoute('Accueil', 'fa fa-house', 'admin_page_editor', ['sitePage'=>'home']),
+            MenuItem::linkToRoute('À propos', 'fa fa-building', 'admin_page_editor', ['sitePage'=>'about']),
+            MenuItem::linkToRoute('Notre expertise', 'fa fa-user-doctor', 'admin_page_editor', ['sitePage'=>'expertise']),
+            MenuItem::linkToRoute('Page Prestations', 'fa fa-heart-pulse', 'admin_page_editor', ['sitePage'=>'services']),
+            MenuItem::linkToRoute('Page Conseils', 'fa fa-newspaper', 'admin_page_editor', ['sitePage'=>'advice']),
+            MenuItem::linkToRoute('Page Galerie', 'fa fa-images', 'admin_page_editor', ['sitePage'=>'gallery']),
+            MenuItem::linkToRoute('Contact', 'fa fa-envelope', 'admin_page_editor', ['sitePage'=>'contact']),
+            MenuItem::linkToRoute('Mentions légales', 'fa fa-scale-balanced', 'admin_page_editor', ['sitePage'=>'legal']),
+            MenuItem::linkToRoute('En-tête, pied de page & SEO', 'fa fa-globe', 'admin_page_editor', ['sitePage'=>'global']),
         ]);
         yield MenuItem::linkTo(GalleryCategoryCrudController::class, 'Thématiques de galerie', 'fa fa-folder-tree');
         yield MenuItem::linkTo(GalleryItemCrudController::class, 'Galerie photo / vidéo', 'fa fa-photo-film');

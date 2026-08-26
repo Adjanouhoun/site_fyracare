@@ -39,6 +39,23 @@ final class ContentManagementTest extends WebTestCase
         self::assertSelectorExists('iframe[src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"]');
 
         $client->loginUser($admin);
+        $client->request('GET', '/admin/pages/about');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('h1', 'À propos');
+        self::assertSelectorTextContains('.section-card', 'Contenu principal');
+        $crawler = $client->request('GET', '/admin/pages/about?section=contenu');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorExists('textarea[name="contents['.$content->getId().'][fr]"]');
+        self::assertSelectorNotExists('a.action-new');
+        $token = $crawler->filter('input[name="_token"]')->attr('value');
+        $client->request('POST', '/admin/pages/about?section=contenu', [
+            '_token'=>$token,
+            'contents'=>[(string) $content->getId()=>['fr'=>'Titre modifié par section','en'=>'Section edited title','ar'=>'عنوان معدل']],
+        ]);
+        self::assertResponseRedirects('/admin/pages/about?section=contenu');
+        $updatedContent = static::getContainer()->get(EntityManagerInterface::class)->getRepository(SiteContent::class)->find($content->getId());
+        self::assertSame('Titre modifié par section', $updatedContent->getContentFr());
+
         $client->request('GET', '/admin/site-content');
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Modifier les contenus présents sur le site');
