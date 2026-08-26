@@ -42,17 +42,17 @@ final class ContentManagementTest extends WebTestCase
         $client->request('GET', '/admin/pages/about');
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'À propos');
-        self::assertSelectorTextContains('.section-card', 'Contenu principal');
-        $crawler = $client->request('GET', '/admin/pages/about?section=contenu');
+        self::assertSelectorTextContains('.section-card', 'Bannière');
+        $crawler = $client->request('GET', '/admin/pages/about?section=hero');
         self::assertResponseIsSuccessful();
         self::assertSelectorExists('textarea[name="contents['.$content->getId().'][fr]"]');
         self::assertSelectorNotExists('a.action-new');
         $token = $crawler->filter('input[name="_token"]')->attr('value');
-        $client->request('POST', '/admin/pages/about?section=contenu', [
+        $client->request('POST', '/admin/pages/about?section=hero', [
             '_token'=>$token,
             'contents'=>[(string) $content->getId()=>['fr'=>'Titre modifié par section','en'=>'Section edited title','ar'=>'عنوان معدل']],
         ]);
-        self::assertResponseRedirects('/admin/pages/about?section=contenu');
+        self::assertResponseRedirects('/admin/pages/about?section=hero');
         $updatedContent = static::getContainer()->get(EntityManagerInterface::class)->getRepository(SiteContent::class)->find($content->getId());
         self::assertSame('Titre modifié par section', $updatedContent->getContentFr());
 

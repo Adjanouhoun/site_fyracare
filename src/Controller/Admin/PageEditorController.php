@@ -22,10 +22,12 @@ final class PageEditorController extends AbstractController
         'contact'=>'Contact', 'legal'=>'Mentions légales', 'global'=>'En-tête, pied de page & SEO',
     ];
     private const SECTIONS = [
-        'hero'=>'Bannière principale', 'manifesto'=>'Message de bienvenue', 'services'=>'Présentation des prestations',
-        'founder'=>'Présentation d’Aminata', 'experience'=>'Expérience FyraCare', 'testimonials'=>'Avis clients',
+        'announcement'=>'Bandeau supérieur — Accompagnement maternel', 'hero'=>'Bannière — Bienvenue à FyraCare',
+        'manifesto'=>'Message de bienvenue', 'services'=>'Nos accompagnements',
+        'founder'=>'Notre expertise — Aminata', 'experience'=>'L’expérience FyraCare', 'testimonials'=>'Vos mots — Avis clients',
         'booking'=>'Prise de rendez-vous', 'appointment'=>'Appel à l’action', 'gallery'=>'Présentation de la galerie',
-        'journal'=>'Présentation des conseils', 'introduction'=>'Introduction de la page', 'contenu'=>'Contenu principal',
+        'journal'=>'Conseils & repères', 'introduction'=>'Introduction de la page', 'contenu'=>'Contenu principal',
+        'presentation'=>'Présentation', 'engagements'=>'Engagements et points forts', 'form'=>'Formulaire',
         'details'=>'Détail des prestations', 'trust'=>'Éléments de confiance', 'contact'=>'Coordonnées et formulaire',
         'images'=>'Images de la page', 'nav'=>'Navigation', 'footer'=>'Pied de page', 'actions'=>'Boutons communs',
         'catalog'=>'Catalogue et recherche', 'navigation'=>'Libellés et navigation',
@@ -34,14 +36,25 @@ final class PageEditorController extends AbstractController
     /** Les groupes correspondent aux blocs réellement rendus dans les templates. */
     private const STRUCTURE = [
         'home'=>[
+            'announcement'=>['nav.announcement'],
             'hero'=>['hero.*','journey.*','home.hero_image'], 'manifesto'=>['manifesto.*'],
             'services'=>['services.eyebrow','services.intro','services.title_rich','services.featured_label','services.home_note','services.all'],
             'founder'=>['founder.*','home.founder_image'], 'experience'=>['experience.*','home.experience_image'],
             'journal'=>['advice_page.featured_*'], 'gallery'=>['gallery.*'], 'testimonials'=>['testimonials.*'],
             'booking'=>['booking.*'], 'appointment'=>['appointment.*'],
         ],
-        'about'=>['contenu'=>['about_page.*','about.hero_image']],
-        'expertise'=>['contenu'=>['expertise_page.*','expertise.hero_image']],
+        'about'=>[
+            'hero'=>['about_page.meta_*','about_page.eyebrow','about_page.title','about_page.intro','about_page.image_alt','about.hero_image'],
+            'presentation'=>['about_page.aside','about_page.paragraph_*'],
+            'engagements'=>['about_page.point_*'],
+            'appointment'=>['about_page.cta_*'],
+        ],
+        'expertise'=>[
+            'hero'=>['expertise_page.meta_*','expertise_page.eyebrow','expertise_page.title','expertise_page.intro','expertise.hero_image'],
+            'presentation'=>['expertise_page.aside','expertise_page.paragraph_*'],
+            'engagements'=>['expertise_page.skills_*','expertise_page.skill_*'],
+            'appointment'=>['expertise_page.cta_*'],
+        ],
         'services'=>[
             'introduction'=>['services_page.*','services.hero_image'],
             'catalog'=>['services.catalog_*','services.filter_*','services.price_on_request','services.read_more','services.book','services.no_results'],
@@ -53,7 +66,11 @@ final class PageEditorController extends AbstractController
             'appointment'=>['advice_page.cta_*','advice_page.disclaimer*','appointment.*'],
         ],
         'gallery'=>['introduction'=>['gallery_page.*']],
-        'contact'=>['contact'=>['contact.*']],
+        'contact'=>[
+            'hero'=>['contact.meta_*','contact.eyebrow','contact.title','contact.intro'],
+            'contact'=>['contact.details_*','contact.address_*','contact.phone_*','contact.email_*','contact.map'],
+            'form'=>['contact.form_*','contact.submit'],
+        ],
         'legal'=>['legal'=>['legal.*']],
         'global'=>['general'=>['global.*'],'nav'=>['nav.*'],'footer'=>['footer.*'],'actions'=>['actions.*'],'seo'=>['seo.*','meta.*']],
     ];
