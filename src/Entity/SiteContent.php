@@ -24,6 +24,8 @@ class SiteContent
     private string $label = '';
     #[ORM\Column(length: 80)]
     private string $page = 'general';
+    #[ORM\Column(length: 80, options: ['default' => 'general'])]
+    private string $sitePage = 'general';
     #[ORM\Column(length: 20)]
     private string $type = self::TYPE_TEXT;
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -45,6 +47,7 @@ class SiteContent
     public function getCode(): string { return $this->code; } public function setCode(string $v): self { $this->code = $v; return $this; }
     public function getLabel(): string { return $this->label; } public function setLabel(string $v): self { $this->label = $v; return $this; }
     public function getPage(): string { return $this->page; } public function setPage(string $v): self { $this->page = $v; return $this; }
+    public function getSitePage(): string { return $this->sitePage; } public function setSitePage(string $v): self { $this->sitePage = $v; return $this; }
     public function getType(): string { return $this->type; } public function setType(string $v): self { $this->type = $v; return $this; }
     public function getContentFr(): ?string { return $this->contentFr; } public function setContentFr(?string $v): self { $this->contentFr = $v; return $this; }
     public function getContentEn(): ?string { return $this->contentEn; } public function setContentEn(?string $v): self { $this->contentEn = $v; return $this; }

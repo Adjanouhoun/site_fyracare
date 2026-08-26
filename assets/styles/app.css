@@ -472,22 +472,30 @@ body.lightbox-open { overflow:hidden; }
 
 .gallery-page { background:var(--ivory); }
 .gallery-page .page-hero p { max-width:720px; color:var(--muted); font-size:1.05rem; line-height:1.75; }
-.media-gallery { display:grid; grid-template-columns:repeat(12,1fr); gap:42px 28px; }
-.media-gallery-item { grid-column:span 5; margin:0; }
-.media-gallery-item:nth-child(3n+2) { grid-column:span 7; }
-.media-gallery-item:nth-child(3n) { grid-column:span 7; }
-.media-gallery-item:nth-child(3n+4) { grid-column:span 5; }
-.media-gallery-item>button,.media-gallery-item>video,.media-gallery-item>iframe { width:100%; height:clamp(320px,36vw,570px); border:0; border-radius:0; object-fit:cover; background:#191716; }
+.gallery-themes { position:sticky; top:96px; z-index:4; display:flex; flex-wrap:wrap; align-items:center; gap:10px 24px; margin:-18px 0 75px; padding:18px 0; background:rgba(248,245,241,.94); border-block:1px solid var(--line); backdrop-filter:blur(12px); }
+.gallery-themes span { color:var(--muted); font-size:.65rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+.gallery-themes a { padding:7px 0; border-bottom:1px solid transparent; font-size:.76rem; font-weight:700; }
+.gallery-themes a:hover { color:var(--pink); border-color:var(--pink); }
+.gallery-theme { scroll-margin-top:180px; margin-bottom:110px; }
+.gallery-theme-heading { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:22px; align-items:start; margin-bottom:36px; padding-bottom:28px; border-bottom:1px solid var(--line); }
+.gallery-theme-heading>span { color:var(--pink); font-size:.7rem; font-weight:700; }
+.gallery-theme-heading h2 { margin:0; font-size:clamp(2rem,3.4vw,3.15rem); }
+.gallery-theme-heading p { max-width:680px; margin:12px 0 0; color:var(--muted); line-height:1.7; }
+.gallery-theme-heading small { color:var(--muted); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; }
+.media-gallery { columns:3 300px; column-gap:28px; }
+.media-gallery-item { display:inline-block; width:100%; margin:0 0 38px; break-inside:avoid; }
+.media-gallery-item>button,.media-gallery-item>video,.media-gallery-item>iframe { width:100%; height:auto; min-height:220px; border:0; border-radius:0; object-fit:contain; background:#e9e3de; }
+.media-gallery-item>video,.media-gallery-item>iframe { aspect-ratio:16/10; }
 .media-gallery-item>button { position:relative; display:block; padding:0; cursor:zoom-in; }
-.media-gallery-item>button img { width:100%; height:100%; object-fit:cover; border-radius:0; }
+.media-gallery-item>button img { display:block; width:100%; height:auto; object-fit:contain; border-radius:0; }
 .media-gallery-item>button span { position:absolute; right:20px; bottom:20px; display:grid; place-items:center; width:48px; height:48px; color:white; background:rgba(38,31,29,.78); font-size:1.4rem; }
 .media-gallery-item>div { display:grid; grid-template-columns:auto 1fr; gap:8px 18px; padding-top:20px; border-top:1px solid var(--line); }
 .media-gallery-item>div>span { grid-row:1 / span 2; color:var(--pink); font-size:.68rem; font-weight:700; }
-.media-gallery-item h2 { margin:0; font-size:clamp(1.6rem,2.4vw,2.2rem); }
+.media-gallery-item h3 { margin:0; font-size:clamp(1.35rem,2vw,1.8rem); }
 .media-gallery-item p { margin:0; color:var(--muted); line-height:1.65; }
 .gallery-empty { padding:70px; color:var(--muted); background:var(--paper); border:1px solid var(--line); text-align:center; }
 .gallery-page-link { display:flex; justify-content:center; margin-top:38px; }
-@media(max-width:800px){.media-gallery{grid-template-columns:1fr}.media-gallery-item,.media-gallery-item:nth-child(n){grid-column:1}.media-gallery-item>button,.media-gallery-item>video,.media-gallery-item>iframe{height:390px}}
+@media(max-width:800px){.gallery-themes{position:static;margin-top:0}.gallery-theme-heading{grid-template-columns:auto 1fr}.gallery-theme-heading small{grid-column:2}.media-gallery{columns:1}.media-gallery-item>button,.media-gallery-item>video,.media-gallery-item>iframe{min-height:0}}
 
 .advice-detail,.home-advice { background:var(--paper); }
 .blog-masthead { padding:95px 0 88px; background:var(--blush); text-align:center; }

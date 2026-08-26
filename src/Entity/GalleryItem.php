@@ -8,12 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GalleryItemRepository::class)]
 #[ORM\Table(name: 'gallery_item')]
+#[ORM\Index(name: 'IDX_GALLERY_ITEM_CATEGORY', columns: ['category_id'])]
 class GalleryItem
 {
     public const TYPE_IMAGE = 'image';
     public const TYPE_VIDEO = 'video';
     #[ORM\Id, ORM\GeneratedValue, ORM\Column] private ?int $id = null;
     #[ORM\Column(length: 20)] private string $type = self::TYPE_IMAGE;
+    #[ORM\ManyToOne(targetEntity: GalleryCategory::class, inversedBy: 'items')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    private ?GalleryCategory $category = null;
     #[ORM\Column(length: 180)] private string $titleFr = '';
     #[ORM\Column(length: 180)] private string $titleEn = '';
     #[ORM\Column(length: 180)] private string $titleAr = '';
@@ -30,6 +34,7 @@ class GalleryItem
     public function __construct() { $this->createdAt = new \DateTimeImmutable(); }
     public function getId(): ?int { return $this->id; }
     public function getType(): string { return $this->type; } public function setType(string $v): self { $this->type=$v; return $this; }
+    public function getCategory(): ?GalleryCategory { return $this->category; } public function setCategory(?GalleryCategory $v): self { $this->category=$v; return $this; }
     public function getTitleFr(): string { return $this->titleFr; } public function setTitleFr(string $v): self { $this->titleFr=$v; return $this; }
     public function getTitleEn(): string { return $this->titleEn; } public function setTitleEn(string $v): self { $this->titleEn=$v; return $this; }
     public function getTitleAr(): string { return $this->titleAr; } public function setTitleAr(string $v): self { $this->titleAr=$v; return $this; }

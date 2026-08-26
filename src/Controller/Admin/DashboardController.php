@@ -31,7 +31,18 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::section('Contenu éditorial');
-        yield MenuItem::linkTo(SiteContentCrudController::class, 'Textes & images', 'fa fa-pen-to-square');
+        yield MenuItem::subMenu('Pages du site', 'fa fa-layer-group')->setSubItems([
+            MenuItem::linkToUrl('Accueil', 'fa fa-house', '/admin/site-content?contentPage=home'),
+            MenuItem::linkToUrl('À propos', 'fa fa-building', '/admin/site-content?contentPage=about'),
+            MenuItem::linkToUrl('Notre expertise', 'fa fa-user-doctor', '/admin/site-content?contentPage=expertise'),
+            MenuItem::linkToUrl('Prestations', 'fa fa-heart-pulse', '/admin/site-content?contentPage=services'),
+            MenuItem::linkToUrl('Conseils', 'fa fa-newspaper', '/admin/site-content?contentPage=advice'),
+            MenuItem::linkToUrl('Galerie', 'fa fa-images', '/admin/site-content?contentPage=gallery'),
+            MenuItem::linkToUrl('Contact', 'fa fa-envelope', '/admin/site-content?contentPage=contact'),
+            MenuItem::linkToUrl('Éléments globaux', 'fa fa-globe', '/admin/site-content?contentPage=global'),
+            MenuItem::linkTo(SiteContentCrudController::class, 'Tous les contenus', 'fa fa-list'),
+        ]);
+        yield MenuItem::linkTo(GalleryCategoryCrudController::class, 'Thématiques de galerie', 'fa fa-folder-tree');
         yield MenuItem::linkTo(GalleryItemCrudController::class, 'Galerie photo / vidéo', 'fa fa-photo-film');
         yield MenuItem::linkTo(ServiceCrudController::class, 'Prestations', 'fa fa-heart');
         yield MenuItem::linkTo(AdviceArticleCrudController::class, 'Conseils', 'fa fa-newspaper');

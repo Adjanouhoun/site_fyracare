@@ -24,6 +24,9 @@ gallery_page:
   title: 'معرض الصور والفيديو'
   intro: 'اكتشفي المركز ولحظات الرعاية التي تعبّر عن تجربة FyraCare.'
   empty: 'ستتم إضافة صور وفيديوهات جديدة قريباً.'
+  themes: 'استكشف حسب الموضوع'
+  other: 'لحظات أخرى من FyraCare'
+  media: 'وسائط'
 advice_page:
   meta_title: 'نصائح الحمل والعافية — FyraCare'
   meta_description: 'نصائح FyraCare حول الحمل والولادة والرضاعة وصحة قاع الحوض وما بعد الولادة.'

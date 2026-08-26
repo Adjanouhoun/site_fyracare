@@ -16,6 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 final class GalleryItemCrudController extends AbstractCrudController
 {
@@ -27,6 +28,7 @@ final class GalleryItemCrudController extends AbstractCrudController
         yield FormField::addTab('Média');
         yield IdField::new('id')->hideOnForm();
         yield ChoiceField::new('type','Type')->setChoices(['Photo'=>GalleryItem::TYPE_IMAGE,'Vidéo'=>GalleryItem::TYPE_VIDEO]);
+        yield AssociationField::new('category','Thématique')->setRequired(false)->setHelp('Permet de regrouper les médias sur le site.');
         yield IntegerField::new('displayOrder','Ordre');
         yield BooleanField::new('active','Publié');
         yield BooleanField::new('featured','Afficher sur l’accueil');

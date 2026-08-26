@@ -24,6 +24,9 @@ gallery_page:
   title: 'Notre galerie photo & vidéo'
   intro: 'Découvrez le centre, nos gestes de soin et les moments qui racontent l’expérience FyraCare.'
   empty: 'La galerie sera bientôt enrichie de nouvelles images.'
+  themes: 'Explorer par thématique'
+  other: 'Autres moments FyraCare'
+  media: 'médias'
 advice_page:
   meta_title: 'Conseils grossesse et bien-être — FyraCare'
   meta_description: 'Conseils FyraCare sur la grossesse, la naissance, l’allaitement, le périnée et le post-partum.'

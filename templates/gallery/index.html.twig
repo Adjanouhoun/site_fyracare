@@ -7,14 +7,17 @@
 <main class="gallery-page">
   <header class="page-hero"><div class="shell"><span class="kicker"><i></i>{{ 'gallery_page.eyebrow'|trans|cms('gallery_page.eyebrow') }}</span><h1>{{ 'gallery_page.title'|trans|cms('gallery_page.title') }}</h1><p>{{ 'gallery_page.intro'|trans|cms('gallery_page.intro') }}</p></div></header>
   <section class="section"><div class="shell">
-    {% if gallery_items|length %}<div class="media-gallery" data-controller="lightbox">
-      {% for item in gallery_items %}<article class="media-gallery-item {{ item.type == 'video' ? 'is-video' }}">
-        {% if item.type == 'video' %}
-          {% if item.mediaFile %}<video controls preload="metadata"{% if item.thumbnail %} poster="{{ asset('uploads/gallery/'~item.thumbnail) }}"{% endif %}><source src="{{ asset('uploads/gallery/'~item.mediaFile) }}"></video>
-          {% elseif item.embedUrl %}<iframe src="{{ item.embedUrl }}" title="{{ item.title(app.request.locale) }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>{% endif %}
-        {% elseif item.mediaFile %}<button type="button" class="detail-gallery-open" data-action="lightbox#open" data-lightbox-source-param="{{ asset('uploads/gallery/'~item.mediaFile) }}" aria-label="{{ item.title(app.request.locale) }}"><img src="{{ asset('uploads/gallery/'~item.mediaFile) }}" alt="{{ item.title(app.request.locale) }}" loading="lazy" decoding="async"><span aria-hidden="true">⌕</span></button>{% endif %}
-        <div><span>{{ '%02d'|format(loop.index) }}</span><h2>{{ item.title(app.request.locale) }}</h2>{% if item.caption(app.request.locale) %}<p>{{ item.caption(app.request.locale) }}</p>{% endif %}</div>
-      </article>{% endfor %}
+    {% if gallery_groups|length or uncategorized_items|length %}<div data-controller="lightbox">
+      {% if gallery_groups|length %}<nav class="gallery-themes" aria-label="{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}"><span>{{ 'gallery_page.themes'|trans|cms('gallery_page.themes') }}</span>{% for group in gallery_groups %}<a href="#theme-{{ group.category.slug }}">{{ group.category.title(app.request.locale) }}</a>{% endfor %}</nav>{% endif %}
+      {% set all_groups = gallery_groups %}{% if uncategorized_items|length %}{% set all_groups = all_groups|merge([{category:null,items:uncategorized_items}]) %}{% endif %}
+      {% for group in all_groups %}<section class="gallery-theme" id="theme-{{ group.category ? group.category.slug : 'autres' }}">
+        <header class="gallery-theme-heading"><span>{{ '%02d'|format(loop.index) }}</span><div><h2>{{ group.category ? group.category.title(app.request.locale) : ('gallery_page.other'|trans|cms('gallery_page.other')) }}</h2>{% if group.category and group.category.description(app.request.locale) %}<p>{{ group.category.description(app.request.locale) }}</p>{% endif %}</div><small>{{ group.items|length }} {{ 'gallery_page.media'|trans|cms('gallery_page.media') }}</small></header>
+        <div class="media-gallery">{% for item in group.items %}<article class="media-gallery-item {{ item.type == 'video' ? 'is-video' }}">
+          {% if item.type == 'video' %}{% if item.mediaFile %}<video controls preload="metadata"{% if item.thumbnail %} poster="{{ asset('uploads/gallery/'~item.thumbnail) }}"{% endif %}><source src="{{ asset('uploads/gallery/'~item.mediaFile) }}"></video>{% elseif item.embedUrl %}<iframe src="{{ item.embedUrl }}" title="{{ item.title(app.request.locale) }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>{% endif %}
+          {% elseif item.mediaFile %}<button type="button" class="detail-gallery-open" data-action="lightbox#open" data-lightbox-source-param="{{ asset('uploads/gallery/'~item.mediaFile) }}" aria-label="{{ item.title(app.request.locale) }}"><img src="{{ asset('uploads/gallery/'~item.mediaFile) }}" alt="{{ item.title(app.request.locale) }}" loading="lazy" decoding="async"><span aria-hidden="true">⌕</span></button>{% endif %}
+          <div><span>{{ '%02d'|format(loop.index) }}</span><h3>{{ item.title(app.request.locale) }}</h3>{% if item.caption(app.request.locale) %}<p>{{ item.caption(app.request.locale) }}</p>{% endif %}</div>
+        </article>{% endfor %}</div>
+      </section>{% endfor %}
       <dialog class="lightbox" data-lightbox-target="dialog" data-action="click->lightbox#backdropClose"><button type="button" class="lightbox-close" data-action="lightbox#close" aria-label="Fermer">×</button><img data-lightbox-target="image" alt="FyraCare"></dialog>
     </div>{% else %}<p class="gallery-empty">{{ 'gallery_page.empty'|trans|cms('gallery_page.empty') }}</p>{% endif %}
   </div></section>

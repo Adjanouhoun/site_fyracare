@@ -12,6 +12,7 @@ use App\Repository\ServiceRepository;
 use App\Repository\AdviceArticleRepository;
 use App\Repository\TestimonialRepository;
 use App\Repository\GalleryItemRepository;
+use App\Repository\GalleryCategoryRepository;
 use App\Service\AdminNotificationMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,7 +89,17 @@ final class HomeController extends AbstractController
     public function expertise(): Response { return $this->render('expertise/index.html.twig'); }
 
     #[Route('/{_locale}/galerie', name: 'app_gallery', requirements: ['_locale' => 'fr|en|ar'])]
-    public function gallery(GalleryItemRepository $gallery): Response { return $this->render('gallery/index.html.twig', ['gallery_items' => $gallery->findPublished()]); }
+    public function gallery(GalleryItemRepository $gallery, GalleryCategoryRepository $categories): Response
+    {
+        $published = $gallery->findPublished();
+        $groups = [];
+        foreach ($categories->findActive() as $category) {
+            $items = array_values(array_filter($published, static fn ($item) => $item->getCategory()?->getId() === $category->getId()));
+            if ($items) $groups[] = ['category'=>$category, 'items'=>$items];
+        }
+        $uncategorized = array_values(array_filter($published, static fn ($item) => null === $item->getCategory()));
+        return $this->render('gallery/index.html.twig', ['gallery_groups'=>$groups, 'uncategorized_items'=>$uncategorized]);
+    }
 
     #[Route('/{_locale}/confidentialite', name: 'app_privacy', requirements: ['_locale' => 'fr|en|ar'])]
     public function privacy(): Response { return $this->render('legal/privacy.html.twig'); }

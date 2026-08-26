@@ -22,13 +22,21 @@ final class SiteContentSynchronizer
         $changed = false;
         foreach ($translations['fr'] as $code => $value) {
             if (!is_string($value) || isset($existing[$code])) continue;
-            $item = (new SiteContent())->setCode($code)->setLabel($this->label($code))->setPage(strtok($code, '.') ?: 'general')->setContentFr($value)->setContentEn($translations['en'][$code] ?? $value)->setContentAr($translations['ar'][$code] ?? $value);
+            [$sitePage, $section] = $this->classification($code);
+            $item = (new SiteContent())->setCode($code)->setLabel($this->label($code))->setSitePage($sitePage)->setPage($section)->setContentFr($value)->setContentEn($translations['en'][$code] ?? $value)->setContentAr($translations['ar'][$code] ?? $value);
             $this->em->persist($item); $changed = true;
         }
         foreach ($this->imageDefinitions() as $code => [$label, $page]) {
             if (isset($existing[$code])) continue;
-            $this->em->persist((new SiteContent())->setCode($code)->setLabel($label)->setPage($page)->setType(SiteContent::TYPE_IMAGE));
+            [$sitePage, $section] = $this->classification($code);
+            $this->em->persist((new SiteContent())->setCode($code)->setLabel($label)->setSitePage($sitePage)->setPage($section)->setType(SiteContent::TYPE_IMAGE));
             $changed = true;
+        }
+        foreach ($existing as $item) {
+            [$sitePage, $section] = $this->classification($item->getCode());
+            if ($item->getSitePage() !== $sitePage || $item->getPage() !== $section) {
+                $item->setSitePage($sitePage)->setPage($section); $changed = true;
+            }
         }
         if ($changed) $this->em->flush();
     }
@@ -42,6 +50,25 @@ final class SiteContentSynchronizer
         return $result;
     }
     private function label(string $code): string { return ucfirst(str_replace(['.','_'], ' ', $code)); }
+    private function classification(string $code): array
+    {
+        $prefix = explode('.', $code, 2)[0];
+        $sitePage = match ($prefix) {
+            'home','hero','manifesto','founder','experience','testimonials','booking','appointment','welcome' => 'home',
+            'about','about_page' => 'about', 'expertise','expertise_page' => 'expertise',
+            'services','services_page','service_detail','trust' => 'services',
+            'advice_page' => 'advice', 'contact' => 'contact', 'legal' => 'legal',
+            'gallery','gallery_page' => 'gallery', 'nav','footer','actions','meta','seo','global' => 'global',
+            default => 'general',
+        };
+        $section = str_contains($code, 'image') || $code === 'global.logo' ? 'images' : match ($prefix) {
+            'about_page' => 'contenu', 'expertise_page' => 'contenu', 'services_page' => 'introduction',
+            'advice_page' => 'journal', 'gallery_page' => 'introduction',
+            'service_detail' => 'details', 'trust' => 'trust', 'legal' => 'legal', 'global' => 'general',
+            default => $prefix,
+        };
+        return [$sitePage, $section];
+    }
     private function imageDefinitions(): array
     {
         return [

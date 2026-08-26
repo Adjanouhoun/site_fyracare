@@ -24,6 +24,9 @@ gallery_page:
   title: 'Our photo & video gallery'
   intro: 'Discover our centre, caring gestures and the moments that express the FyraCare experience.'
   empty: 'New photos and videos will be added soon.'
+  themes: 'Explore by theme'
+  other: 'Other FyraCare moments'
+  media: 'media'
 advice_page:
   meta_title: 'Pregnancy and wellbeing advice — FyraCare'
   meta_description: 'FyraCare advice on pregnancy, birth, breastfeeding, pelvic health and postpartum recovery.'
