@@ -48,8 +48,9 @@ final class ContentManagementTest extends WebTestCase
         self::assertSelectorTextContains('.section-card:nth-child(1)', 'Bandeau supérieur');
         self::assertSelectorTextContains('.section-card:nth-child(2)', 'Bienvenue à FyraCare');
         self::assertSelectorTextContains('.section-card:nth-child(3)', 'Votre parcours FyraCare');
-        self::assertSelectorTextContains('.section-card:nth-child(9)', 'Vos mots');
-        self::assertSelectorTextContains('.section-card:nth-child(10)', 'Déposer un avis');
+        self::assertSelectorNotExists('.section-card[href*="section=testimonials"]');
+        self::assertSelectorNotExists('.section-card[href*="section=testimonial_form"]');
+        self::assertSelectorNotExists('.section-card[href*="section=booking"]');
         self::assertSelectorNotExists('.section-card[href*="section=gallery"]');
         $client->request('GET', '/admin/pages/about');
         self::assertResponseIsSuccessful();
