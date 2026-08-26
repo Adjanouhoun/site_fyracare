@@ -32,6 +32,10 @@ final class ContentManagementTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Un titre administré');
 
+        $client->request('GET', '/fr');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorNotExists('.gallery-section');
+
         $client->request('GET', '/fr/galerie');
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('body', 'La vie du centre');
@@ -39,6 +43,14 @@ final class ContentManagementTest extends WebTestCase
         self::assertSelectorExists('iframe[src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"]');
 
         $client->loginUser($admin);
+        $client->request('GET', '/admin/pages/home');
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('.section-card:nth-child(1)', 'Bandeau supérieur');
+        self::assertSelectorTextContains('.section-card:nth-child(2)', 'Bienvenue à FyraCare');
+        self::assertSelectorTextContains('.section-card:nth-child(3)', 'Votre parcours FyraCare');
+        self::assertSelectorTextContains('.section-card:nth-child(9)', 'Vos mots');
+        self::assertSelectorTextContains('.section-card:nth-child(10)', 'Déposer un avis');
+        self::assertSelectorNotExists('.section-card[href*="section=gallery"]');
         $client->request('GET', '/admin/pages/about');
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'À propos');

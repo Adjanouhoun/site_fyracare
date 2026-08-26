@@ -23,8 +23,10 @@ final class PageEditorController extends AbstractController
     ];
     private const SECTIONS = [
         'announcement'=>'Bandeau supérieur — Accompagnement maternel', 'hero'=>'Bannière — Bienvenue à FyraCare',
+        'journey'=>'Bandeau — Votre parcours FyraCare',
         'manifesto'=>'Message de bienvenue', 'services'=>'Nos accompagnements',
-        'founder'=>'Notre expertise — Aminata', 'experience'=>'L’expérience FyraCare', 'testimonials'=>'Vos mots — Avis clients',
+        'founder'=>'Notre expertise — Aminata', 'experience'=>'L’expérience FyraCare', 'testimonials'=>'Vos mots — Avis publiés',
+        'testimonial_form'=>'Votre expérience — Déposer un avis',
         'booking'=>'Prise de rendez-vous', 'appointment'=>'Appel à l’action', 'gallery'=>'Présentation de la galerie',
         'journal'=>'Conseils & repères', 'introduction'=>'Introduction de la page', 'contenu'=>'Contenu principal',
         'presentation'=>'Présentation', 'engagements'=>'Engagements et points forts', 'form'=>'Formulaire',
@@ -37,10 +39,13 @@ final class PageEditorController extends AbstractController
     private const STRUCTURE = [
         'home'=>[
             'announcement'=>['nav.announcement'],
-            'hero'=>['hero.*','journey.*','home.hero_image'], 'manifesto'=>['manifesto.*'],
+            'hero'=>['hero.eyebrow','hero.title_rich','hero.description','hero.proof_*','home.hero_image'],
+            'journey'=>['hero.strip','journey.*'], 'manifesto'=>['manifesto.*'],
             'services'=>['services.eyebrow','services.intro','services.title_rich','services.featured_label','services.home_note','services.all'],
             'founder'=>['founder.*','home.founder_image'], 'experience'=>['experience.*','home.experience_image'],
-            'journal'=>['advice_page.featured_*'], 'gallery'=>['gallery.*'], 'testimonials'=>['testimonials.*'],
+            'journal'=>['advice_page.featured_*'],
+            'testimonials'=>['testimonials.index','testimonials.eyebrow','testimonials.title','testimonials.quote','testimonials.author','testimonials.care','testimonials.intro','testimonials.empty','testimonials.previous','testimonials.next'],
+            'testimonial_form'=>['testimonials.share_*','testimonials.moderation_note','testimonials.form_*','testimonials.submit','testimonials.success','testimonials.error'],
             'booking'=>['booking.*'], 'appointment'=>['appointment.*'],
         ],
         'about'=>[
