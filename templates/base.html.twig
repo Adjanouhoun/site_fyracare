@@ -40,8 +40,8 @@
             'url': absolute_url(path('app_home', {_locale: app.request.locale})),
             'logo': absolute_url(asset('images/logo-fyracare.png')),
             'image': absolute_url(asset('images/gallery/centre.webp')),
-            'telephone': ['+222 41 46 84 84', '+222 44 12 26 86'],
-            'email': 'Contact@fyracare.com',
+            'telephone': ['contact.phone_primary'|trans|cms('contact.phone_primary'), 'contact.phone_secondary'|trans|cms('contact.phone_secondary')],
+            'email': 'contact.email_value'|trans|cms('contact.email_value'),
             'address': {
                 '@type': 'PostalAddress',
                 'streetAddress': 'Cité Plage Sapeur-Pompier',

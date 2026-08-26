@@ -269,6 +269,10 @@ booking:
   timezone: 'المواعيد معروضة حسب توقيت نواكشوط.'
   confirmation_note: 'يبقى الموعد في انتظار تأكيد فريق فيرا كير. تتم معالجة معلوماتك بسرية.'
 contact:
+  address_value: 'حي الشاطئ قرب الحماية المدنية، نواكشوط، موريتانيا'
+  phone_primary: '+222 41 46 84 84'
+  phone_secondary: '+222 44 12 26 86'
+  email_value: 'Contact@fyracare.com'
   meta_title: 'اتصلوا بنا — FyraCare'
   meta_description: 'تواصلي مع مركز FyraCare في نواكشوط أو أرسلي لنا رسالة.'
   eyebrow: 'نحن نصغي إليك'
@@ -288,6 +292,9 @@ contact:
   submit: 'إرسال الرسالة'
   success: 'تم إرسال رسالتك إلى فريق FyraCare.'
 legal:
+  publisher_name: 'Adjanouhoun Amadou'
+  publisher_website: 'amadouadjanouhoun.fr'
+  publisher_email: 'contact@amadouadjanouhoun.fr'
   privacy: 'سياسة الخصوصية'
   notices: 'الإشعارات القانونية'
   privacy_intro: 'تحترم FyraCare سرية المعلومات التي يرسلها مستخدمو هذا الموقع.'

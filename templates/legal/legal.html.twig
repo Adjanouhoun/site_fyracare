@@ -15,9 +15,9 @@
 		<article class="shell legal-copy section">
 			<h2>{{ 'legal.publisher_title'|trans|cms('legal.publisher_title') }}</h2>
 			<p>
-				Adjanouhoun Amadou<br>
-				<a href="https://amadouadjanouhoun.fr" target="_blank" rel="noopener noreferrer">amadouadjanouhoun.fr</a><br>
-				<a href="mailto:contact@amadouadjanouhoun.fr">contact@amadouadjanouhoun.fr</a>
+				{{ 'legal.publisher_name'|trans|cms('legal.publisher_name') }}<br>
+				{% set publisher_website = 'legal.publisher_website'|trans|cms('legal.publisher_website') %}<a href="https://{{ publisher_website }}" target="_blank" rel="noopener noreferrer">{{ publisher_website }}</a><br>
+				{% set publisher_email = 'legal.publisher_email'|trans|cms('legal.publisher_email') %}<a href="mailto:{{ publisher_email }}">{{ publisher_email }}</a>
 			</p>
 			<h2>{{ 'legal.content_title'|trans|cms('legal.content_title') }}</h2>
 			<p>{{ 'legal.content_text'|trans|cms('legal.content_text') }}</p>

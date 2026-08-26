@@ -269,6 +269,10 @@ booking:
   timezone: 'Times are shown in Nouakchott local time.'
   confirmation_note: 'Your appointment remains subject to confirmation by the FyraCare team. Your information is handled confidentially.'
 contact:
+  address_value: 'Cité Plage Sapeur-Pompier, Nouakchott, Mauritania'
+  phone_primary: '+222 41 46 84 84'
+  phone_secondary: '+222 44 12 26 86'
+  email_value: 'Contact@fyracare.com'
   meta_title: 'Contact — FyraCare'
   meta_description: 'Contact the FyraCare centre in Nouakchott or send us a message.'
   eyebrow: 'We are here to listen'
@@ -288,6 +292,9 @@ contact:
   submit: 'Send message'
   success: 'Your message has been sent to the FyraCare team.'
 legal:
+  publisher_name: 'Adjanouhoun Amadou'
+  publisher_website: 'amadouadjanouhoun.fr'
+  publisher_email: 'contact@amadouadjanouhoun.fr'
   privacy: 'Privacy policy'
   notices: 'Legal notice'
   privacy_intro: 'FyraCare respects the confidentiality of information submitted by users of this website.'
