@@ -85,7 +85,8 @@ final class ContentManagementTest extends WebTestCase
         self::assertSelectorTextContains('h1', 'Thématiques de galerie');
         $client->request('GET', '/admin/gallery-item');
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h1', 'Galerie photo / vidéo');
+        self::assertSelectorTextContains('h1', 'Galerie classée par catégorie');
+        self::assertSelectorTextContains('body', 'Catégorie');
         self::assertSelectorTextContains('body', 'Média principal de la thématique');
     }
 }
